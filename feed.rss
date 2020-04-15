@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content"><channel><title>LiteCode</title><description>A personal blog of LiteCode Team</description><link>https://litecode.dev</link><language>en</language><lastBuildDate>Wed, 15 Apr 2020 05:11:47 +0300</lastBuildDate><pubDate>Wed, 15 Apr 2020 05:11:47 +0300</pubDate><ttl>250</ttl><atom:link href="https://litecode.dev/feed.rss" rel="self" type="application/rss+xml"/><item><guid isPermaLink="true">https://litecode.dev/posts/first-post</guid><title>Custom NavigationView style</title><description>Create your own NavigationViewStyle.</description><link>https://litecode.dev/posts/first-post</link><pubDate>Fri, 3 Apr 2020 19:22:00 +0300</pubDate><content:encoded><![CDATA[<h1>Custom NavigationView style</h1><p>Hello everybody, today we will talk about custom NavigationViewStyle.</p><pre><code><span class="s-keyword">import</span> SwiftUI
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content"><channel><title>LiteCode</title><description>A personal blog of LiteCode Team</description><link>https://litecode.dev</link><language>en</language><lastBuildDate>Wed, 15 Apr 2020 15:21:28 +0300</lastBuildDate><pubDate>Wed, 15 Apr 2020 15:21:28 +0300</pubDate><ttl>250</ttl><atom:link href="https://litecode.dev/feed.rss" rel="self" type="application/rss+xml"/><item><guid isPermaLink="true">https://litecode.dev/posts/first-post</guid><title>Custom NavigationView style</title><description>Create your own NavigationViewStyle.</description><link>https://litecode.dev/posts/first-post</link><pubDate>Fri, 3 Apr 2020 19:22:00 +0300</pubDate><content:encoded><![CDATA[<h1>Custom NavigationView style</h1><p>Hello everybody, today we will talk about custom NavigationViewStyle.</p><pre><code><span class="s-keyword">import</span> SwiftUI
 
 <span class="s-keyword">struct</span> ContentView: <span class="s-type">View</span> {
     
@@ -22,6 +22,14 @@
             <span class="s-type">Text</span>(<span class="s-string">"some text"</span>)
         }
         .<span class="s-call">navigationViewStyle</span>(<span class="s-type">DefaultNavigationViewStyle</span>())
+        
+        <span class="s-keyword">if some</span> != lol {
+            <span class="s-call">print</span>(<span class="s-string">"kek"</span>)
+        }
+    }
+    
+    <span class="s-keyword">func</span> someFunc() =&gt; <span class="s-type">String</span> {
+        <span class="s-keyword">return</span> <span class="s-string">"SOME BIG TEXT"</span>
     }
 }
 </code></pre></blockquote><blockquote class="blockquote-error"><p>Some warning text some shit and etc other</p></blockquote><blockquote class="blockquote-info"><p>Some info <code>information</code></p></blockquote>]]></content:encoded></item></channel></rss>
