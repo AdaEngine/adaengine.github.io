@@ -2,23 +2,13 @@
 
 @import "tags.css";
 @import "codesyntax.css";
+@import "socials.css";
 
 /* Fonts */
-/*
-@font-face {
-    font-family: "Main";
-    src: url(/fonts/SourceSansPro-Regular.ttf);
-}
-
-@font-face {
-    font-family: "Main";
-    src: url(/fonts/SourceSansPro-Bold.ttf);
-    font-weight: bold;
-} */
 
 @font-face {
     font-family: "Code";
-    src: url(/Fonts/JetBrainsMono-Regular.ttf);
+    src: url(/fonts/JetBrainsMono-Regular.ttf);
 }
 
 /* Global */
@@ -73,7 +63,7 @@ html {
 
 .collection {
     display: grid;
-    grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+    grid-template-columns: repeat( auto-fit, minmax(250px, 0.4fr) );
     grid-auto-rows: min-content;
     grid-gap: 20px;
     grid-template-rows: auto;
@@ -120,26 +110,51 @@ html {
     padding-right: 1.5rem;
 }
 
-.about_me {
-    display: inline-flex;
-    margin-top: 20px;
+.article-footer {
+    padding-top: 40px;
+}
+
+.article-footer .tags li {
+    padding: 5px 10px;
+    margin-right: 10px;
+    font-size: 1em;
+    border-radius: 8px;
+    margin-bottom: 7px;
+}
+
+.written_by {
+    display: block;
+    margin-top: 40px;
     margin-bottom: 4rem;
     margin-left: auto;
     margin-right: auto;
-    /* justify-content: center; */
+}
+
+.written_by h3 {
+    font-size: 0.85em;
+    color: #9299A2;
+    margin-bottom: 20px;
+}
+
+.about_author_container {
+    display: inline-flex;
+    margin-left: 1.5rem;
 }
 
 .author_info {
     display: inline;
-    margin: auto 8px;
+    margin: auto 20px;
 }
 
 .author_info p {
     margin: 0;
+    color: #333333;
 }
 
 .author_info h2 {
     margin: 2px 0px;
+    padding: 6px auto;
+    color: #f79e05;
 }
 
 .avatar {
@@ -235,6 +250,7 @@ html {
     display: block;
     object-fit: cover;
     box-shadow: none;
+    background-color: #FFFFFF;
     -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
     transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
@@ -309,6 +325,33 @@ article .tags {
 
 /* Article */
 
+article twitter-widget {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+article img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+article .article-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: visible;
+}
+
+article .article-image p {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 16px;
+    color: #9299A2;
+    
+}
+
 article p {
     margin-top: 20px;
     font-size: 1.05em;
@@ -346,15 +389,15 @@ article .blockquote-warning {
 }
 
 article .blockquote-warning::before {
-    background-image: url("/Images/warning.svg");
+    background-image: url("/images/warning.svg");
 }
 
 article .blockquote-error::before {
-    background-image: url("/Images/error.svg")
+    background-image: url("/images/error.svg")
 }
 
 article .blockquote-info::before {
-    background-image: url("/Images/info.svg")
+    background-image: url("/images/info.svg")
 }
 
 article .blockquote-error {
@@ -365,6 +408,49 @@ article .blockquote-error {
 article .blockquote-info {
     background-color: rgba(102, 199, 244, 0.3);
     border-left: 0.25rem solid rgba(102, 199, 244, 1);
+}
+
+article .full-width-image {
+    left: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    max-width: 100vw;
+    position: relative;
+    right: 50%;
+    width: 100vw;
+}
+
+.related_articles {
+    left: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    max-width: 100vw;
+    position: relative;
+    right: 50%;
+    width: 100vw;
+    background-color: #F6F7F8;
+    padding-top: 1px;
+    padding-bottom: 20px;
+}
+
+.related_articles .safe-area-insets {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.article_info .avatar {
+    width: 48px;
+    height: 49px;
+}
+
+.article_info {
+    display: inline-flex;
+    color: #9299A2;
+    margin-bottom: 20px;
+}
+
+.article_info h2 {
+    font-size: 16px;
 }
 
 /* Code */
@@ -467,14 +553,35 @@ pre code .highlight {
         color: #dddddd;
     }
     
+    .author_info h2 {
+        padding: 6px auto;
+        color: #FFE066;
+    }
+    
     article p code,
     article li code {
         background-color: #111111;
     }
     
+    .author_info p {
+        color: #dddddd;
+    }
+    
     pre code {
         background-color: #111111;
         color: #a9bcbc;
+    }
+    
+    article .article-image p {
+        color: #9299A2;
+    }
+    
+    .article_info {
+        color: #9299A2;
+    }
+    
+    .related_articles {
+        background-color: rgba(0, 0, 0, 0.1);
     }
 }
 
