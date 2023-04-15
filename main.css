@@ -156,7 +156,7 @@ html {
 
 .collection {
     display: grid;
-    grid-template-columns: repeat( auto-fit, minmax(250px, 0.4fr) );
+    grid-template-columns: repeat( auto-fit, 1fr );
     grid-auto-rows: min-content;
     grid-gap: 20px;
     grid-template-rows: auto;
@@ -205,7 +205,7 @@ html {
 }
 
 .article-footer {
-    padding-top: 40px;
+    padding-top: 20px;
 }
 
 .article-footer .tags li {
@@ -218,8 +218,8 @@ html {
 
 .written_by {
     display: block;
-    margin-top: 40px;
-    margin-bottom: 4rem;
+    margin-top: 20px;
+    margin-bottom: 40px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -601,7 +601,7 @@ pre code .highlight {
 @supports ((-webkit-backdrop-filter: saturate(180%) blur(20px)) or (backdrop-filter: saturate(180%) blur(20px))) {
     @media(prefers-color-scheme: light) {
         .header {
-            background: rgba(255, 255, 255, 0.6);
+            background: #f5f5f7ac;
             -webkit-backdrop-filter: saturate(180%) blur(20px);
             backdrop-filter:saturate(180%) blur(20px)
         }
@@ -616,15 +616,19 @@ pre code .highlight {
     }
 }
 
-/* 48em = 768px */
+/* 48em = 768px big screen */
 
-@media (min-width: 48em) {
+@media (min-width: 42em) {
     
     .navigation {
         display: inline-flex;
         align-items: center;
         float: right;
         gap: 1rem;
+    }
+    
+    .header .menu-button {
+        display: none;
     }
     
     .header ul {
@@ -686,7 +690,36 @@ pre code .highlight {
     }
 }
 
-@media screen and (max-width: 600px) {
+/* Low screen */
+
+@media (max-width: 42em) {
+    
+    .header .navigation-item {
+        opacity: 1;
+        transition: color .32s cubic-bezier(.4,0,.6,1);
+        font-size: 28px;
+        line-height: 1.1428571429;
+        font-weight: 600;
+        letter-spacing: .007em;
+        font-family: SF Pro Display,SF Pro Icons,Roboto,Helvetica,Arial,sans-serif;
+    }
+    
+    /* Navigation */
+
+    .header .navigation {
+        clear: both;
+        height: 0;
+        transition: height .2s ease-out;
+    }
+    
+    .header .menu-button {
+        float: right;
+    }
+    
+    #menu-button:checked ~ .navigation {
+        max-height: 240px;
+        background: #000;
+    }
     
     .article-item-new a {
         display: block;
@@ -719,7 +752,7 @@ pre code .highlight {
     }
     
     .container article {
-        margin-bottom: 48px;
+        margin-bottom: 24px;
     }
     
     .footer .avatar {
@@ -747,11 +780,11 @@ pre code .highlight {
     }
     
     .navigation-item-link {
-        color: #342E37;
+        color: var(--dark);
     }
     
     .navigation-item:hover .navigation-item-link {
-        color: #342E37;
+        color: var(--glyph-gray-secondary-alt);
     }
 }
 

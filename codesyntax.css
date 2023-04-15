@@ -6,12 +6,24 @@ pre code .s-call {
 	color: #25464AFF
 }
 
+pre code .s-type {
+	color: #3E6D74FF
+}
+
+pre code .s-comment {
+	color: #007400FF
+}
+
 pre code .s-property {
 	color: #3E6D74FF
 }
 
-pre code .s-type {
-	color: #3E6D74FF
+pre code .s-number {
+	color: #1C00CEFF
+}
+
+pre code .s-string {
+	color: #C41A15FF
 }
 
 pre code .s-dotAccess {
@@ -26,32 +38,16 @@ pre code .s-keyword {
 	color: #A90D91FF
 }
 
-pre code .s-string {
-	color: #C41A15FF
-}
-
-pre code .s-comment {
-	color: #007400FF
-}
-
-pre code .s-number {
-	color: #1C00CEFF
-}
-
 
 
 @media(prefers-color-scheme: dark) {
 	
+	pre code .s-number {
+		color: #CFBF69FF
+	}
+	
 	pre code .s-preprocessing {
 		color: #FC8E3EFF
-	}
-	
-	pre code .s-keyword {
-		color: #FC5FA2FF
-	}
-	
-	pre code .s-dotAccess {
-		color: #67B6A3FF
 	}
 	
 	pre code .s-type {
@@ -66,12 +62,16 @@ pre code .s-number {
 		color: #6C7985FF
 	}
 	
-	pre code .s-number {
-		color: #CFBF69FF
-	}
-	
 	pre code .s-property {
 		color: #67B6A3FF
+	}
+	
+	pre code .s-dotAccess {
+		color: #67B6A3FF
+	}
+	
+	pre code .s-keyword {
+		color: #FC5FA2FF
 	}
 	
 	pre code .s-string {
