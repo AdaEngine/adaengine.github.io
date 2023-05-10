@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>AdaEngine</title><description>A simple and fast game engine written on Swift</description><link>https://adaengine.github.io</link><language>en</language><lastBuildDate>Wed, 10 May 2023 00:34:54 +0000</lastBuildDate><pubDate>Wed, 10 May 2023 00:34:54 +0000</pubDate><ttl>250</ttl><atom:link href="https://adaengine.github.io/feed.rss" rel="self" type="application/rss+xml"/><item><guid isPermaLink="true">https://adaengine.github.io/blog/first-post</guid><title>Custom NavigationView style</title><description>Create your own NavigationViewStyle.</description><link>https://adaengine.github.io/blog/first-post</link><pubDate>Fri, 3 Apr 2020 00:00:00 +0000</pubDate><content:encoded><![CDATA[<h1>Custom NavigationView style</h1><div class="article_info"><img src="https://adaengine.github.io/Images/vprusakov.jpg" alt="Vladislav Prusakov Profile Picture" class="avatar"/><div class="author_info"><a href="https://adaengine.github.io/authors/SpectralDragon"><h2>Vladislav Prusakov</h2></a><div>03 Apr 2020 • 1 min read</div></div></div><div class="article-image"><img src="https://adaengine.github.io/Images/news/1*eHvKZaNy4zaU76Tu6TSKWw.png" alt="Some image" class="full-width-image"/><p>Some image</p></div><p>Hello everybody, today we will talk about custom NavigationViewStyle.</p><pre><code><span class="s-keyword">import</span> SwiftUI
+
+<span class="s-keyword">struct</span> ContentView: <span class="s-type">View</span> {
+    
+    <span class="s-keyword">@State var</span> kek: <span class="s-type">String</span> = <span class="s-string">"KEEEEK"</span>
+    
+    <span class="s-keyword">var</span> body: <span class="s-keyword">some</span> <span class="s-type">View</span> {
+        <span class="s-type">NavigationView</span> {
+            <span class="s-type">Text</span>(<span class="s-string">"some text"</span>)
+        }
+        .<span class="s-call">navigationViewStyle</span>(<span class="s-type">DefaultNavigationViewStyle</span>())
+    }
+}
+</code></pre><p>If we'll look into documentationm we doesn't see any method in protocol <code>NavigationViewStyle</code>, but if we implemented this method in class</p><blockquote><p>Some interresting thing</p></blockquote><blockquote class="blockquote-warning"><p>Some shits happend tho</p><pre><code><span class="s-keyword">import</span> SwiftUI
+
+<span class="s-keyword">struct</span> ContentView: <span class="s-type">View</span> {
+    
+    <span class="s-keyword">@State var</span> kek: <span class="s-type">String</span> = <span class="s-string">"KEEEEK"</span>
+    
+    <span class="s-keyword">var</span> body: <span class="s-keyword">some</span> <span class="s-type">View</span> {
+        <span class="s-type">NavigationView</span> {
+            <span class="s-type">Text</span>(<span class="s-string">"some text"</span>)
+        }
+        .<span class="s-call">navigationViewStyle</span>(<span class="s-type">DefaultNavigationViewStyle</span>())
+        
+        <span class="s-keyword">if some</span> != lol {
+            <span class="s-call">print</span>(<span class="s-string">"kek"</span>)
+        }
+    }
+    
+    <span class="s-keyword">func</span> someFunc() =&gt; <span class="s-type">String</span> {
+        <span class="s-keyword">return</span> <span class="s-string">"SOME BIG TEXT"</span>
+    }
+}
+</code></pre></blockquote><blockquote class="blockquote-error"><p>Some warning text some shit and etc other</p></blockquote><blockquote class="blockquote-info"><p>Some info <code>information</code></p></blockquote>]]></content:encoded></item></channel></rss>
