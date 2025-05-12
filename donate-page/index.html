@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content="Ignite v0.5.2" />
+    <title>Donate</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/prism-xcode-dark.css" rel="stylesheet" data-highlight-theme="xcode-dark" />
+    <link href="/css/prism-xcode-light.css" rel="stylesheet" data-highlight-theme="xcode-light" />
+    <link href="/css/prism-plugins.css" rel="stylesheet" />
+    <link href="/css/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="/css/ignite-core.min.css" rel="stylesheet" />
+    <link href="https://adaengine.org/donate-page" rel="canonical" />
+    <link href="/images/favicon.png" rel="icon" />
+    <script>(function() {
+    function getThemePreference() {
+        return localStorage.getItem('custom-theme') || 'auto';
+    }
+
+    function applyTheme(themeID) {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const lightThemeID = document.documentElement.getAttribute('data-light-theme') || 'light';
+        const darkThemeID = document.documentElement.getAttribute('data-dark-theme') || 'dark';
+        const actualThemeID = themeID === 'auto' ? (prefersDark ? darkThemeID : lightThemeID) : themeID;
+
+        document.documentElement.setAttribute('data-bs-theme', actualThemeID);
+        document.documentElement.setAttribute('data-theme-state', themeID);
+    }
+
+    function applySyntaxTheme() {
+        const syntaxTheme = getComputedStyle(document.documentElement)
+            .getPropertyValue('--syntax-highlight-theme').trim().replace(/"/g, '');
+
+        if (!syntaxTheme) return;
+
+        document.querySelectorAll('link[data-highlight-theme]').forEach(link => {
+            link.setAttribute('disabled', 'disabled');
+        });
+
+        const themeLink = document.querySelector(`link[data-highlight-theme="${syntaxTheme}"]`);
+        if (themeLink) {
+            themeLink.removeAttribute('disabled');
+        }
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        const currentTheme = getThemePreference();
+        if (currentTheme === 'auto') {
+            applyTheme('auto');
+            applySyntaxTheme();
+        }
+    });
+
+    const savedTheme = getThemePreference();
+    applyTheme(savedTheme);
+    applySyntaxTheme();
+})();
+</script>
+    <meta property="og:site_name" content="AdaEngine" />
+    <meta property="og:title" content="Donate" />
+    <meta name="twitter:title" content="Donate" />
+    <meta property="og:url" content="https://adaengine.org/donate-page" />
+    <meta name="twitter:domain" content="adaengine.org" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:dnt" content="on" />
+    <link href="/styles/main.css" rel="stylesheet" />
+    <meta media="(prefers-color-scheme: light)" name="theme-color" content="#FFFFFF" />
+    <meta media="(prefers-color-scheme: dark)" name="theme-color" content="#00000066" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container content-restriction header-container">
+        <a href="/" class="header-logo link-plain"><h2>AdaEngine</h2><h2 class="subtitle">Donate</h2></a>
+        <div class="burger-container">
+          <div id="burger">
+            <div class="bar topBar"></div>
+            <div class="bar bottomBar"></div>
+          </div>
+        </div>
+        <ul class="navigation">
+          <li class="navigation-item"><a href="/blog" class="navigation-item-link link-plain"><span>Blog</span></a></li>
+          <li class="navigation-item"><a href="/learn" class="navigation-item-link link-plain"><span>Learn</span></a></li>
+          <li class="navigation-item"><a href="/community" class="navigation-item-link link-plain"><span>Community</span></a></li>
+          <li class="navigation-item donate-button"><a href="/donate-page" class="link-plain">
+              <div class="navigation-item-link" style="color: rgb(255 255 255 / 100%); padding: 7px; background-color: var(--donate); border-radius: 12px" onmouseover="this.unhoveredStyle = this.style.cssText;
+this.style.backgroundColor = 'var(--donate-darker)'" onmouseout="this.style.cssText = this.unhoveredStyle;">
+                <div class="text-center color-inherit hstack" style="gap: 2px">
+                  <p class="mb-0 align-self-center">Donate</p>
+                  <i class="mb-0 align-self-center bi-heart-fill" style="margin: 0px"></i>
+                </div>
+              </div></a></li>
+        </ul>
+      </div>
+    </header>
+    <div class="container content-restriction safe-area-insets">
+      <div>
+        <div class="row justify-content-center row-cols-1 row-cols-md-4" style="row-gap: 60px">
+          <div class="col-md-6 align-self-start">
+            <div class="vstack" style="gap: 30px">
+              <p class="mb-0 align-self-start" style="font-weight: 400; font-family: Primary; font-size: 74px; line-height: 1.2">Support the future of AdaEngine</p>
+              <p class="lead mb-0 align-self-start">Join the Development Fund and support our misson to develop and support the free and open source AdaEngine.</p>
+            </div>
+          </div>
+          <div class="col-md-6 align-self-start">
+            <div class="vstack">
+              <h3 class="mb-0 align-self-center" style="padding-bottom: 10px">Become a monthly member!</h3>
+              <div class="segment-control mb-0 align-self-center" style="padding-top: 4px; padding-bottom: 4px; width: 100.0%">
+                <button type="button" id="usd-btn" class="active btn" onclick="document.getElementById('boosty').classList.add('d-none'); document.getElementById('oneTime').classList.add('d-none'); document.getElementById('usd').classList.remove('d-none'); document.getElementById('usd-btn').classList.add('active'); document.getElementById('boosty-btn').classList.remove('active'); document.getElementById('oneTime-btn').classList.remove('active')">USD</button>
+                <button type="button" id="boosty-btn" class="btn" onclick="document.getElementById('usd').classList.add('d-none'); document.getElementById('oneTime').classList.add('d-none'); document.getElementById('boosty').classList.remove('d-none'); document.getElementById('usd-btn').classList.remove('active'); document.getElementById('boosty-btn').classList.add('active'); document.getElementById('oneTime-btn').classList.remove('active')">Boosty</button>
+                <button type="button" id="oneTime-btn" class="btn" onclick="document.getElementById('usd').classList.add('d-none'); document.getElementById('boosty').classList.add('d-none'); document.getElementById('oneTime').classList.remove('d-none'); document.getElementById('usd-btn').classList.remove('active'); document.getElementById('boosty-btn').classList.remove('active'); document.getElementById('oneTime-btn').classList.add('active')">One time donation</button>
+              </div>
+              <div id="usd" class="mb-0 align-self-center vstack">
+                <div class="mb-0 align-self-center vstack" style="padding-bottom: 40px">
+                  <div class="mb-0 align-self-start row justify-content-center row-cols-1 row-cols-md-6">
+                    <div class="col-md-4 align-self-center g-3">
+                      <button type="button" class="w-100 btn" style="font-weight: 400; font-family: Primary; font-size: 15px; background-color: var(--color-donate-level-bronze-color); color: rgb(255 255 255 / 100%); border-radius: 8px" onclick="document.getElementById('-4577834433812255940').classList.add('d-none'); document.getElementById('-3777007623816217108').classList.add('d-none'); document.getElementById('3487975577312656503').classList.add('d-none'); document.getElementById('-5991268963110671623').classList.add('d-none'); document.getElementById('8661274560364370650').classList.add('d-none'); document.getElementById('5056835942312038626').classList.add('d-none'); document.getElementById('-4577834433812255940').classList.remove('d-none')">$3.9</button>
+                    </div>
+                    <div class="col-md-4 align-self-center g-3">
+                      <button type="button" class="w-100 btn" style="font-weight: 400; font-family: Primary; font-size: 15px; background-color: var(--color-donate-level-silver-color); color: rgb(255 255 255 / 100%); border-radius: 8px" onclick="document.getElementById('-4577834433812255940').classList.add('d-none'); document.getElementById('-3777007623816217108').classList.add('d-none'); document.getElementById('3487975577312656503').classList.add('d-none'); document.getElementById('-5991268963110671623').classList.add('d-none'); document.getElementById('8661274560364370650').classList.add('d-none'); document.getElementById('5056835942312038626').classList.add('d-none'); document.getElementById('-3777007623816217108').classList.remove('d-none')">$10.4</button>
+                    </div>
+                    <div class="col-md-4 align-self-center g-3">
+                      <button type="button" class="w-100 btn" style="font-weight: 400; font-family: Primary; font-size: 15px; background-color: var(--color-donate-level-gold-color); color: var(--glyph-gray-override); border-radius: 8px" onclick="document.getElementById('-4577834433812255940').classList.add('d-none'); document.getElementById('-3777007623816217108').classList.add('d-none'); document.getElementById('3487975577312656503').classList.add('d-none'); document.getElementById('-5991268963110671623').classList.add('d-none'); document.getElementById('8661274560364370650').classList.add('d-none'); document.getElementById('5056835942312038626').classList.add('d-none'); document.getElementById('3487975577312656503').classList.remove('d-none')">$19.5</button>
+                    </div>
+                    <div class="col-md-4 align-self-center g-3">
+                      <button type="button" class="w-100 btn" style="font-weight: 400; font-family: Primary; font-size: 15px; background-color: var(--color-donate-level-platinum-color); color: var(--glyph-gray-override); border-radius: 8px" onclick="document.getElementById('-4577834433812255940').classList.add('d-none'); document.getElementById('-3777007623816217108').classList.add('d-none'); document.getElementById('3487975577312656503').classList.add('d-none'); document.getElementById('-5991268963110671623').classList.add('d-none'); document.getElementById('8661274560364370650').classList.add('d-none'); document.getElementById('5056835942312038626').classList.add('d-none'); document.getElementById('-5991268963110671623').classList.remove('d-none')">$46.0</button>
+                    </div>
+                    <div class="col-md-4 align-self-center g-3">
+                      <button type="button" class="w-100 btn" style="font-weight: 400; font-family: Primary; font-size: 15px; background-color: var(--color-donate-level-titanium-color); color: rgb(255 255 255 / 100%); border-radius: 8px" onclick="document.getElementById('-4577834433812255940').classList.add('d-none'); document.getElementById('-3777007623816217108').classList.add('d-none'); document.getElementById('3487975577312656503').classList.add('d-none'); document.getElementById('-5991268963110671623').classList.add('d-none'); document.getElementById('8661274560364370650').classList.add('d-none'); document.getElementById('5056835942312038626').classList.add('d-none'); document.getElementById('8661274560364370650').classList.remove('d-none')">$65.0</button>
+                    </div>
+                    <div class="col-md-4 align-self-center g-3">
+                      <button type="button" class="w-100 btn" style="font-weight: 400; font-family: Primary; font-size: 15px; background-color: var(--color-donate-level-diamond-color); color: var(--glyph-gray-override); border-radius: 8px" onclick="document.getElementById('-4577834433812255940').classList.add('d-none'); document.getElementById('-3777007623816217108').classList.add('d-none'); document.getElementById('3487975577312656503').classList.add('d-none'); document.getElementById('-5991268963110671623').classList.add('d-none'); document.getElementById('8661274560364370650').classList.add('d-none'); document.getElementById('5056835942312038626').classList.add('d-none'); document.getElementById('5056835942312038626').classList.remove('d-none')">$259.0</button>
+                    </div>
+                  </div>
+                </div>
+                <div id="-4577834433812255940" class="mb-0 align-self-center vstack" style="gap: 20px">
+                  <div class="mb-0 align-self-center">
+                    <div class="vstack">
+                      <div class="donation_card mb-0 align-self-center">
+                        <div id="-4577834433812255940" class="user-select-none card">
+                          <div class="cardBg" style="display: grid">
+                            <div class="mb-0" style="color: rgb(255 255 255 / 100%); width: 270px; min-height: 355px; border-radius: 8px; padding: 20px; background-color: var(--color-donate-level-bronze-color); position: relative; grid-area: 1/1; z-index: 0; align-self: center; justify-self: center">
+                              <div class="color-inherit vstack">
+                                <div class="mb-0 align-self-start" style="margin: 20px">
+                                  <img src="/images/ae_logo_white.svg" alt="" class="img-fluid" style="padding-bottom: 20px" />
+                                </div>
+                                <div class="mb-0 align-self-start" style="font-weight: 400; font-family: Primary; font-size: 30px">
+                                  <div class="font-inherit" style="line-height: 1">
+                                    <div class="line-height-inherit vstack" style="gap: 4px">
+                                      <span class="mb-0 align-self-start">Bronze</span>
+                                      <span class="mb-0 align-self-start">member</span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="ms-auto" style="height: 20px"></div>
+                                <div class="mb-0 align-self-start hstack gap-5" style="padding-top: 20px">
+                                  <div class="mb-0 align-self-end vstack" style="gap: 6px">
+                                    <p class="mb-0 align-self-start" style="font-weight: 400; font-size: 12px; padding-left: 6px; padding-right: 6px; padding-top: 2px; padding-bottom: 2px; border: 1.5px solid rgb(255 255 255 / 100%); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px">Name in Credits</p>
+                                  </div>
+                                  <p class="mb-0 align-self-end" style="font-weight: 400; font-family: Primary; font-size: 13px">AdaEngine</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="shineLayer mb-0" style="border-radius: 8px; position: relative; grid-area: 1/1; z-index: 1; align-self: center; justify-self: center"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="https://boosty.to/adaengine/purchase/3179294?ssource=DIRECT&amp;share=subscription_link" class="fs-4 donate-btn donate-btn-anim elevated-element mb-0 align-self-center" style="padding-left: 40px; padding-right: 40px">Donate</a>
+                </div>
+                <div id="-3777007623816217108" class="d-none mb-0 align-self-center vstack" style="gap: 20px">
+                  <div class="mb-0 align-self-center">
+                    <div class="vstack">
+                      <div class="donation_card mb-0 align-self-center">
+                        <div id="-3777007623816217108" class="user-select-none card">
+                          <div class="cardBg" style="display: grid">
+                            <div class="mb-0" style="color: rgb(255 255 255 / 100%); width: 270px; min-height: 355px; border-radius: 8px; padding: 20px; background-color: var(--color-donate-level-silver-color); position: relative; grid-area: 1/1; z-index: 0; align-self: center; justify-self: center">
+                              <div class="color-inherit vstack">
+                                <div class="mb-0 align-self-start" style="margin: 20px">
+                                  <img src="/images/ae_logo_white.svg" alt="" class="img-fluid" style="padding-bottom: 20px" />
+                                </div>
+                                <div class="mb-0 align-self-start" style="font-weight: 400; font-family: Primary; font-size: 30px">
+                                  <div class="font-inherit" style="line-height: 1">
+                                    <div class="line-height-inherit vstack" style="gap: 4px">
+                                      <span class="mb-0 align-self-start">Silver</span>
+                                      <span class="mb-0 align-self-start">member</span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="ms-auto" style="height: 20px"></div>
+                                <div class="mb-0 align-self-start hstack gap-5" style="padding-top: 20px">
+                                  <div class="mb-0 align-self-end vstack" style="gap: 6px">
+                                    <p class="mb-0 align-self-start" style="font-weight: 400; font-size: 12px; padding-left: 6px; padding-right: 6px; padding-top: 2px; padding-bottom: 2px; border: 1.5px solid rgb(255 255 255 / 100%); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px">Name in Credits</p>
+                                  </div>
+                                  <p class="mb-0 align-self-end" style="font-weight: 400; font-family: Primary; font-size: 13px">AdaEngine</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="shineLayer mb-0" style="border-radius: 8px; position: relative; grid-area: 1/1; z-index: 1; align-self: center; justify-self: center"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="https://boosty.to/adaengine/purchase/3179295?ssource=DIRECT&amp;share=subscription_link" class="fs-4 donate-btn donate-btn-anim elevated-element mb-0 align-self-center" style="padding-left: 40px; padding-right: 40px">Donate</a>
+                </div>
+                <div id="3487975577312656503" class="d-none mb-0 align-self-center vstack" style="gap: 20px">
+                  <div class="mb-0 align-self-center">
+                    <div class="vstack">
+                      <div class="donation_card mb-0 align-self-center">
+                        <div id="3487975577312656503" class="user-select-none card">
+                          <div class="cardBg" style="display: grid">
+                            <div class="mb-0" style="color: var(--glyph-gray-override); width: 270px; min-height: 355px; border-radius: 8px; padding: 20px; background-color: var(--color-donate-level-gold-color); position: relative; grid-area: 1/1; z-index: 0; align-self: center; justify-self: center">
+                              <div class="color-inherit vstack">
+                                <div class="mb-0 align-self-start" style="margin: 20px">
+                                  <img src="/images/ae_logo_black.svg" alt="" class="img-fluid" style="padding-bottom: 20px" />
+                                </div>
+                                <div class="mb-0 align-self-start" style="font-weight: 400; font-family: Primary; font-size: 30px">
+                                  <div class="font-inherit" style="line-height: 1">
+                                    <div class="line-height-inherit vstack" style="gap: 4px">
+                                      <span class="mb-0 align-self-start">Gold</span>
+                                      <span class="mb-0 align-self-start">member</span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="ms-auto" style="height: 20px"></div>
+                                <div class="mb-0 align-self-start hstack gap-5" style="padding-top: 20px">
+                                  <div class="mb-0 align-self-end vstack" style="gap: 6px">
+                                    <p class="mb-0 align-self-start" style="font-weight: 400; font-size: 12px; padding-left: 6px; padding-right: 6px; padding-top: 2px; padding-bottom: 2px; border: 1.5px solid rgb(0 0 0 / 100%); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px">Name in Credits</p>
+                                  </div>
+                                  <p class="mb-0 align-self-end" style="font-weight: 400; font-family: Primary; font-size: 13px">AdaEngine</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="shineLayer mb-0" style="border-radius: 8px; position: relative; grid-area: 1/1; z-index: 1; align-self: center; justify-self: center"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="https://boosty.to/adaengine/purchase/3179293?ssource=DIRECT&amp;share=subscription_link" class="fs-4 donate-btn donate-btn-anim elevated-element mb-0 align-self-center" style="padding-left: 40px; padding-right: 40px">Donate</a>
+                </div>
+                <div id="-5991268963110671623" class="d-none mb-0 align-self-center vstack" style="gap: 20px">
+                  <div class="mb-0 align-self-center">
+                    <div class="vstack">
+                      <div class="donation_card mb-0 align-self-center">
+                        <div id="-5991268963110671623" class="user-select-none card">
+                          <div class="cardBg" style="display: grid">
+                            <div class="mb-0" style="color: var(--glyph-gray-override); width: 270px; min-height: 355px; border-radius: 8px; padding: 20px; background-color: var(--color-donate-level-platinum-color); position: relative; grid-area: 1/1; z-index: 0; align-self: center; justify-self: center">
+                              <div class="color-inherit vstack">
+                                <div class="mb-0 align-self-start" style="margin: 20px">
+                                  <img src="/images/ae_logo_black.svg" alt="" class="img-fluid" style="padding-bottom: 20px" />
+                                </div>
+                                <div class="mb-0 align-self-start" style="font-weight: 400; font-family: Primary; font-size: 30px">
+                                  <div class="font-inherit" style="line-height: 1">
+                                    <div class="line-height-inherit vstack" style="gap: 4px">
+                                      <span class="mb-0 align-self-start">Platinum</span>
+                                      <span class="mb-0 align-self-start">member</span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="ms-auto" style="height: 20px"></div>
+                                <div class="mb-0 align-self-start hstack gap-5" style="padding-top: 20px">
+                                  <div class="mb-0 align-self-end vstack" style="gap: 6px">
+                                    <p class="mb-0 align-self-start" style="font-weight: 400; font-size: 12px; padding-left: 6px; padding-right: 6px; padding-top: 2px; padding-bottom: 2px; border: 1.5px solid rgb(0 0 0 / 100%); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px">Logo in Credits</p>
+                                  </div>
+                                  <p class="mb-0 align-self-end" style="font-weight: 400; font-family: Primary; font-size: 13px">AdaEngine</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="shineLayer mb-0" style="border-radius: 8px; position: relative; grid-area: 1/1; z-index: 1; align-self: center; justify-self: center"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="https://boosty.to/adaengine/purchase/3354083?ssource=DIRECT&amp;share=subscription_link" class="fs-4 donate-btn donate-btn-anim elevated-element mb-0 align-self-center" style="padding-left: 40px; padding-right: 40px">Donate</a>
+                </div>
+                <div id="8661274560364370650" class="d-none mb-0 align-self-center vstack" style="gap: 20px">
+                  <div class="mb-0 align-self-center">
+                    <div class="vstack">
+                      <div class="donation_card mb-0 align-self-center">
+                        <div id="8661274560364370650" class="user-select-none card">
+                          <div class="cardBg" style="display: grid">
+                            <div class="mb-0" style="color: rgb(255 255 255 / 100%); width: 270px; min-height: 355px; border-radius: 8px; padding: 20px; background-color: var(--color-donate-level-titanium-color); position: relative; grid-area: 1/1; z-index: 0; align-self: center; justify-self: center">
+                              <div class="color-inherit vstack">
+                                <div class="mb-0 align-self-start" style="margin: 20px">
+                                  <img src="/images/ae_logo_white.svg" alt="" class="img-fluid" style="padding-bottom: 20px" />
+                                </div>
+                                <div class="mb-0 align-self-start" style="font-weight: 400; font-family: Primary; font-size: 30px">
+                                  <div class="font-inherit" style="line-height: 1">
+                                    <div class="line-height-inherit vstack" style="gap: 4px">
+                                      <span class="mb-0 align-self-start">Titanium</span>
+                                      <span class="mb-0 align-self-start">member</span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="ms-auto" style="height: 20px"></div>
+                                <div class="mb-0 align-self-start hstack gap-5" style="padding-top: 20px">
+                                  <div class="mb-0 align-self-end vstack" style="gap: 6px">
+                                    <p class="mb-0 align-self-start" style="font-weight: 400; font-size: 12px; padding-left: 6px; padding-right: 6px; padding-top: 2px; padding-bottom: 2px; border: 1.5px solid rgb(255 255 255 / 100%); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px">Logo in Credits</p>
+                                    <p class="mb-0 align-self-start" style="font-weight: 400; font-size: 12px; padding-left: 6px; padding-right: 6px; padding-top: 2px; padding-bottom: 2px; border: 1.5px solid rgb(255 255 255 / 100%); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px">Link in Credits</p>
+                                    <p class="mb-0 align-self-start" style="font-weight: 400; font-size: 12px; padding-left: 6px; padding-right: 6px; padding-top: 2px; padding-bottom: 2px; border: 1.5px solid rgb(255 255 255 / 100%); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px">Support by Team</p>
+                                    <p class="mb-0 align-self-start" style="font-weight: 400; font-size: 12px; padding-left: 6px; padding-right: 6px; padding-top: 2px; padding-bottom: 2px; border: 1.5px solid rgb(255 255 255 / 100%); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px">Merch</p>
+                                  </div>
+                                  <p class="mb-0 align-self-end" style="font-weight: 400; font-family: Primary; font-size: 13px">AdaEngine</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="shineLayer mb-0" style="border-radius: 8px; position: relative; grid-area: 1/1; z-index: 1; align-self: center; justify-self: center"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="https://boosty.to/adaengine/purchase/3354084?ssource=DIRECT&amp;share=subscription_link" class="fs-4 donate-btn donate-btn-anim elevated-element mb-0 align-self-center" style="padding-left: 40px; padding-right: 40px">Donate</a>
+                </div>
+                <div id="5056835942312038626" class="d-none mb-0 align-self-center vstack" style="gap: 20px">
+                  <div class="mb-0 align-self-center">
+                    <div class="vstack">
+                      <div class="donation_card mb-0 align-self-center">
+                        <div id="5056835942312038626" class="user-select-none card">
+                          <div class="cardBg" style="display: grid">
+                            <div class="mb-0" style="color: var(--glyph-gray-override); width: 270px; min-height: 355px; border-radius: 8px; padding: 20px; background-color: var(--color-donate-level-diamond-color); position: relative; grid-area: 1/1; z-index: 0; align-self: center; justify-self: center">
+                              <div class="color-inherit vstack">
+                                <div class="mb-0 align-self-start" style="margin: 20px">
+                                  <img src="/images/ae_logo_black.svg" alt="" class="img-fluid" style="padding-bottom: 20px" />
+                                </div>
+                                <div class="mb-0 align-self-start" style="font-weight: 400; font-family: Primary; font-size: 30px">
+                                  <div class="font-inherit" style="line-height: 1">
+                                    <div class="line-height-inherit vstack" style="gap: 4px">
+                                      <span class="mb-0 align-self-start">Diamond</span>
+                                      <span class="mb-0 align-self-start">member</span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="ms-auto" style="height: 20px"></div>
+                                <div class="mb-0 align-self-start hstack gap-5" style="padding-top: 20px">
+                                  <div class="mb-0 align-self-end vstack" style="gap: 6px">
+                                    <p class="mb-0 align-self-start" style="font-weight: 400; font-size: 12px; padding-left: 6px; padding-right: 6px; padding-top: 2px; padding-bottom: 2px; border: 1.5px solid rgb(0 0 0 / 100%); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px">Logo in Credits</p>
+                                    <p class="mb-0 align-self-start" style="font-weight: 400; font-size: 12px; padding-left: 6px; padding-right: 6px; padding-top: 2px; padding-bottom: 2px; border: 1.5px solid rgb(0 0 0 / 100%); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px">Link in Credits</p>
+                                    <p class="mb-0 align-self-start" style="font-weight: 400; font-size: 12px; padding-left: 6px; padding-right: 6px; padding-top: 2px; padding-bottom: 2px; border: 1.5px solid rgb(0 0 0 / 100%); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px">Support by Team</p>
+                                    <p class="mb-0 align-self-start" style="font-weight: 400; font-size: 12px; padding-left: 6px; padding-right: 6px; padding-top: 2px; padding-bottom: 2px; border: 1.5px solid rgb(0 0 0 / 100%); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px">Merch</p>
+                                  </div>
+                                  <p class="mb-0 align-self-end" style="font-weight: 400; font-family: Primary; font-size: 13px">AdaEngine</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="shineLayer mb-0" style="border-radius: 8px; position: relative; grid-area: 1/1; z-index: 1; align-self: center; justify-self: center"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="https://boosty.to/adaengine/purchase/3354085?ssource=DIRECT&amp;share=subscription_link" class="fs-4 donate-btn donate-btn-anim elevated-element mb-0 align-self-center" style="padding-left: 40px; padding-right: 40px">Donate</a>
+                </div>
+              </div>
+              <div id="boosty" class="d-none mb-0 align-self-center vstack">
+                <div class="mb-0 align-self-center vstack" style="padding-bottom: 40px">
+                  <div class="mb-0 align-self-start row justify-content-center row-cols-1 row-cols-md-6">
+                    <div class="col-md-4 align-self-center g-3">
+                      <button type="button" class="w-100 btn" style="font-weight: 400; font-family: Primary; font-size: 15px; background-color: var(--color-donate-level-bronze-color); color: rgb(255 255 255 / 100%); border-radius: 8px" onclick="document.getElementById('6200558631676917416').classList.add('d-none'); document.getElementById('-5134981694399720053').classList.add('d-none'); document.getElementById('836572766616874518').classList.add('d-none'); document.getElementById('-7442800548391363325').classList.add('d-none'); document.getElementById('6667857663842554494').classList.add('d-none'); document.getElementById('-5006050285358484503').classList.add('d-none'); document.getElementById('6200558631676917416').classList.remove('d-none')">300.0₽</button>
+                    </div>
+                    <div class="col-md-4 align-self-center g-3">
+                      <button type="button" class="w-100 btn" style="font-weight: 400; font-family: Primary; font-size: 15px; background-color: var(--color-donate-level-silver-color); color: rgb(255 255 255 / 100%); border-radius: 8px" onclick="document.getElementById('6200558631676917416').classList.add('d-none'); document.getElementById('-5134981694399720053').classList.add('d-none'); document.getElementById('836572766616874518').classList.add('d-none'); document.getElementById('-7442800548391363325').classList.add('d-none'); document.getElementById('6667857663842554494').classList.add('d-none'); document.getElementById('-5006050285358484503').classList.add('d-none'); document.getElementById('-5134981694399720053').classList.remove('d-none')">800.0₽</button>
+                    </div>
+                    <div class="col-md-4 align-self-center g-3">
+                      <button type="button" class="w-100 btn" style="font-weight: 400; font-family: Primary; font-size: 15px; background-color: var(--color-donate-level-gold-color); color: var(--glyph-gray-override); border-radius: 8px" onclick="document.getElementById('6200558631676917416').classList.add('d-none'); document.getElementById('-5134981694399720053').classList.add('d-none'); document.getElementById('836572766616874518').classList.add('d-none'); document.getElementById('-7442800548391363325').classList.add('d-none'); document.getElementById('6667857663842554494').classList.add('d-none'); document.getElementById('-5006050285358484503').classList.add('d-none'); document.getElementById('836572766616874518').classList.remove('d-none')">1500.0₽</button>
+                    </div>
+                    <div class="col-md-4 align-self-center g-3">
+                      <button type="button" class="w-100 btn" style="font-weight: 400; font-family: Primary; font-size: 15px; background-color: var(--color-donate-level-platinum-color); color: var(--glyph-gray-override); border-radius: 8px" onclick="document.getElementById('6200558631676917416').classList.add('d-none'); document.getElementById('-5134981694399720053').classList.add('d-none'); document.getElementById('836572766616874518').classList.add('d-none'); document.getElementById('-7442800548391363325').classList.add('d-none'); document.getElementById('6667857663842554494').classList.add('d-none'); document.getElementById('-5006050285358484503').classList.add('d-none'); document.getElementById('-7442800548391363325').classList.remove('d-none')">3500.0₽</button>
+                    </div>
+                    <div class="col-md-4 align-self-center g-3">
+                      <button type="button" class="w-100 btn" style="font-weight: 400; font-family: Primary; font-size: 15px; background-color: var(--color-donate-level-titanium-color); color: rgb(255 255 255 / 100%); border-radius: 8px" onclick="document.getElementById('6200558631676917416').classList.add('d-none'); document.getElementById('-5134981694399720053').classList.add('d-none'); document.getElementById('836572766616874518').classList.add('d-none'); document.getElementById('-7442800548391363325').classList.add('d-none'); document.getElementById('6667857663842554494').classList.add('d-none'); document.getElementById('-5006050285358484503').classList.add('d-none'); document.getElementById('6667857663842554494').classList.remove('d-none')">5000.0₽</button>
+                    </div>
+                    <div class="col-md-4 align-self-center g-3">
+                      <button type="button" class="w-100 btn" style="font-weight: 400; font-family: Primary; font-size: 15px; background-color: var(--color-donate-level-diamond-color); color: var(--glyph-gray-override); border-radius: 8px" onclick="document.getElementById('6200558631676917416').classList.add('d-none'); document.getElementById('-5134981694399720053').classList.add('d-none'); document.getElementById('836572766616874518').classList.add('d-none'); document.getElementById('-7442800548391363325').classList.add('d-none'); document.getElementById('6667857663842554494').classList.add('d-none'); document.getElementById('-5006050285358484503').classList.add('d-none'); document.getElementById('-5006050285358484503').classList.remove('d-none')">20000.0₽</button>
+                    </div>
+                  </div>
+                </div>
+                <div id="6200558631676917416" class="mb-0 align-self-center vstack" style="gap: 20px">
+                  <div class="mb-0 align-self-center">
+                    <div class="vstack">
+                      <div class="donation_card mb-0 align-self-center">
+                        <div id="6200558631676917416" class="user-select-none card">
+                          <div class="cardBg" style="display: grid">
+                            <div class="mb-0" style="color: rgb(255 255 255 / 100%); width: 270px; min-height: 355px; border-radius: 8px; padding: 20px; background-color: var(--color-donate-level-bronze-color); position: relative; grid-area: 1/1; z-index: 0; align-self: center; justify-self: center">
+                              <div class="color-inherit vstack">
+                                <div class="mb-0 align-self-start" style="margin: 20px">
+                                  <img src="/images/ae_logo_white.svg" alt="" class="img-fluid" style="padding-bottom: 20px" />
+                                </div>
+                                <div class="mb-0 align-self-start" style="font-weight: 400; font-family: Primary; font-size: 30px">
+                                  <div class="font-inherit" style="line-height: 1">
+                                    <div class="line-height-inherit vstack" style="gap: 4px">
+                                      <span class="mb-0 align-self-start">Bronze</span>
+                                      <span class="mb-0 align-self-start">member</span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="ms-auto" style="height: 20px"></div>
+                                <div class="mb-0 align-self-start hstack gap-5" style="padding-top: 20px">
+                                  <div class="mb-0 align-self-end vstack" style="gap: 6px">
+                                    <p class="mb-0 align-self-start" style="font-weight: 400; font-size: 12px; padding-left: 6px; padding-right: 6px; padding-top: 2px; padding-bottom: 2px; border: 1.5px solid rgb(255 255 255 / 100%); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px">Name in Credits</p>
+                                  </div>
+                                  <p class="mb-0 align-self-end" style="font-weight: 400; font-family: Primary; font-size: 13px">AdaEngine</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="shineLayer mb-0" style="border-radius: 8px; position: relative; grid-area: 1/1; z-index: 1; align-self: center; justify-self: center"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="https://boosty.to/adaengine/purchase/3179294?ssource=DIRECT&amp;share=subscription_link" class="fs-4 donate-btn donate-btn-anim elevated-element mb-0 align-self-center" style="padding-left: 40px; padding-right: 40px">Donate</a>
+                </div>
+                <div id="-5134981694399720053" class="d-none mb-0 align-self-center vstack" style="gap: 20px">
+                  <div class="mb-0 align-self-center">
+                    <div class="vstack">
+                      <div class="donation_card mb-0 align-self-center">
+                        <div id="-5134981694399720053" class="user-select-none card">
+                          <div class="cardBg" style="display: grid">
+                            <div class="mb-0" style="color: rgb(255 255 255 / 100%); width: 270px; min-height: 355px; border-radius: 8px; padding: 20px; background-color: var(--color-donate-level-silver-color); position: relative; grid-area: 1/1; z-index: 0; align-self: center; justify-self: center">
+                              <div class="color-inherit vstack">
+                                <div class="mb-0 align-self-start" style="margin: 20px">
+                                  <img src="/images/ae_logo_white.svg" alt="" class="img-fluid" style="padding-bottom: 20px" />
+                                </div>
+                                <div class="mb-0 align-self-start" style="font-weight: 400; font-family: Primary; font-size: 30px">
+                                  <div class="font-inherit" style="line-height: 1">
+                                    <div class="line-height-inherit vstack" style="gap: 4px">
+                                      <span class="mb-0 align-self-start">Silver</span>
+                                      <span class="mb-0 align-self-start">member</span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="ms-auto" style="height: 20px"></div>
+                                <div class="mb-0 align-self-start hstack gap-5" style="padding-top: 20px">
+                                  <div class="mb-0 align-self-end vstack" style="gap: 6px">
+                                    <p class="mb-0 align-self-start" style="font-weight: 400; font-size: 12px; padding-left: 6px; padding-right: 6px; padding-top: 2px; padding-bottom: 2px; border: 1.5px solid rgb(255 255 255 / 100%); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px">Name in Credits</p>
+                                  </div>
+                                  <p class="mb-0 align-self-end" style="font-weight: 400; font-family: Primary; font-size: 13px">AdaEngine</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="shineLayer mb-0" style="border-radius: 8px; position: relative; grid-area: 1/1; z-index: 1; align-self: center; justify-self: center"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="https://boosty.to/adaengine/purchase/3179295?ssource=DIRECT&amp;share=subscription_link" class="fs-4 donate-btn donate-btn-anim elevated-element mb-0 align-self-center" style="padding-left: 40px; padding-right: 40px">Donate</a>
+                </div>
+                <div id="836572766616874518" class="d-none mb-0 align-self-center vstack" style="gap: 20px">
+                  <div class="mb-0 align-self-center">
+                    <div class="vstack">
+                      <div class="donation_card mb-0 align-self-center">
+                        <div id="836572766616874518" class="user-select-none card">
+                          <div class="cardBg" style="display: grid">
+                            <div class="mb-0" style="color: var(--glyph-gray-override); width: 270px; min-height: 355px; border-radius: 8px; padding: 20px; background-color: var(--color-donate-level-gold-color); position: relative; grid-area: 1/1; z-index: 0; align-self: center; justify-self: center">
+                              <div class="color-inherit vstack">
+                                <div class="mb-0 align-self-start" style="margin: 20px">
+                                  <img src="/images/ae_logo_black.svg" alt="" class="img-fluid" style="padding-bottom: 20px" />
+                                </div>
+                                <div class="mb-0 align-self-start" style="font-weight: 400; font-family: Primary; font-size: 30px">
+                                  <div class="font-inherit" style="line-height: 1">
+                                    <div class="line-height-inherit vstack" style="gap: 4px">
+                                      <span class="mb-0 align-self-start">Gold</span>
+                                      <span class="mb-0 align-self-start">member</span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="ms-auto" style="height: 20px"></div>
+                                <div class="mb-0 align-self-start hstack gap-5" style="padding-top: 20px">
+                                  <div class="mb-0 align-self-end vstack" style="gap: 6px">
+                                    <p class="mb-0 align-self-start" style="font-weight: 400; font-size: 12px; padding-left: 6px; padding-right: 6px; padding-top: 2px; padding-bottom: 2px; border: 1.5px solid rgb(0 0 0 / 100%); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px">Name in Credits</p>
+                                  </div>
+                                  <p class="mb-0 align-self-end" style="font-weight: 400; font-family: Primary; font-size: 13px">AdaEngine</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="shineLayer mb-0" style="border-radius: 8px; position: relative; grid-area: 1/1; z-index: 1; align-self: center; justify-self: center"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="https://boosty.to/adaengine/purchase/3179293?ssource=DIRECT&amp;share=subscription_link" class="fs-4 donate-btn donate-btn-anim elevated-element mb-0 align-self-center" style="padding-left: 40px; padding-right: 40px">Donate</a>
+                </div>
+                <div id="-7442800548391363325" class="d-none mb-0 align-self-center vstack" style="gap: 20px">
+                  <div class="mb-0 align-self-center">
+                    <div class="vstack">
+                      <div class="donation_card mb-0 align-self-center">
+                        <div id="-7442800548391363325" class="user-select-none card">
+                          <div class="cardBg" style="display: grid">
+                            <div class="mb-0" style="color: var(--glyph-gray-override); width: 270px; min-height: 355px; border-radius: 8px; padding: 20px; background-color: var(--color-donate-level-platinum-color); position: relative; grid-area: 1/1; z-index: 0; align-self: center; justify-self: center">
+                              <div class="color-inherit vstack">
+                                <div class="mb-0 align-self-start" style="margin: 20px">
+                                  <img src="/images/ae_logo_black.svg" alt="" class="img-fluid" style="padding-bottom: 20px" />
+                                </div>
+                                <div class="mb-0 align-self-start" style="font-weight: 400; font-family: Primary; font-size: 30px">
+                                  <div class="font-inherit" style="line-height: 1">
+                                    <div class="line-height-inherit vstack" style="gap: 4px">
+                                      <span class="mb-0 align-self-start">Platinum</span>
+                                      <span class="mb-0 align-self-start">member</span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="ms-auto" style="height: 20px"></div>
+                                <div class="mb-0 align-self-start hstack gap-5" style="padding-top: 20px">
+                                  <div class="mb-0 align-self-end vstack" style="gap: 6px">
+                                    <p class="mb-0 align-self-start" style="font-weight: 400; font-size: 12px; padding-left: 6px; padding-right: 6px; padding-top: 2px; padding-bottom: 2px; border: 1.5px solid rgb(0 0 0 / 100%); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px">Logo in Credits</p>
+                                  </div>
+                                  <p class="mb-0 align-self-end" style="font-weight: 400; font-family: Primary; font-size: 13px">AdaEngine</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="shineLayer mb-0" style="border-radius: 8px; position: relative; grid-area: 1/1; z-index: 1; align-self: center; justify-self: center"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="https://boosty.to/adaengine/purchase/3354083?ssource=DIRECT&amp;share=subscription_link" class="fs-4 donate-btn donate-btn-anim elevated-element mb-0 align-self-center" style="padding-left: 40px; padding-right: 40px">Donate</a>
+                </div>
+                <div id="6667857663842554494" class="d-none mb-0 align-self-center vstack" style="gap: 20px">
+                  <div class="mb-0 align-self-center">
+                    <div class="vstack">
+                      <div class="donation_card mb-0 align-self-center">
+                        <div id="6667857663842554494" class="user-select-none card">
+                          <div class="cardBg" style="display: grid">
+                            <div class="mb-0" style="color: rgb(255 255 255 / 100%); width: 270px; min-height: 355px; border-radius: 8px; padding: 20px; background-color: var(--color-donate-level-titanium-color); position: relative; grid-area: 1/1; z-index: 0; align-self: center; justify-self: center">
+                              <div class="color-inherit vstack">
+                                <div class="mb-0 align-self-start" style="margin: 20px">
+                                  <img src="/images/ae_logo_white.svg" alt="" class="img-fluid" style="padding-bottom: 20px" />
+                                </div>
+                                <div class="mb-0 align-self-start" style="font-weight: 400; font-family: Primary; font-size: 30px">
+                                  <div class="font-inherit" style="line-height: 1">
+                                    <div class="line-height-inherit vstack" style="gap: 4px">
+                                      <span class="mb-0 align-self-start">Titanium</span>
+                                      <span class="mb-0 align-self-start">member</span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="ms-auto" style="height: 20px"></div>
+                                <div class="mb-0 align-self-start hstack gap-5" style="padding-top: 20px">
+                                  <div class="mb-0 align-self-end vstack" style="gap: 6px">
+                                    <p class="mb-0 align-self-start" style="font-weight: 400; font-size: 12px; padding-left: 6px; padding-right: 6px; padding-top: 2px; padding-bottom: 2px; border: 1.5px solid rgb(255 255 255 / 100%); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px">Logo in Credits</p>
+                                    <p class="mb-0 align-self-start" style="font-weight: 400; font-size: 12px; padding-left: 6px; padding-right: 6px; padding-top: 2px; padding-bottom: 2px; border: 1.5px solid rgb(255 255 255 / 100%); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px">Link in Credits</p>
+                                    <p class="mb-0 align-self-start" style="font-weight: 400; font-size: 12px; padding-left: 6px; padding-right: 6px; padding-top: 2px; padding-bottom: 2px; border: 1.5px solid rgb(255 255 255 / 100%); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px">Support by Team</p>
+                                    <p class="mb-0 align-self-start" style="font-weight: 400; font-size: 12px; padding-left: 6px; padding-right: 6px; padding-top: 2px; padding-bottom: 2px; border: 1.5px solid rgb(255 255 255 / 100%); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px">Merch</p>
+                                  </div>
+                                  <p class="mb-0 align-self-end" style="font-weight: 400; font-family: Primary; font-size: 13px">AdaEngine</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="shineLayer mb-0" style="border-radius: 8px; position: relative; grid-area: 1/1; z-index: 1; align-self: center; justify-self: center"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="https://boosty.to/adaengine/purchase/3354084?ssource=DIRECT&amp;share=subscription_link" class="fs-4 donate-btn donate-btn-anim elevated-element mb-0 align-self-center" style="padding-left: 40px; padding-right: 40px">Donate</a>
+                </div>
+                <div id="-5006050285358484503" class="d-none mb-0 align-self-center vstack" style="gap: 20px">
+                  <div class="mb-0 align-self-center">
+                    <div class="vstack">
+                      <div class="donation_card mb-0 align-self-center">
+                        <div id="-5006050285358484503" class="user-select-none card">
+                          <div class="cardBg" style="display: grid">
+                            <div class="mb-0" style="color: var(--glyph-gray-override); width: 270px; min-height: 355px; border-radius: 8px; padding: 20px; background-color: var(--color-donate-level-diamond-color); position: relative; grid-area: 1/1; z-index: 0; align-self: center; justify-self: center">
+                              <div class="color-inherit vstack">
+                                <div class="mb-0 align-self-start" style="margin: 20px">
+                                  <img src="/images/ae_logo_black.svg" alt="" class="img-fluid" style="padding-bottom: 20px" />
+                                </div>
+                                <div class="mb-0 align-self-start" style="font-weight: 400; font-family: Primary; font-size: 30px">
+                                  <div class="font-inherit" style="line-height: 1">
+                                    <div class="line-height-inherit vstack" style="gap: 4px">
+                                      <span class="mb-0 align-self-start">Diamond</span>
+                                      <span class="mb-0 align-self-start">member</span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="ms-auto" style="height: 20px"></div>
+                                <div class="mb-0 align-self-start hstack gap-5" style="padding-top: 20px">
+                                  <div class="mb-0 align-self-end vstack" style="gap: 6px">
+                                    <p class="mb-0 align-self-start" style="font-weight: 400; font-size: 12px; padding-left: 6px; padding-right: 6px; padding-top: 2px; padding-bottom: 2px; border: 1.5px solid rgb(0 0 0 / 100%); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px">Logo in Credits</p>
+                                    <p class="mb-0 align-self-start" style="font-weight: 400; font-size: 12px; padding-left: 6px; padding-right: 6px; padding-top: 2px; padding-bottom: 2px; border: 1.5px solid rgb(0 0 0 / 100%); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px">Link in Credits</p>
+                                    <p class="mb-0 align-self-start" style="font-weight: 400; font-size: 12px; padding-left: 6px; padding-right: 6px; padding-top: 2px; padding-bottom: 2px; border: 1.5px solid rgb(0 0 0 / 100%); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px">Support by Team</p>
+                                    <p class="mb-0 align-self-start" style="font-weight: 400; font-size: 12px; padding-left: 6px; padding-right: 6px; padding-top: 2px; padding-bottom: 2px; border: 1.5px solid rgb(0 0 0 / 100%); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px">Merch</p>
+                                  </div>
+                                  <p class="mb-0 align-self-end" style="font-weight: 400; font-family: Primary; font-size: 13px">AdaEngine</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="shineLayer mb-0" style="border-radius: 8px; position: relative; grid-area: 1/1; z-index: 1; align-self: center; justify-self: center"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="https://boosty.to/adaengine/purchase/3354085?ssource=DIRECT&amp;share=subscription_link" class="fs-4 donate-btn donate-btn-anim elevated-element mb-0 align-self-center" style="padding-left: 40px; padding-right: 40px">Donate</a>
+                </div>
+              </div>
+              <div id="oneTime" class="d-none mb-0 align-self-center vstack" style="padding-top: 40px; gap: 20px">
+                <a href="https://www.donationalerts.com/r/adaengine" class="donate-btn donate-btn-anim elevated-element mb-0 align-self-center link-plain" style="padding-left: 40px; padding-right: 40px; padding-top: 10px; padding-bottom: 10px">
+                  <div class="hstack gap-3" style="width: 100.0%">
+                    <img src="/images/donation_alerts_logo.svg" alt="DonationAlerts Logo" class="mb-0 align-self-center" style="width: 37px; height: 43px" />
+                    <h6 class="mb-0 align-self-center" style="color: rgb(245 117 7 / 100%)">DonationAlerts</h6>
+                  </div></a>
+                <a href="https://boosty.to/adaengine/donate" class="donate-btn donate-btn-anim elevated-element mb-0 align-self-center link-plain" style="padding-left: 40px; padding-right: 40px; padding-top: 10px; padding-bottom: 10px">
+                  <picture>
+                    <source media="(prefers-color-scheme: dark)" srcset="/images/icons/ic_boosty~dark.svg" />
+                    <img src="/images/icons/ic_boosty.svg" alt="Boosty Logo" class="img-fluid" style="height: 43px; width: 100.0%" />
+                  </picture></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script src="/js/donation_card.js"></script>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container content-restriction safe-area-insets">
+        <div class="footer-container">
+          <div class="footer-columns row justify-content-center row-cols-1 row-cols-md-4" style="padding-bottom: 40px; row-gap: 40px">
+            <section class="col-md-3 align-self-start">
+              <h5>Ada Engine</h5>
+              <div class="vstack" style="padding-top: 16px; gap: 8px">
+                <a href="https://github.com/AdaEngine/AdaEngine/releases" class="mb-0 align-self-start">Download</a>
+                <a href="/documentation/adaengine/" class="mb-0 align-self-start">Documentation</a>
+                <a href="/features/" class="mb-0 align-self-start">Features</a>
+                <a href="https://github.com/AdaEngine/AdaEngine" class="mb-0 align-self-start">Source code</a>
+              </div>
+            </section>
+            <section class="col-md-3 align-self-start">
+              <h5>Project</h5>
+              <div class="vstack" style="padding-top: 16px; gap: 8px">
+                <a href="blog" class="mb-0 align-self-start">Blog</a>
+                <a href="community" class="mb-0 align-self-start">Communities</a>
+              </div>
+            </section>
+            <section class="col-md-3 align-self-start">
+              <h5>Foundation</h5>
+              <div class="vstack" style="padding-top: 16px; gap: 8px">
+                <a href="#" class="mb-0 align-self-start">About</a>
+                <a href="/donate-page" class="mb-0 align-self-start">Donate</a>
+                <a href="https://github.com/AdaEngine/AdaEngine/LICENSE" class="mb-0 align-self-start">License</a>
+              </div>
+            </section>
+            <div class="col-md-3 align-self-start">
+              <div class="ms-auto" style="height: 20px"></div>
+            </div>
+          </div>
+          <hr />
+          <div class="footer-bottom">
+            <div class="row justify-content-center row-cols-1 row-cols-md-6" style="row-gap: 16px">
+              <div class="col-md-6 align-self-center" style="font-weight: 400; font-size: 13px">
+                <div class="font-inherit vstack" style="gap: 8px">
+                  <p class="mb-0 align-self-start">© 2021-2025 Vladislav Prusakov and contributors. All rights reserved.</p>
+                  <a href="https://github.com/AdaEngine/ada-website.git" class="mb-0 align-self-start">Website source code on GitHub.</a>
+                  <p class="text-center mb-0 align-self-start">Created in Swift with <a href="https://github.com/twostraws/Ignite">Ignite</a></p>
+                </div>
+              </div>
+              <div class="col-md-4 align-self-center">
+                <div class="ms-auto" style="height: 20px"></div>
+              </div>
+              <div class="col-md-2 align-self-center">
+                <div class="footer-social-icons hstack" style="gap: 12px">
+                  <a href="https://github.com/AdaEngine/AdaEngine" class="mb-0 align-self-center link-plain"><i class="bi-github"></i></a>
+                  <a href="https://iosdev.space/@vladprusakov" class="mb-0 align-self-center link-plain"><i class="bi-mastodon"></i></a>
+                  <a href="https://www.reddit.com/r/AdaEngine/" class="mb-0 align-self-center link-plain"><i class="bi-reddit"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>    (function(){
+        var burger = document.getElementsByClassName('burger-container')[0],
+            header = document.querySelector('header'); 
+        burger.onclick = function() {
+            header.classList.toggle('menu-opened');
+        }
+    }());</script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/syntax-highlighting.js"></script>
+    <script src="/js/ignite-core.js"></script>
+  </body>
+</html>

@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content="Ignite v0.5.2" />
+    <title>Home</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/prism-xcode-dark.css" rel="stylesheet" data-highlight-theme="xcode-dark" />
+    <link href="/css/prism-xcode-light.css" rel="stylesheet" data-highlight-theme="xcode-light" />
+    <link href="/css/prism-plugins.css" rel="stylesheet" />
+    <link href="/css/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="/css/ignite-core.min.css" rel="stylesheet" />
+    <link href="https://adaengine.org/main-page" rel="canonical" />
+    <link href="/images/favicon.png" rel="icon" />
+    <script>(function() {
+    function getThemePreference() {
+        return localStorage.getItem('custom-theme') || 'auto';
+    }
+
+    function applyTheme(themeID) {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const lightThemeID = document.documentElement.getAttribute('data-light-theme') || 'light';
+        const darkThemeID = document.documentElement.getAttribute('data-dark-theme') || 'dark';
+        const actualThemeID = themeID === 'auto' ? (prefersDark ? darkThemeID : lightThemeID) : themeID;
+
+        document.documentElement.setAttribute('data-bs-theme', actualThemeID);
+        document.documentElement.setAttribute('data-theme-state', themeID);
+    }
+
+    function applySyntaxTheme() {
+        const syntaxTheme = getComputedStyle(document.documentElement)
+            .getPropertyValue('--syntax-highlight-theme').trim().replace(/"/g, '');
+
+        if (!syntaxTheme) return;
+
+        document.querySelectorAll('link[data-highlight-theme]').forEach(link => {
+            link.setAttribute('disabled', 'disabled');
+        });
+
+        const themeLink = document.querySelector(`link[data-highlight-theme="${syntaxTheme}"]`);
+        if (themeLink) {
+            themeLink.removeAttribute('disabled');
+        }
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        const currentTheme = getThemePreference();
+        if (currentTheme === 'auto') {
+            applyTheme('auto');
+            applySyntaxTheme();
+        }
+    });
+
+    const savedTheme = getThemePreference();
+    applyTheme(savedTheme);
+    applySyntaxTheme();
+})();
+</script>
+    <meta property="og:site_name" content="AdaEngine" />
+    <meta property="og:title" content="Home" />
+    <meta name="twitter:title" content="Home" />
+    <meta property="og:url" content="https://adaengine.org/main-page" />
+    <meta name="twitter:domain" content="adaengine.org" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:dnt" content="on" />
+    <link href="/styles/main.css" rel="stylesheet" />
+    <meta media="(prefers-color-scheme: light)" name="theme-color" content="#FFFFFF" />
+    <meta media="(prefers-color-scheme: dark)" name="theme-color" content="#00000066" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container content-restriction header-container">
+        <a href="/" class="header-logo link-plain"><h2>AdaEngine</h2></a>
+        <div class="burger-container">
+          <div id="burger">
+            <div class="bar topBar"></div>
+            <div class="bar bottomBar"></div>
+          </div>
+        </div>
+        <ul class="navigation">
+          <li class="navigation-item"><a href="/blog" class="navigation-item-link link-plain"><span>Blog</span></a></li>
+          <li class="navigation-item"><a href="/learn" class="navigation-item-link link-plain"><span>Learn</span></a></li>
+          <li class="navigation-item"><a href="/community" class="navigation-item-link link-plain"><span>Community</span></a></li>
+          <li class="navigation-item donate-button"><a href="/donate-page" class="link-plain">
+              <div class="navigation-item-link" style="color: rgb(255 255 255 / 100%); padding: 7px; background-color: var(--donate); border-radius: 12px" onmouseover="this.unhoveredStyle = this.style.cssText;
+this.style.backgroundColor = 'var(--donate-darker)'" onmouseout="this.style.cssText = this.unhoveredStyle;">
+                <div class="text-center color-inherit hstack" style="gap: 2px">
+                  <p class="mb-0 align-self-center">Donate</p>
+                  <i class="mb-0 align-self-center bi-heart-fill" style="margin: 0px"></i>
+                </div>
+              </div></a></li>
+        </ul>
+      </div>
+    </header>
+    <div class="container content-restriction safe-area-insets">
+      <div class="vstack" style="gap: 100px">
+        <div class="mb-0 align-self-center vstack" style="height: 100.0%; gap: 20px">
+          <picture>
+            <source media="(prefers-color-scheme: dark)" srcset="/images/ae_logo~dark.svg" />
+            <img src="/images/ae_logo.svg" alt="AdaEngine Logo" class="img-fluid ae-logo-header mb-0 align-self-center" style="height: 200px" />
+          </picture>
+          <div class="mb-0 align-self-center vstack" style="gap: 20px">
+            <p class="ae-header-title mb-0 align-self-start">A simple and scalable Game Engine built in Swift.</p>
+            <p class="mb-0 align-self-start" style="font-weight: 400; font-size: 1.2em">AdaEngine built by Developers, for Developers. Feel the new experience of Swift coding with powerful 2D and 3D capabilities.</p>
+            <p class="mb-0 align-self-start" style="font-weight: 700; font-size: 1.2em">AdaEngine Free and Open Source Forever.</p>
+            <div class="mb-0 align-self-start hstack" style="padding-top: 20px; gap: 30px">
+              <a href="/learn/" class="header-buttons mb-0 align-self-center link-plain"><p style="font-weight: 400; font-family: Primary; font-size: 1.4em">Get Started</p></a>
+              <a href="https://github.com/AdaEngine/AdaEngine" class="mb-0 align-self-center link-plain" style="font-weight: 400; font-family: Primary; font-size: 1.2em"><i class="bi-github" style="height: 20px; padding-right: 10px"></i><span id="main-page-callout-stars-count">... stars on GitHub</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-container mb-0 align-self-center">
+          <div id="carouselHaYf3" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" class="active btn" data-bs-target="#carouselHaYf3" data-bs-slide-to="0" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" class="btn" data-bs-target="#carouselHaYf3" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" class="btn" data-bs-target="#carouselHaYf3" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active" style="background-color: black">
+                <img src="/images/main/tilemap.png" alt="" class="d-block w-100" style="height: 100%; object-fit: cover; opacity: 1" />
+                <div class="container">
+                  <div class="carousel-caption"></div>
+                </div>
+              </div>
+              <div class="carousel-item" style="background-color: black">
+                <img src="/images/main/space_invaders.jpeg" alt="" class="d-block w-100" style="height: 100%; object-fit: cover; opacity: 1" />
+                <div class="container">
+                  <div class="carousel-caption"></div>
+                </div>
+              </div>
+              <div class="carousel-item" style="background-color: black">
+                <img src="/images/main/duck_hunt.png" alt="" class="d-block w-100" style="height: 100%; object-fit: cover; opacity: 1" />
+                <div class="container">
+                  <div class="carousel-caption"></div>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="carousel-control-prev btn" data-bs-target="#carouselHaYf3" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
+            <button type="button" class="carousel-control-next btn" data-bs-target="#carouselHaYf3" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></button>
+          </div>
+        </div>
+        <p class="mb-0 align-self-center" style="font-weight: 400; font-family: Primary; font-size: 3.0rem">Features</p>
+        <div class="features-container mb-0 align-self-center">
+          <div style="padding-top: 20px">
+            <div class="engine-info-item-container  row justify-content-center row-cols-1 row-cols-md-4" style="row-gap: 20px">
+              <div class="engine-info-item-text col-md-6 align-self-center">
+                <h2>Data Driven</h2>
+                <p style="font-weight: 400; font-size: 1.2em">AdaEngine build around custom Entity Component System.</p>
+                <ul>
+                  <li><strong>Simple to use</strong> - easy to understand and use</li>
+                  <li><strong>Fast</strong> - optimized for performance</li>
+                  <li><strong>Cache-friendly</strong> - optimized for memory usage</li>
+                </ul>
+                <p></p>
+              </div>
+              <div class="engine-info-item-content col-md-6 align-self-center">
+                <pre><code class="language-swift">@Component
+struct Player: Entity { }
+
+struct PlayerSystem: System {
+    func update(context: UpdateSceneContext) { }
+}</code></pre>
+              </div>
+            </div>
+          </div>
+          <div style="padding-top: 20px">
+            <div class="engine-info-item-container engine-info-item-container-reverse row justify-content-center row-cols-1 row-cols-md-4" style="row-gap: 20px">
+              <div class="engine-info-item-content col-md-6 align-self-center">
+                <img src="/images/icons/ic_duck.png" alt="2D Renderer" class="img-fluid" />
+              </div>
+              <div class="engine-info-item-text col-md-6 align-self-center">
+                <h2>2D Renderer</h2>
+                <p style="font-weight: 400; font-size: 1.2em">Supports real-time 2D rendering for your games and apps.</p>
+                <ul>
+                  <li><strong>Extendable</strong> - Write your own shaders, materials and render pipelines</li>
+                  <li><strong>Sprite Sheets</strong> - Built-in support for Sprite Sheets and Sprite renderer.</li>
+                </ul>
+                <p></p>
+              </div>
+            </div>
+          </div>
+          <div style="padding-top: 20px">
+            <div class="engine-info-item-container  row justify-content-center row-cols-1 row-cols-md-4" style="row-gap: 20px">
+              <div class="engine-info-item-text col-md-6 align-self-center">
+                <h2>2D Physics</h2>
+                <p style="font-weight: 400; font-size: 1.2em">AdaEngine supports Box2D v3 physics.</p>
+                <ul>
+                  <li><strong>Parallel calculations</strong> - optimized for multi-core processors</li>
+                  <li><strong>Lightweight</strong> - optimized for memory usage</li>
+                  <li><strong>Fast</strong> - optimized for performance</li>
+                </ul>
+                <p></p>
+              </div>
+              <div class="engine-info-item-content col-md-6 align-self-center">
+                <img src="/images/icons/ic_box2d.svg" alt="2D Physics" class="img-fluid" />
+              </div>
+            </div>
+          </div>
+          <div style="padding-top: 20px">
+            <div class="engine-info-item-container engine-info-item-container-reverse row justify-content-center row-cols-1 row-cols-md-4" style="row-gap: 20px">
+              <div class="engine-info-item-content col-md-6 align-self-center">
+                <img src="/images/icons/ic_render_graph.svg" alt="Render Graphs" class="img-fluid" />
+              </div>
+              <div class="engine-info-item-text col-md-6 align-self-center">
+                <h2>Render Graphs</h2>
+                <p style="font-weight: 400; font-size: 1.2em">Construct your own render pipeline using powerful of render graphs.</p>
+              </div>
+            </div>
+          </div>
+          <div style="padding-top: 20px">
+            <div class="engine-info-item-container  row justify-content-center row-cols-1 row-cols-md-4" style="row-gap: 20px">
+              <div class="engine-info-item-text col-md-6 align-self-center">
+                <h2>Custom UI Engine</h2>
+                <p style="font-weight: 400; font-size: 1.2em">Create your own UI using similar to SwiftUI approach.</p>
+              </div>
+              <div class="engine-info-item-content col-md-6 align-self-center">
+                <pre><code class="language-swift">struct MainView: View {
+    @Environment(\.scene) var scene
+
+    var body: some View {
+        Text("Hello, World!")
+        .onEvent(CollisionEvent.Began.self) { _ in
+            scene.add(entity: Player())
+        }
+    }
+}</code></pre>
+              </div>
+            </div>
+          </div>
+          <div style="padding-top: 20px">
+            <div class="engine-info-item-container engine-info-item-container-reverse row justify-content-center row-cols-1 row-cols-md-4" style="row-gap: 20px">
+              <div class="engine-info-item-content col-md-6 align-self-center">
+                <img src="/images/icons/ic_ldtk.png" alt="LDtk Integration" class="img-fluid" />
+              </div>
+              <div class="engine-info-item-text col-md-6 align-self-center">
+                <h2>LDtk Integration</h2>
+                <p style="font-weight: 400; font-size: 1.2em">Import your LDtk projects and use them in your game.</p>
+              </div>
+            </div>
+          </div>
+          <div style="padding-top: 20px">
+            <div class="engine-info-item-container  row justify-content-center row-cols-1 row-cols-md-4" style="row-gap: 20px">
+              <div class="engine-info-item-text col-md-6 align-self-center">
+                <h2>Audio</h2>
+                <p style="font-weight: 400; font-size: 1.2em">Play music and sound effects with ease.</p>
+                <ul>
+                  <li><strong>Spatial sound</strong> - add 3D sound to your game</li>
+                  <li><strong>Load audio files as Assets</strong></li>
+                  <li><strong>Play audio Assets using Audio entities</strong></li>
+                </ul>
+                <p></p>
+              </div>
+              <div class="engine-info-item-content col-md-6 align-self-center">
+                <img src="/images/icons/ic_headphones.svg" alt="Audio" class="img-fluid" />
+              </div>
+            </div>
+          </div>
+          <div style="padding-top: 20px">
+            <div class="engine-info-item-container engine-info-item-container-reverse row justify-content-center row-cols-1 row-cols-md-4" style="row-gap: 20px">
+              <div class="engine-info-item-content col-md-6 align-self-center">
+                <img src="/images/icons/ic_opensource.svg" alt="Free and Open Source" class="img-fluid" />
+              </div>
+              <div class="engine-info-item-text col-md-6 align-self-center">
+                <h2>Free and Open Source</h2>
+                <p style="font-weight: 400; font-size: 1.2em">AdaEngine is 100% free for you. Licensed by MIT. Learn, modify or use.</p>
+                <ul>
+                  <li><strong>No up-front cost</strong></li>
+                  <li><strong>No licensing cost</strong></li>
+                  <li><strong>No royalties</strong></li>
+                  <li><strong>No runtime fee</strong></li>
+                </ul>
+                <p></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="/js/fade_appear_effect.js"></script>
+      <script src="/js/github_stars.js"></script>
+    </div>
+    <footer class="footer">
+      <div class="container content-restriction safe-area-insets">
+        <div class="footer-container">
+          <div class="footer-columns row justify-content-center row-cols-1 row-cols-md-4" style="padding-bottom: 40px; row-gap: 40px">
+            <section class="col-md-3 align-self-start">
+              <h5>Ada Engine</h5>
+              <div class="vstack" style="padding-top: 16px; gap: 8px">
+                <a href="https://github.com/AdaEngine/AdaEngine/releases" class="mb-0 align-self-start">Download</a>
+                <a href="/documentation/adaengine/" class="mb-0 align-self-start">Documentation</a>
+                <a href="/features/" class="mb-0 align-self-start">Features</a>
+                <a href="https://github.com/AdaEngine/AdaEngine" class="mb-0 align-self-start">Source code</a>
+              </div>
+            </section>
+            <section class="col-md-3 align-self-start">
+              <h5>Project</h5>
+              <div class="vstack" style="padding-top: 16px; gap: 8px">
+                <a href="blog" class="mb-0 align-self-start">Blog</a>
+                <a href="community" class="mb-0 align-self-start">Communities</a>
+              </div>
+            </section>
+            <section class="col-md-3 align-self-start">
+              <h5>Foundation</h5>
+              <div class="vstack" style="padding-top: 16px; gap: 8px">
+                <a href="#" class="mb-0 align-self-start">About</a>
+                <a href="/donate-page" class="mb-0 align-self-start">Donate</a>
+                <a href="https://github.com/AdaEngine/AdaEngine/LICENSE" class="mb-0 align-self-start">License</a>
+              </div>
+            </section>
+            <div class="col-md-3 align-self-start">
+              <div class="ms-auto" style="height: 20px"></div>
+            </div>
+          </div>
+          <hr />
+          <div class="footer-bottom">
+            <div class="row justify-content-center row-cols-1 row-cols-md-6" style="row-gap: 16px">
+              <div class="col-md-6 align-self-center" style="font-weight: 400; font-size: 13px">
+                <div class="font-inherit vstack" style="gap: 8px">
+                  <p class="mb-0 align-self-start">© 2021-2025 Vladislav Prusakov and contributors. All rights reserved.</p>
+                  <a href="https://github.com/AdaEngine/ada-website.git" class="mb-0 align-self-start">Website source code on GitHub.</a>
+                  <p class="text-center mb-0 align-self-start">Created in Swift with <a href="https://github.com/twostraws/Ignite">Ignite</a></p>
+                </div>
+              </div>
+              <div class="col-md-4 align-self-center">
+                <div class="ms-auto" style="height: 20px"></div>
+              </div>
+              <div class="col-md-2 align-self-center">
+                <div class="footer-social-icons hstack" style="gap: 12px">
+                  <a href="https://github.com/AdaEngine/AdaEngine" class="mb-0 align-self-center link-plain"><i class="bi-github"></i></a>
+                  <a href="https://iosdev.space/@vladprusakov" class="mb-0 align-self-center link-plain"><i class="bi-mastodon"></i></a>
+                  <a href="https://www.reddit.com/r/AdaEngine/" class="mb-0 align-self-center link-plain"><i class="bi-reddit"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>    (function(){
+        var burger = document.getElementsByClassName('burger-container')[0],
+            header = document.querySelector('header'); 
+        burger.onclick = function() {
+            header.classList.toggle('menu-opened');
+        }
+    }());</script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/syntax-highlighting.js"></script>
+    <script src="/js/ignite-core.js"></script>
+  </body>
+</html>

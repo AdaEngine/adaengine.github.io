@@ -1,12 +1,172 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta property="og:site_name" content="AdaEngine"/><link rel="canonical" href="https://adaengine.github.io/blog"/><meta name="twitter:url" content="https://adaengine.github.io/blog"/><meta property="og:url" content="https://adaengine.github.io/blog"/><title>Blog | AdaEngine</title><meta name="twitter:title" content="Blog | AdaEngine"/><meta property="og:title" content="Blog | AdaEngine"/><meta name="description" content="A simple and fast game engine written on Swift"/><meta name="twitter:description" content="A simple and fast game engine written on Swift"/><meta property="og:description" content="A simple and fast game engine written on Swift"/><meta name="twitter:card" content="summary"/><link rel="stylesheet" href="/Styles/main.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="Images/favicon.png" type="image/png"/><meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)"/><meta name="theme-color" content="#00000066" media="(prefers-color-scheme: dark)"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to AdaEngine"/><meta name="twitter:image" content="https://adaengine.github.io/Images"/><meta property="og:image" content="https://adaengine.github.io/Images"/><script async src="https://www.googletagmanager.com/gtag/js?id=UA-73980658-4"></script><script>window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-
-gtag('config', 'UA-73980658-4');</script></head><body><header class="header"><div class="container content-restriction header-container"><a href="/" class="header-logo"><h2>AdaEngine</h2><h2 class="subtitle">Blog</h2></a><div class="burger-container"><div id="burger"><div class="bar topBar"></div><div class="bar bottomBar"></div></div></div><ul class="navigation"><li class="navigation-item"><a href="/blog" class="navigation-item-link">Blog</a></li><li class="navigation-item"><a href="/community" class="navigation-item-link">Community</a></li><li class="navigation-item"><a href="/learn" class="navigation-item-link">Learn</a></li><li class="navigation-item"><a href="/features" class="navigation-item-link">Features</a></li></ul></div></header><div class="container content-restriction safe-area-insets"><div class="container collection-grid grid-three-columns content-restriction safe-area-insets"><article class="article-item-new"><a href="/blog/first-post"><img src="/Images/vprusakov.jpg"/><div class="article-item-new-content"><div class="article-item-new-header"><h1>Custom NavigationView style</h1><span class="article-item-new-sign">NEW</span></div><h3 class="article-item-new-subtitle">Create your own NavigationViewStyle.</h3><div class="article-item-info"><p class="article-date">03 Apr 2020</p></div></div></a></article></div></div><footer class="footer"><div class="footer-container content-restriction container"><p>Copyright © 2021-2023 Vladislav Prusakov. All rights reserved.</p></div></footer><script>(function(){
-    var burger = document.getElementsByClassName('burger-container')[0],
-        header = document.querySelector('header');
-    
-    burger.onclick = function() {
-        header.classList.toggle('menu-opened');
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content="Ignite v0.5.2" />
+    <title>Blog</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/prism-xcode-dark.css" rel="stylesheet" data-highlight-theme="xcode-dark" />
+    <link href="/css/prism-xcode-light.css" rel="stylesheet" data-highlight-theme="xcode-light" />
+    <link href="/css/prism-plugins.css" rel="stylesheet" />
+    <link href="/css/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="/css/ignite-core.min.css" rel="stylesheet" />
+    <link href="https://adaengine.org/blog" rel="canonical" />
+    <link href="/images/favicon.png" rel="icon" />
+    <script>(function() {
+    function getThemePreference() {
+        return localStorage.getItem('custom-theme') || 'auto';
     }
-}());</script></body></html>
+
+    function applyTheme(themeID) {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const lightThemeID = document.documentElement.getAttribute('data-light-theme') || 'light';
+        const darkThemeID = document.documentElement.getAttribute('data-dark-theme') || 'dark';
+        const actualThemeID = themeID === 'auto' ? (prefersDark ? darkThemeID : lightThemeID) : themeID;
+
+        document.documentElement.setAttribute('data-bs-theme', actualThemeID);
+        document.documentElement.setAttribute('data-theme-state', themeID);
+    }
+
+    function applySyntaxTheme() {
+        const syntaxTheme = getComputedStyle(document.documentElement)
+            .getPropertyValue('--syntax-highlight-theme').trim().replace(/"/g, '');
+
+        if (!syntaxTheme) return;
+
+        document.querySelectorAll('link[data-highlight-theme]').forEach(link => {
+            link.setAttribute('disabled', 'disabled');
+        });
+
+        const themeLink = document.querySelector(`link[data-highlight-theme="${syntaxTheme}"]`);
+        if (themeLink) {
+            themeLink.removeAttribute('disabled');
+        }
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        const currentTheme = getThemePreference();
+        if (currentTheme === 'auto') {
+            applyTheme('auto');
+            applySyntaxTheme();
+        }
+    });
+
+    const savedTheme = getThemePreference();
+    applyTheme(savedTheme);
+    applySyntaxTheme();
+})();
+</script>
+    <meta property="og:site_name" content="AdaEngine" />
+    <meta property="og:title" content="Blog" />
+    <meta name="twitter:title" content="Blog" />
+    <meta property="og:url" content="https://adaengine.org/blog" />
+    <meta name="twitter:domain" content="adaengine.org" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:dnt" content="on" />
+    <link href="/styles/main.css" rel="stylesheet" />
+    <meta media="(prefers-color-scheme: light)" name="theme-color" content="#FFFFFF" />
+    <meta media="(prefers-color-scheme: dark)" name="theme-color" content="#00000066" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container content-restriction header-container">
+        <a href="/" class="header-logo link-plain"><h2>AdaEngine</h2><h2 class="subtitle">Blog</h2></a>
+        <div class="burger-container">
+          <div id="burger">
+            <div class="bar topBar"></div>
+            <div class="bar bottomBar"></div>
+          </div>
+        </div>
+        <ul class="navigation">
+          <li class="navigation-item"><a href="/blog" class="navigation-item-link link-plain"><span>Blog</span></a></li>
+          <li class="navigation-item"><a href="/learn" class="navigation-item-link link-plain"><span>Learn</span></a></li>
+          <li class="navigation-item"><a href="/community" class="navigation-item-link link-plain"><span>Community</span></a></li>
+          <li class="navigation-item donate-button"><a href="/donate-page" class="link-plain">
+              <div class="navigation-item-link" style="color: rgb(255 255 255 / 100%); padding: 7px; background-color: var(--donate); border-radius: 12px" onmouseover="this.unhoveredStyle = this.style.cssText;
+this.style.backgroundColor = 'var(--donate-darker)'" onmouseout="this.style.cssText = this.unhoveredStyle;">
+                <div class="text-center color-inherit hstack" style="gap: 2px">
+                  <p class="mb-0 align-self-center">Donate</p>
+                  <i class="mb-0 align-self-center bi-heart-fill" style="margin: 0px"></i>
+                </div>
+              </div></a></li>
+        </ul>
+      </div>
+    </header>
+    <div class="container content-restriction safe-area-insets">
+      <div class="container content-restriction safe-area-insets">
+        <section>
+          <h2></h2>
+          <p style="font-weight: 400; font-family: Primary; font-size: 2.5em; padding-top: 3.0em; padding-bottom: 3.0em">Is no articles here yet, come back later!</p>
+        </section>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container content-restriction safe-area-insets">
+        <div class="footer-container">
+          <div class="footer-columns row justify-content-center row-cols-1 row-cols-md-4" style="padding-bottom: 40px; row-gap: 40px">
+            <section class="col-md-3 align-self-start">
+              <h5>Ada Engine</h5>
+              <div class="vstack" style="padding-top: 16px; gap: 8px">
+                <a href="https://github.com/AdaEngine/AdaEngine/releases" class="mb-0 align-self-start">Download</a>
+                <a href="/documentation/adaengine/" class="mb-0 align-self-start">Documentation</a>
+                <a href="/features/" class="mb-0 align-self-start">Features</a>
+                <a href="https://github.com/AdaEngine/AdaEngine" class="mb-0 align-self-start">Source code</a>
+              </div>
+            </section>
+            <section class="col-md-3 align-self-start">
+              <h5>Project</h5>
+              <div class="vstack" style="padding-top: 16px; gap: 8px">
+                <a href="blog" class="mb-0 align-self-start">Blog</a>
+                <a href="community" class="mb-0 align-self-start">Communities</a>
+              </div>
+            </section>
+            <section class="col-md-3 align-self-start">
+              <h5>Foundation</h5>
+              <div class="vstack" style="padding-top: 16px; gap: 8px">
+                <a href="#" class="mb-0 align-self-start">About</a>
+                <a href="/donate-page" class="mb-0 align-self-start">Donate</a>
+                <a href="https://github.com/AdaEngine/AdaEngine/LICENSE" class="mb-0 align-self-start">License</a>
+              </div>
+            </section>
+            <div class="col-md-3 align-self-start">
+              <div class="ms-auto" style="height: 20px"></div>
+            </div>
+          </div>
+          <hr />
+          <div class="footer-bottom">
+            <div class="row justify-content-center row-cols-1 row-cols-md-6" style="row-gap: 16px">
+              <div class="col-md-6 align-self-center" style="font-weight: 400; font-size: 13px">
+                <div class="font-inherit vstack" style="gap: 8px">
+                  <p class="mb-0 align-self-start">© 2021-2025 Vladislav Prusakov and contributors. All rights reserved.</p>
+                  <a href="https://github.com/AdaEngine/ada-website.git" class="mb-0 align-self-start">Website source code on GitHub.</a>
+                  <p class="text-center mb-0 align-self-start">Created in Swift with <a href="https://github.com/twostraws/Ignite">Ignite</a></p>
+                </div>
+              </div>
+              <div class="col-md-4 align-self-center">
+                <div class="ms-auto" style="height: 20px"></div>
+              </div>
+              <div class="col-md-2 align-self-center">
+                <div class="footer-social-icons hstack" style="gap: 12px">
+                  <a href="https://github.com/AdaEngine/AdaEngine" class="mb-0 align-self-center link-plain"><i class="bi-github"></i></a>
+                  <a href="https://iosdev.space/@vladprusakov" class="mb-0 align-self-center link-plain"><i class="bi-mastodon"></i></a>
+                  <a href="https://www.reddit.com/r/AdaEngine/" class="mb-0 align-self-center link-plain"><i class="bi-reddit"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>    (function(){
+        var burger = document.getElementsByClassName('burger-container')[0],
+            header = document.querySelector('header'); 
+        burger.onclick = function() {
+            header.classList.toggle('menu-opened');
+        }
+    }());</script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/syntax-highlighting.js"></script>
+    <script src="/js/ignite-core.js"></script>
+  </body>
+</html>
