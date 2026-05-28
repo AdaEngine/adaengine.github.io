@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://adaengine.org/sitemap.xml
