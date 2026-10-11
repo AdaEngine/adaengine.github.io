@@ -2071,7 +2071,7 @@ struct PlayerSystem: System {
               <article class="home-article-preview">
                 <a href="${B(`/articles/${e.slug}`)}">
                   <div class="article-preview-image">
-                    <img class="background_image" src="${W(yt)}" alt="${C(e.title)}" />
+                    <img class="background_image" src="${W(e.image??yt)}" alt="${C(e.title)}" />
                     <div class="background_image_overlay"></div>
                     <div class="article-preview-content">
                       <p class="article-date">${mn(e.date)}</p>
