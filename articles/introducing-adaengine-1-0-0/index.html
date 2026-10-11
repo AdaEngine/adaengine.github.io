@@ -1,0 +1,1009 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AdaEngine 1.0.0: From an Engine to a Game Development Environment - Ada News</title>
+    <meta name="description" content="A new Ada Studio with AI agents and A2UI, AdaScript with AOT, native Android support, multiplayer, expanded 3D rendering, and Ada Cloud — what is new in AdaEngine 1.0.0." />
+    <meta name="theme-color" content="#111111" />
+    <meta property="og:title" content="AdaEngine 1.0.0: From an Engine to a Game Development Environment - Ada News" />
+    <meta property="og:description" content="A new Ada Studio with AI agents and A2UI, AdaScript with AOT, native Android support, multiplayer, expanded 3D rendering, and Ada Cloud — what is new in AdaEngine 1.0.0." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://adaengine.org/articles/introducing-adaengine-1-0-0" />
+    <meta property="og:image" content="https://adaengine.org/images/articles/ada-engine-release-1-0-0-visionos-designed.png" />
+    <meta property="og:image:alt" content="AdaEngine 1.0.0: From an Engine to a Game Development Environment" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://adaengine.org/images/articles/ada-engine-release-1-0-0-visionos-designed.png" />
+    <meta name="twitter:image:alt" content="AdaEngine 1.0.0: From an Engine to a Game Development Environment" />
+    <link rel="canonical" href="https://adaengine.org/articles/introducing-adaengine-1-0-0" />
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="Ada News" href="https://adaengine.org/rss.xml" />
+    <script defer src="https://metrics.adaengine.org/script.js" data-website-id="560e03b9-085c-4df4-b9e8-2beb7e76b575"></script>
+    <script type="module" crossorigin src="/assets/index-Dvs2VJ76.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DLXYXUhE.css">
+  </head>
+  <body>
+    <div id="app"><main class="page-shell article-page-shell"><div class="container article-reading-layout"><article class="safe-area-insets article-page"><header class="article-hero"><a class="article-back-link" href="/blog">Back to News</a><h1>AdaEngine 1.0.0: From an Engine to a Game Development Environment</h1><div class="article_info">By Vladislav Prusakov · <time datetime="2026-10-11">2026-10-11</time> · 34 min read</div><p class="article-item-description">A new Ada Studio with AI agents and A2UI, AdaScript with AOT, native Android support, multiplayer, expanded 3D rendering, and Ada Cloud — what is new in AdaEngine 1.0.0.</p></header><div class="article-content">
+    <figure class="article-media article-media-image">
+      <img src="/images/articles/ada-engine-release-1-0-0-visionos-designed.png" alt="AdaEngine 1.0.0 release cover" loading="lazy" role="button" tabindex="0" aria-label="Open image fullscreen" data-article-lightbox-image />
+      <figcaption>AdaEngine 1.0.0 — Ada Studio in a spatial workspace.</figcaption>
+    </figure>
+  
+<p>We are introducing <strong>AdaEngine 1.0.0</strong>, a major update to our open-source game engine built with Swift.</p>
+<p>Our first public release established the foundation: ECS, rendering, scenes, assets, physics, audio, and AdaUI. Since then, we have been working to bring these capabilities together into a practical game development workflow.</p>
+<p>Version 1.0.0 introduces a new Ada Studio with AI agents and interactive A2UI tools, significantly expands AdaScript, and adds native Android support, multiplayer, more advanced 3D rendering, and cloud infrastructure for sharing user-created games.</p>
+<p>The journey from a first scene to a game you can share now runs through a connected set of tools.</p>
+<h2 id="the-new-ada-studio">The new Ada Studio</h2>
+<p>The biggest addition is <strong>Ada Studio</strong>, a development environment for AdaEngine. It brings together project management, code, scenes, assets, interfaces, and game execution.</p>
+<p>Studio supports both Swift and AdaScript projects. Its shared interface is built with AdaUI: we use our own UI framework for an everyday development tool and improve it through real workloads.</p>
+
+    <figure class="article-media article-media-image">
+      <img src="/images/studio/desktop.png" alt="Ada Studio desktop" loading="lazy" role="button" tabindex="0" aria-label="Open image fullscreen" data-article-lightbox-image />
+      <figcaption>Ada Studio brings code, scenes, and development tools into one workspace.</figcaption>
+    </figure>
+  
+<h3 id="editor-mode">Editor Mode</h3>
+<p>Editor Mode provides a workspace with a project navigator, document tabs, a scene viewport, and an Inspector.</p>
+<p>You can create and edit 2D and 3D scenes, manage entity hierarchies, add components, and configure cameras, lighting, physics, and materials. Move, Scale, and Rotate tools let you work directly in the viewport, while Undo and Redo make experimentation easier.</p>
+<p>The workspace can be split into two panes: keep code beside a scene, or edit several documents at once.</p>
+<h3 id="agent-mode">Agent Mode</h3>
+<p>Desktop Studio now includes <strong>Agent Mode</strong>, a dedicated interface for developing with an AI agent.</p>
+<p>Conversations and their results sit at the center of this mode. You can switch sessions, share selected code and images with an agent, open changed files, and return to the regular editor.</p>
+<p>Both modes share the same documents and project state, making it easy to move between discussing a task and editing it yourself.</p>
+<p>On macOS, Studio connects to external agents through the <strong>Agent Client Protocol (ACP)</strong>. Its catalog discovers installed agents and offers compatible adapters for Codex and Claude Code; it also recognizes Gemini CLI, OpenCode, GitHub Copilot, and Sloppy ACP. Compatible distributions can be installed and connected from Studio. Authentication stays with the selected agent.</p>
+<p>Conversations are saved with the project. Switching sessions preserves drafts, attachments, and selected context, while a running task remains associated with its original conversation. An agent&#39;s changes can be opened in the regular editor and reviewed as a diff. Each project window runs one agent task at a time.</p>
+<p>Agent Mode and the regular chat in Editor Mode share the same tools. The interface changes how the workspace is organized; available actions depend on the capabilities of the current host.</p>
+
+    <figure class="article-media article-media-image">
+      <img src="/showcases/adaengine-1-0-0/agent-mode.png" alt="Agent Mode in Ada Studio" loading="lazy" role="button" tabindex="0" aria-label="Open image fullscreen" data-article-lightbox-image />
+      <figcaption>Agent Mode: project sessions, context, and a document workspace.</figcaption>
+    </figure>
+  
+<h3 id="tilemap-editor-and-assets">Tilemap Editor and assets</h3>
+<p>Studio now has a built-in tilemap editor with painting, erasing, layers, a tile palette, zoom, and panning.</p>
+<p>The tileset editor configures tile sources and their geometry. For 2D lighting, you can define light-occlusion polygons and override them for individual map cells.</p>
+<p>Studio also includes a texture atlas editor, image previews, and GLB/glTF import. A model can be opened in a 3D preview, an animation clip selected, and the model placed in a scene.</p>
+
+    <figure class="article-media article-media-image">
+      <img src="/showcases/adaengine-1-0-0/tilemap-editor.png" alt="Tilemap Editor" loading="lazy" role="button" tabindex="0" aria-label="Open image fullscreen" data-article-lightbox-image />
+      <figcaption>Editing the Medieval Arena map: canvas, layers, and tile palette.</figcaption>
+    </figure>
+  
+<h3 id="code-editor-and-debugging">Code Editor and debugging</h3>
+<p>The code editor supports syntax highlighting for Swift, AdaScript, YAML, and GLSL, along with completion, hints, definition navigation, and diagnostics. Search works within a file or across the project.</p>
+<p>Swift projects on macOS have integrated <strong>LLDB</strong> support: breakpoints, stepping, threads, call stacks, variables, watches, and a command console.</p>
+<p>AdaScript supports diagnostics, execution in Play, and hot reload. Full execution debugging for AdaScript remains a future step.</p>
+<h2 id="ai-agents-from-an-idea-to-a-working-scene">AI agents: from an idea to a working scene</h2>
+<p>Studio agents work with the project itself: code, scenes, assets, settings, and execution results. On desktop, these capabilities are exposed through editor tools and MCP; on mobile, they are provided by the embedded agent runtime.</p>
+<h3 id="project-context-and-engine-knowledge">Project context and engine knowledge</h3>
+<p>An agent can read the project structure, retrieve exact API and component descriptions, find documentation, and open examples. Reference material ships with Studio and is available offline.</p>
+<p>This helps the agent use existing engine features and work with actual component fields. Scene tools support reading and structured changes, with document revision checks and Undo.</p>
+<h3 id="images-tiles-and-3d-assets">Images, tiles, and 3D assets</h3>
+<p>Images can be attached to a conversation as visual references. Mobile Studio also supports pasting images and annotating screenshots to communicate a desired result or a problem more precisely.</p>
+<p>Agent tools cover several parts of asset preparation:</p>
+<ul>
+<li>Creating procedural textures: solid colors, gradients, checkerboards, noise, and flat normal maps.</li>
+<li>Generating and editing images when an image provider is configured.</li>
+<li>Reading, editing, and packing texture atlases.</li>
+<li>Creating tilesets and editing tilemap layers and cells.</li>
+<li>Validating and importing GLB/glTF files, and inspecting model structure, materials, skeletons, and animation clips.</li>
+<li>Changing PBR parameters and assigning textures to model materials.</li>
+<li>Searching online reference material and downloading assets into the project for subsequent validation.</li>
+</ul>
+<p>The available tools depend on the platform. Importing and configuring an existing 3D model is supported; rig creation and skeletal keyframe editing require separate tools.</p>
+<h3 id="game-development-harness">Game development harness</h3>
+<p>We added the built-in <strong><code>ada-game-builder</code></strong> workflow to help an agent move through the full development cycle, from a game mechanic to a result that can be checked.</p>
+<p>It covers scenes and scripts, assets, desktop and touch controls, HUDs, restarting the game, and verification. For longer tasks, the workflow uses project notes about design and progress to preserve decisions between sessions.</p>
+<p>Studio ships with skills for 3D assets, materials, animations, and UI forms. An agent can find and read the relevant instructions as it works. Mobile Studio can also import custom Markdown skills and store persistent instructions.</p>
+<h3 id="checking-results-and-fixing-errors">Checking results and fixing errors</h3>
+<p>An agent can start builds, read diagnostics and logs, validate scenes, and run isolated simulations. Mobile simulation lets it supply keyboard input, advance a game by several frames, and inspect entity positions and component values.</p>
+<p>Visible Play and completed GPU-frame capture are available for visual checks. On mobile, the agent can send a captured frame to a configured vision model for analysis. Desktop tools also expose CPU metrics and profiler recordings for embedded game sessions.</p>
+<p>Builds, simulation, and visible execution check different aspects of a project. Logic checks help find behavioral errors; rendering, audio, networking, and touch interaction need to be checked in Play.</p>
+<h3 id="mobile-agents-and-background-tasks">Mobile agents and background tasks</h3>
+<p>On iPhone and iPad, the agent runs inside Studio and uses tools scoped to the current project. You can select a provider and model, configure step limits and repair attempts after a failed check, and choose whether Play opens automatically.</p>
+<p>On iOS/iPadOS 26, user-started tasks can continue in the background through the system&#39;s continued processing mechanism. An activity shows the current phase, duration, and errors. The system controls available background time; Play rendering and frame capture require the app to be open.</p>
+<h2 id="a2ui-interactive-tools-inside-the-chat">A2UI: interactive tools inside the chat</h2>
+<p><strong>A2UI</strong> lets an agent respond with an interactive interface. The agent describes a form declaratively, and Studio renders it with native AdaUI components inside the conversation. Elements can appear incrementally as the response arrives.</p>
+<p>Our forms catalog includes text, rows, columns, buttons, input fields, toggles, selectors, and numeric sliders. Values are bound to the form&#39;s data model. Required fields and allowed ranges are validated locally: errors appear beside the inputs, and an invalid form cannot be submitted.</p>
+
+    <figure class="article-media article-media-video">
+      <video controls playsinline preload="metadata" poster="/showcases/adaengine-1-0-0/a2ui-controls.png" src="/showcases/adaengine-1-0-0/a2ui-controls.mp4">Native A2UI controls</video>
+      <figcaption>A2UI in Studio: an NPC role selector, dialog toggle, and slider. The form uses demonstration data; the video shows local controls.</figcaption>
+    </figure>
+  
+<h3 id="from-a-form-to-a-game-interface">From a form to a game interface</h3>
+<p>For example, you can ask an agent to prepare an NPC configuration form with a name, behavior parameters, and dialog options. When you submit the form, its values return to the original session, and the agent continues with your choices.</p>
+<p>A generated UI preview can be opened with <strong>Open in UI Designer</strong>. Studio creates a regular <code>.ui</code> project asset that you can edit visually or in YAML, save, and include in your game. Export preserves native components, bindings, current values, and form validation. Button actions connect to application logic through the usual AdaUI mechanisms.</p>
+<p>On iPhone, <strong>Open UI Source</strong> opens the exported asset in the file editor. This hands the interface over to the project; later manual Designer changes are not automatically sent back to the agent.</p>
+
+    <figure class="article-media article-media-image">
+      <img src="/showcases/adaengine-1-0-0/ui-designer-npc.png" alt="An A2UI form in UI Designer" loading="lazy" role="button" tabindex="0" aria-label="Open image fullscreen" data-article-lightbox-image />
+      <figcaption>NPCProfile.ui: a form exported from A2UI and opened in the regular UI Designer.</figcaption>
+    </figure>
+  
+<h3 id="scene-tools">Scene tools</h3>
+<p>A chat card can become a small editor tool. An agent might create an NPC placement card with a copy count and spacing, or a color card with a system color picker and an Apply button.</p>
+<p>Supported local actions run directly in Studio without another model request. Cards can duplicate an entity subtree, change a registered color field, or apply several scene edits in one transaction.</p>
+<p>Studio checks the scene revision before applying an edit. If the document changed independently, a stale card asks for refreshed data. Desktop changes enter the regular Undo/Redo history; an iPhone card stores the information needed to undo its latest application. These changes affect the scene being edited; an already running Play session must be restarted.</p>
+<h3 id="native-ui-on-desktop-and-iphone">Native UI on desktop and iPhone</h3>
+<p>The same cards are available in macOS ACP chat and embedded iPhone chat. Their state and entered values are saved with the session. Form submissions return to the conversation that created them and preserve the current message draft.</p>
+<p>Inside the engine, the integration is provided by <strong><code>AdaA2UI</code></strong>, an A2UI v0.9.1 adapter with its own forms catalog. It can be added to AdaUI applications and connected to an agent through event callbacks. Interactive responses can therefore become part of your own development tools as well as Studio.</p>
+<h2 id="studio-on-desktop-and-mobile">Studio on desktop and mobile</h2>
+<p>Desktop Studio provides a workspace with multiple panes, build tools, debugging, and Git integration.</p>
+<p>Mobile Studio is adapted for iPhone and iPad. On iPhone, project navigation, files, code, scenes, Play, and chat have dedicated screens. iPad offers a wider workspace.</p>
+<p>AdaScript projects can be edited and run in the embedded runtime on a mobile device, making phones and tablets useful for prototyping and testing touch controls.</p>
+
+    <figure class="article-media article-media-image">
+      <img src="/images/studio/mobile-play-device.png" alt="Ada Studio mobile" loading="lazy" role="button" tabindex="0" aria-label="Open image fullscreen" data-article-lightbox-image />
+      <figcaption>Checking a game in Play on iPhone.</figcaption>
+    </figure>
+  
+<h3 id="ada-player">Ada Player</h3>
+<p><strong>Ada Player</strong> lets you send a supported project from Studio to another device for testing.</p>
+<p>Studio discovers Players on the local network, connects through a pairing code, transfers the project, and receives execution messages. This shortens the path between changing a game and checking it on a device.</p>
+<h3 id="visionos-and-spatial-applications">visionOS and spatial applications</h3>
+<p>Version 1.0.0 introduces a foundation for immersive visionOS applications.</p>
+<p>AdaEngine can render a world in a fully immersive space, use separate projections for each eye, and support spatial interaction with objects. Compatible devices can use foveated rendering.</p>
+<p>AdaUI panels can be placed in spatial windows through the native host. The <a href="https://github.com/AdaEngine/Ada/tree/main/Demos/ImmersiveGarden" target="_blank" rel="noreferrer">Immersive Garden</a> example combines a game world with control tools. This is a foundation for spatial applications; a full Studio port to visionOS and a general XR export path are still ahead.</p>
+<h2 id="adascript-a-language-for-game-logic">AdaScript: a language for game logic</h2>
+<p><strong>AdaScript</strong> is a scripting language integrated with AdaEngine and Ada Studio. It lets you write game logic, define components and systems, attach behavior to entities, and use engine APIs.</p>
+<p>The language uses <code>.ada</code> files and supports functions, classes, structs, collections, and asynchronous operations. It is dynamically typed by default; strict type checking can be enabled for individual files or an entire project.</p>
+<h3 id="project-structure-and-the-ada-directory">Project structure and the .ada directory</h3>
+<p>An AdaScript project is a regular directory containing source files, assets, and configuration. Scripts with the <code>.ada</code> extension live in <code>Sources/</code>, while the hidden <code>.ada/</code> directory stores project settings and Studio&#39;s working data.</p>
+<p>A small game project might look like this:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span>MyGame/</span>
+        <span>Text</span>
+      </figcaption>
+      <pre><code class="language-text">MyGame/
+├── .ada/
+│   └── project.json
+├── Sources/
+│   ├── PlayerController.ada
+│   ├── Health.ada
+│   ├── GameRules.ada
+│   └── HealthRegeneration.ada
+└── Assets/
+    ├── Scenes/
+    │   └── Main.ascn
+    ├── Maps/
+    │   └── Level.tilemap
+    ├── Tiles/
+    │   └── Level.tileset
+    ├── Textures/
+    │   └── Player.png
+    └── UI/
+        └── HUD.ui</code></pre>
+    </figure>
+  
+<p><code>Sources/</code> contains game logic: systems, components, resources, and scriptable behavior. <code>Assets/</code> contains scenes, images, models, audio, tilemaps, and UI assets. These directory paths can be changed in project settings.</p>
+<p>The main configuration file is <strong><code>.ada/project.json</code></strong>. It defines the project name, build system, file locations, entry point, runtime plugins, and other settings. Here is a configuration for a 2D game:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span>.ada/project.json</span>
+        <span>JSON</span>
+      </figcaption>
+      <pre><code class="language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;schemaVersion&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">3</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;project&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;MyGame&quot;</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;build&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;system&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;adascript&quot;</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;paths&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;sources&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Sources&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;assets&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Assets&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;resourceRoots&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;Assets&quot;</span><span class="hljs-punctuation">]</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;runtime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;moduleName&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;MyGame&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;entry&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">&quot;scene&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Assets/Scenes/Main.ascn&quot;</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;plugins&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">&quot;preset&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;game2d&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;presetVersion&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;editor&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;startupScene&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Assets/Scenes/Main.ascn&quot;</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span></code></pre>
+    </figure>
+  
+<p><code>build.system</code> selects the AdaScript path. <code>paths</code> defines source and asset locations, <code>runtime.entry.scene</code> selects the game&#39;s initial scene, and <code>runtime.plugins</code> controls the available engine features. The <code>game2d</code> and <code>game3d</code> presets can be extended through <code>enable</code> and <code>disable</code>. <code>editor.startupScene</code> specifies a fallback scene for execution inside the editor.</p>
+<p>The same file stores named input actions in <code>inputActions</code>, launch parameters, and runtime window settings. The main fields are available through <strong>Project Settings</strong>, so everyday configuration can be done in Studio&#39;s interface.</p>
+<p>Additional files and directories appear inside <code>.ada/</code> as you work:</p>
+<ul>
+<li><code>workspace/</code> — open-document state and project agent sessions.</li>
+<li><code>chat-ui/</code> — additional A2UI card state and undo data in mobile Studio.</li>
+<li><code>libraries.lock.json</code> — AdaScript dependencies pinned to exact Git commits.</li>
+<li><code>libraries/</code> — the installed source files of those libraries.</li>
+<li><code>cli-build/</code> — the build cache created by the CLI.</li>
+<li><code>android-signing/</code> — development-signing keys for Android APKs, created during export.</li>
+<li><code>publication-images/</code> — the cover and screenshots selected for publishing from Studio.</li>
+</ul>
+<p>The relevant tools create these directories as needed. <code>project.json</code> describes the game, while <code>workspace/</code> and <code>cli-build/</code> support editing and builds. A library lockfile can be saved to restore pinned versions on another computer; keeping <code>libraries/</code> alongside it lets you share a project with dependencies already installed for offline work.</p>
+<p>In a portable AdaScript project, Studio&#39;s host provides the application lifecycle, so a separate <code>main()</code> and <code>Package.swift</code> are not needed. Swift projects additionally use <code>Package.swift</code> and connect AdaScript through a build plugin. Exports go to <code>Exports/macOS</code>, <code>Exports/Web</code>, or <code>Exports/Android</code> by default.</p>
+<h3 id="annotations">Annotations</h3>
+<p>Annotations connect AdaScript declarations to the engine:</p>
+<ul>
+<li><code>@system</code> registers an ECS system.</li>
+<li><code>@component</code> and <code>@resource</code> describe game data.</li>
+<li><code>@query</code> and <code>@res</code> provide access to components and resources.</li>
+<li><code>@scriptable</code> attaches behavior to an entity.</li>
+<li><code>@export</code> makes behavior fields persistent and editable in the Inspector.</li>
+<li><code>@tool</code> declares a Studio tool with its own <code>.ui</code> panel and editor actions.</li>
+<li>Network annotations describe commands, RPCs, and replicated components.</li>
+</ul>
+<h3 id="what-id-means-in-annotations">What id means in annotations</h3>
+<p><code>id</code> is a declaration&#39;s stable name in the engine. In <code>@component(id: &quot;game.health&quot;)</code>, for example, <code>game.health</code> identifies the Health component type. That type can be attached to many entities, each with its own health values and numeric <code>entity.id</code>.</p>
+<p>Identifiers are used for registration, Swift-side data lookup, scriptable behavior persistence, system ordering, and network schemas. An explicit <code>id</code> lets you rename a class in source code while keeping its external identity. Changing the ID itself requires updating references and accounting for previously saved data.</p>
+<p>The <code>game.</code> prefix is a useful naming convention. It does not create a language namespace. A library can choose its own prefix, such as <code>combat.health</code>, to avoid collisions with game declarations.</p>
+<p>A <code>@system</code> ID defaults to the class name; an explicit ID is useful for <code>@after</code> and <code>@before</code>. An ID is required for <code>@scriptable</code>, <code>@tool</code>, and network declarations such as <code>@network_command</code>, <code>@rpc</code>, and <code>@replicated_component</code>. Where supported, <code>version</code> separately describes the declaration or schema version. Identifiers must be unique within their respective registry.</p>
+<h3 id="entity-data-component">Entity data: @component</h3>
+<p>A component stores data for an individual entity. Each character can have its own current and maximum health:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span>Health.ada</span>
+        <span>AdaScript</span>
+      </figcaption>
+      <pre><code class="language-adascript"><span class="hljs-meta">@component</span>(id: <span class="hljs-string">&quot;game.health&quot;</span>)
+<span class="hljs-keyword">struct</span> Health {
+    <span class="hljs-meta">@export</span> <span class="hljs-keyword">var</span> current = <span class="hljs-number">100.0</span>;
+    <span class="hljs-meta">@export</span> <span class="hljs-keyword">var</span> maximum = <span class="hljs-number">100.0</span>;
+}</code></pre>
+    </figure>
+  
+<h3 id="entity-behavior-scriptable">Entity behavior: @scriptable</h3>
+<p><code>@scriptable</code> describes behavior that can be attached to an entity in a scene. This example moves a character horizontally, with <code>speed</code> exposed in Studio&#39;s Inspector:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span>PlayerController.ada</span>
+        <span>AdaScript</span>
+      </figcaption>
+      <pre><code class="language-adascript"><span class="hljs-meta">@scriptable</span>(id: <span class="hljs-string">&quot;game.player-controller&quot;</span>)
+<span class="hljs-keyword">class</span> PlayerController {
+    <span class="hljs-meta">@export</span> <span class="hljs-keyword">var</span> speed = <span class="hljs-number">5.0</span>;
+
+    <span class="hljs-meta">@component</span>(required: <span class="hljs-literal">true</span>)
+    <span class="hljs-keyword">var</span> transform: Transform;
+
+    <span class="hljs-meta">@res</span>
+    <span class="hljs-keyword">var</span> input: Input;
+
+    <span class="hljs-keyword">func</span> update(context) {
+        <span class="hljs-keyword">var</span> right = input<span class="hljs-property">.getActionStrength</span>(<span class="hljs-string">&quot;MoveRight&quot;</span>);
+        <span class="hljs-keyword">var</span> left = input<span class="hljs-property">.getActionStrength</span>(<span class="hljs-string">&quot;MoveLeft&quot;</span>);
+        <span class="hljs-keyword">var</span> direction = right - left;
+        <span class="hljs-keyword">var</span> distance = direction * speed * context<span class="hljs-property">.deltaTime</span>;
+
+        <span class="hljs-keyword">var</span> position = transform<span class="hljs-property">.position</span>;
+        position[<span class="hljs-number">0</span>] += distance;
+        transform<span class="hljs-property">.position</span> = position;
+    }
+}</code></pre>
+    </figure>
+  
+<p><code>@component(required: true)</code> binds the property to the Transform of the entity the script is attached to. <code>@res</code> provides the current world&#39;s Input resource. The <code>MoveLeft</code> and <code>MoveRight</code> actions are configured in <strong>Project Settings → Input Bindings</strong>; this example requires the Input plugin to be enabled.</p>
+<p><code>@scriptable</code> supports <code>ready(context)</code>, <code>update(context)</code>, <code>fixedUpdate(context)</code>, <code>event(events, context)</code>, and <code>destroy(context)</code>. <code>ready</code> runs when behavior is attached, and <code>destroy</code> runs when it is removed. Asynchronous tasks can wait for asset loading, the next frame, or a timer while remaining associated with the game object&#39;s lifecycle.</p>
+<h3 id="shared-world-settings-resource-and-res">Shared world settings: @resource and @res</h3>
+<p>A resource stores shared world data. For example, health regeneration speed can be moved from individual characters into game rules:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span>GameRules.ada</span>
+        <span>AdaScript</span>
+      </figcaption>
+      <pre><code class="language-adascript"><span class="hljs-meta">@resource</span>(id: <span class="hljs-string">&quot;game.rules&quot;</span>, autoInsert: <span class="hljs-literal">true</span>)
+<span class="hljs-keyword">struct</span> GameRules {
+    <span class="hljs-meta">@export</span> <span class="hljs-keyword">var</span> healthRegenPerSecond = <span class="hljs-number">5.0</span>;
+}</code></pre>
+    </figure>
+  
+<p>In a SwiftPM project, <code>AdaScriptBuildPlugin</code> generates backing types for components and resources. <code>autoInsert: true</code> inserts the resource into the world before systems are installed. A system or scriptable behavior can then access it with <code>@res var rules: GameRules;</code>.</p>
+<h3 id="systems-and-scheduling-system">Systems and scheduling: @system</h3>
+<p><code>@system</code> registers a class as an ECS system. Its <code>update(context)</code> method is called by the selected <strong>scheduler</strong>, a stage in the world&#39;s system execution cycle. The <code>scheduler</code> parameter selects that stage, and <code>context.deltaTime</code> provides its current time step.</p>
+<p>The standard cycle includes:</p>
+<ul>
+<li><code>startup</code> — initialization once on the scheduler runner&#39;s first update; it runs again when the world is restarted.</li>
+<li><code>preUpdate</code> — the stage before the main update.</li>
+<li><code>update</code> — the main game logic stage and the default when <code>scheduler</code> is omitted.</li>
+<li><code>postUpdate</code> — the stage after the main update.</li>
+</ul>
+<p>A startup system can create an entity with components from our project:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span>GameSetup.ada</span>
+        <span>AdaScript</span>
+      </figcaption>
+      <pre><code class="language-adascript"><span class="hljs-meta">@system</span>(scheduler: <span class="hljs-string">&quot;startup&quot;</span>, id: <span class="hljs-string">&quot;game.setup&quot;</span>)
+<span class="hljs-keyword">class</span> GameSetup {
+    <span class="hljs-keyword">func</span> update(context) {
+        context<span class="hljs-property">.world</span><span class="hljs-property">.spawn</span>([Transform(), Health()]);
+    }
+}</code></pre>
+    </figure>
+  
+<p>Even in <code>startup</code>, the system entry point is named <code>update(context)</code>. The class constructor creates the script instance; the startup system gets access to the game world and performs initial setup. The HealthRegeneration system below uses <code>update</code> and executes its logic whenever that stage runs.</p>
+<p>Ordering can be expressed with <code>@after</code> and <code>@before</code>, using another system&#39;s ID:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span>System ordering</span>
+        <span>AdaScript</span>
+      </figcaption>
+      <pre><code class="language-adascript"><span class="hljs-meta">@after</span>(id: <span class="hljs-string">&quot;game.health-regeneration&quot;</span>)
+<span class="hljs-meta">@system</span>(scheduler: <span class="hljs-string">&quot;update&quot;</span>, id: <span class="hljs-string">&quot;game.health-observer&quot;</span>)
+<span class="hljs-keyword">class</span> HealthObserver {
+    <span class="hljs-keyword">func</span> update(context) {
+        <span class="hljs-comment">// Logic that runs after HealthRegeneration.</span>
+    }
+}</code></pre>
+    </figure>
+  
+<p>Both systems must belong to the same AdaScript module and scheduler. Unknown IDs, self-dependencies, and cycles are rejected during validation. Additional schedulers can be set up on the Swift side of the host. The <code>fixedUpdate(context)</code> callback on <code>@scriptable</code> belongs to the behavior lifecycle; it is a separate mechanism from these standard stages.</p>
+<h3 id="working-with-many-entities-query">Working with many entities: @query</h3>
+<p>A system accesses matching entities through <code>@query</code>. Here it updates every Health component using the shared GameRules resource from the previous example:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span>HealthRegeneration.ada</span>
+        <span>AdaScript</span>
+      </figcaption>
+      <pre><code class="language-adascript"><span class="hljs-meta">@system</span>(scheduler: <span class="hljs-string">&quot;update&quot;</span>, id: <span class="hljs-string">&quot;game.health-regeneration&quot;</span>)
+<span class="hljs-keyword">class</span> HealthRegeneration {
+    <span class="hljs-meta">@query</span>(Health)
+    <span class="hljs-keyword">var</span> characters;
+
+    <span class="hljs-meta">@res</span>
+    <span class="hljs-keyword">var</span> rules: GameRules;
+
+    <span class="hljs-keyword">func</span> update(context) {
+        <span class="hljs-keyword">var</span> amount = rules<span class="hljs-property">.healthRegenPerSecond</span>
+            * context<span class="hljs-property">.deltaTime</span>;
+
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> entity <span class="hljs-keyword">in</span> characters) {
+            <span class="hljs-keyword">if</span> (entity<span class="hljs-property">.health</span><span class="hljs-property">.current</span> &lt; entity<span class="hljs-property">.health</span><span class="hljs-property">.maximum</span>) {
+                <span class="hljs-keyword">var</span> next = entity<span class="hljs-property">.health</span><span class="hljs-property">.current</span> + amount;
+
+                <span class="hljs-keyword">if</span> (next &gt; entity<span class="hljs-property">.health</span><span class="hljs-property">.maximum</span>) {
+                    next = entity<span class="hljs-property">.health</span><span class="hljs-property">.maximum</span>;
+                }
+
+                entity<span class="hljs-property">.health</span><span class="hljs-property">.current</span> = next;
+            }
+        }
+    }
+}</code></pre>
+    </figure>
+  
+<p><code>@system</code> registers the system with the scheduler, while <code>@query(Health)</code> selects active entities with a Health component. Inside the loop, the component is available as <code>entity.health</code>; writing a field updates ECS storage. This is useful for shared logic that processes many objects.</p>
+<p>A query can fetch several components and apply filters. If the project registers Player and Frozen components, a system can declare this query:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span>A query with filters</span>
+        <span>AdaScript</span>
+      </figcaption>
+      <pre><code class="language-adascript"><span class="hljs-meta">@query</span>(Health, Transform, with: Player, without: Frozen)
+<span class="hljs-keyword">var</span> players;</code></pre>
+    </figure>
+  
+<p>Its rows expose <code>entity.health</code> and <code>entity.transform</code>. Filters check component presence: the query includes entities with Player that do not have Frozen. Query row data is valid during the current iteration; keep the values you need between system updates rather than retaining row references.</p>
+<h3 id="asynchronous-logic-async-await">Asynchronous logic: async/await</h3>
+<p>AdaScript can express a sequence of operations with <strong><code>async func</code></strong> and <strong><code>await</code></strong>. Waiting suspends that task while the game continues updating. A regular callback starts such a function with <code>Tasks.start(...)</code>:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span>DelayedAnnouncement.ada</span>
+        <span>AdaScript</span>
+      </figcaption>
+      <pre><code class="language-adascript"><span class="hljs-keyword">async</span> <span class="hljs-keyword">func</span> announceLater() {
+    <span class="hljs-keyword">await</span> Time<span class="hljs-property">.sleep</span>(<span class="hljs-number">1.0</span>);
+    System<span class="hljs-property">.print</span>(<span class="hljs-string">&quot;One game-time second passed&quot;</span>);
+
+    <span class="hljs-keyword">await</span> Tasks<span class="hljs-property">.nextFrame</span>();
+    System<span class="hljs-property">.print</span>(<span class="hljs-string">&quot;The next frame is ready&quot;</span>);
+}
+
+<span class="hljs-meta">@system</span>(id: <span class="hljs-string">&quot;game.announcement&quot;</span>)
+<span class="hljs-keyword">class</span> AnnouncementSystem {
+    <span class="hljs-keyword">var</span> started = <span class="hljs-literal">false</span>;
+
+    <span class="hljs-keyword">func</span> update(context) {
+        <span class="hljs-keyword">if</span> (!started) {
+            started = <span class="hljs-literal">true</span>;
+            Tasks<span class="hljs-property">.start</span>(announceLater());
+        }
+    }
+}</code></pre>
+    </figure>
+  
+<p><code>Time.sleep</code> uses scheduler game time and stops advancing when the scheduler is paused. <code>Time.sleepRealTime</code> uses a monotonic clock; the task still resumes at a dispatch point in the scripting runtime. <code>Tasks.nextFrame</code> waits for the next frame. <code>Tasks.start</code> returns a handle with <code>status()</code> and <code>cancel()</code>.</p>
+<p>Asynchronous operations are also available for assets. Loading an image returns a result that can be checked after <code>await</code>:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span>Asynchronous asset loading</span>
+        <span>AdaScript</span>
+      </figcaption>
+      <pre><code class="language-adascript"><span class="hljs-keyword">async</span> <span class="hljs-keyword">func</span> loadPlayerTexture() {
+    <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> Assets<span class="hljs-property">.loadAsync</span>(
+        <span class="hljs-string">&quot;@res://Textures/Player.png&quot;</span>
+    );
+
+    <span class="hljs-keyword">if</span> (result<span class="hljs-property">.isSuccess</span>()) {
+        System<span class="hljs-property">.print</span>(<span class="hljs-string">&quot;Player texture is ready&quot;</span>);
+    } <span class="hljs-keyword">else</span> {
+        System<span class="hljs-property">.print</span>(result<span class="hljs-property">.message</span>());
+    }
+}</code></pre>
+    </figure>
+  
+<p>Start this function with <code>Tasks.start(loadPlayerTexture())</code> as well. Operations that can fail expose <code>isSuccess()</code>, <code>value()</code>, <code>errorCode()</code>, and <code>message()</code>. Saves provides asynchronous persistence operations, and <code>Tasks.promise()</code> can connect a wait to the result of another callback.</p>
+<p>The <code>update(context)</code> methods and <code>@scriptable</code> callbacks remain synchronous; they start a separate async function. Contexts, query rows, resource views, and commands are valid only within the callback. Pass independent values into a task, such as a number, a string, or a copy of the data you need. Types whose lifetime is tied to a callback can be marked <code>@nonsendable</code>; the runtime also checks transferred values. Continuations execute in the serialized scripting runtime, rather than on a background I/O thread.</p>
+<h3 id="accessing-adascript-data-from-swift">Accessing AdaScript data from Swift</h3>
+<p>In a SwiftPM project, <code>AdaScriptBuildPlugin</code> generates backing types for AdaScript components and resources, and the generated plugin registers them with the engine. The names of those Swift types are an internal generation detail. Integrations should use the declaration name or its stable ID, such as <code>Health</code> or <code>game.health</code>.</p>
+<p>After installing <code>AdaScriptPluginsGenerated()</code>, a component can be retrieved from the same world by ID and its reflected fields read. Here, <code>world</code> is the game World and <code>playerID</code> identifies an existing entity with Health:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span>Reading Health from Swift</span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-keyword">import</span> AdaECS
+
+<span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> component <span class="hljs-operator">=</span> world<span class="hljs-property">.getComponent</span>(
+    named: <span class="hljs-string">&quot;game.health&quot;</span>, from: playerID
+), <span class="hljs-keyword">let</span> descriptor <span class="hljs-operator">=</span> <span class="hljs-type">ComponentReflectionRegistry</span><span class="hljs-property">.descriptor</span>(
+    named: <span class="hljs-type">String</span>(reflecting: <span class="hljs-built_in">type</span>(of: component))
+) {
+    <span class="hljs-keyword">let</span> fields <span class="hljs-operator">=</span> descriptor<span class="hljs-property">.readPayload</span>(from: component)
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">case</span> <span class="hljs-property">.double</span>(<span class="hljs-keyword">let</span> current)<span class="hljs-operator">?</span> <span class="hljs-operator">=</span> fields[<span class="hljs-string">&quot;current&quot;</span>] {
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Health:&quot;</span>, current)
+    }
+}</code></pre>
+    </figure>
+  
+<p>Similarly, <code>world.getResource(named: &quot;game.rules&quot;)</code> returns a registered resource as <code>any Resource</code>. The scripting bridge provides an SPI for reading a specific field of a generated resource:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span>Reading GameRules from Swift — SPI</span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-meta">@_spi</span>(<span class="hljs-type">Scripting</span>) <span class="hljs-keyword">import</span> AdaECS
+
+<span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> resourceType <span class="hljs-operator">=</span> <span class="hljs-type">RuntimeTypeRegistry</span><span class="hljs-property">.resourceType</span>(
+    named: <span class="hljs-string">&quot;game.rules&quot;</span>
+), <span class="hljs-keyword">let</span> descriptor <span class="hljs-operator">=</span> <span class="hljs-type">RuntimeResourceReflectionRegistry</span>
+    <span class="hljs-property">.descriptor</span>(for: resourceType),
+   <span class="hljs-keyword">let</span> field <span class="hljs-operator">=</span> descriptor<span class="hljs-property">.fields</span><span class="hljs-property">.first</span>(where: {
+       <span class="hljs-variable">$0</span>.key <span class="hljs-operator">==</span> <span class="hljs-string">&quot;healthRegenPerSecond&quot;</span>
+   }),
+   <span class="hljs-keyword">case</span> <span class="hljs-property">.double</span>(<span class="hljs-keyword">let</span> rate)<span class="hljs-operator">?</span> <span class="hljs-operator">=</span> world<span class="hljs-property">.readResourceField</span>(
+       type: resourceType, field: field
+   ) {
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Regeneration per second:&quot;</span>, rate)
+}</code></pre>
+    </figure>
+  
+<p>The SPI supports scripting bridge integrations and can change separately from the public API. Read data during a coordinated world access phase, such as a Swift system that declares access to the relevant data. The resulting values can be passed to Swift UI code or other game logic.</p>
+<p>Runtime-defined components in the portable runtime and AOT use a world-local schema and payload. They can be read without knowing the generated Swift type:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span>A runtime component from Swift</span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-keyword">import</span> AdaECS
+
+<span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> schema <span class="hljs-operator">=</span> world<span class="hljs-property">.runtimeComponentDescriptor</span>(
+    named: <span class="hljs-string">&quot;game.health&quot;</span>
+), <span class="hljs-keyword">let</span> health <span class="hljs-operator">=</span> world<span class="hljs-property">.getRuntimeComponent</span>(
+    schema.componentID, from: playerID
+), <span class="hljs-keyword">let</span> index <span class="hljs-operator">=</span> schema<span class="hljs-property">.fields</span><span class="hljs-property">.firstIndex</span>(where: {
+    <span class="hljs-variable">$0</span>.key <span class="hljs-operator">==</span> <span class="hljs-string">&quot;current&quot;</span>
+}) {
+    <span class="hljs-built_in">print</span>(health.values[index])
+}</code></pre>
+    </figure>
+  
+<p>In native AOT, scalar resources declared by the compiled module are stored in the public <code>AdaScriptNativeResources</code> resource container. Its <code>values</code> is indexed first by resource ID, then by field name:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span>A native AOT resource from Swift</span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-keyword">import</span> AdaECS
+<span class="hljs-keyword">import</span> AdaScripting
+
+<span class="hljs-keyword">let</span> rules <span class="hljs-operator">=</span> world<span class="hljs-property">.getResource</span>(<span class="hljs-type">AdaScriptNativeResources</span>.<span class="hljs-keyword">self</span>)
+<span class="hljs-keyword">let</span> rate <span class="hljs-operator">=</span> rules<span class="hljs-operator">?</span><span class="hljs-property">.values</span>[<span class="hljs-string">&quot;game.rules&quot;</span>]<span class="hljs-operator">?</span>[<span class="hljs-string">&quot;healthRegenPerSecond&quot;</span>]
+<span class="hljs-built_in">print</span>(rate <span class="hljs-keyword">as</span> <span class="hljs-keyword">Any</span>)</code></pre>
+    </figure>
+  
+<p>This last path applies to builds with native AOT support. If data is originally declared in Swift, it can be retrieved through regular typed ECS APIs, while AdaScript binds the same data with <code>@query</code>, <code>@component</code>, and <code>@res</code>. Choose the API that matches how your project registers its data.</p>
+<h3 id="studio-tools-tool">Studio tools: @tool</h3>
+<p>Studio on macOS lets you create <strong>custom tools in AdaScript</strong>: add a panel to the right sidebar, bind its controls to script fields, and perform actions on the open scene. <code>@tool</code> describes the tool, <code>.ui</code> defines its interface, and AdaScript methods implement its behavior.</p>
+<p>Tools live beside the game in a dedicated project directory:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span>Tool module</span>
+        <span>Text</span>
+      </figcaption>
+      <pre><code class="language-text">Tools/
+└── LevelHelper/
+    ├── LevelHelper.ada
+    └── LevelHelper.ui</code></pre>
+    </figure>
+  
+<p>Each directory directly inside <code>Tools/</code> forms a module. Its <code>.ada</code> files and relative imports are compiled together. The reserved <code>Tools/</code> directory is excluded from game script loading: the tool runs in the editor rather than becoming a game system.</p>
+<p>For example, <strong>Level Helper</strong> creates a row of entities with Transform. Its annotation defines a stable ID, name, version, API version, and document permissions; <code>activate(editor)</code> registers the panel:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span>LevelHelper.ada</span>
+        <span>AdaScript</span>
+      </figcaption>
+      <pre><code class="language-adascript"><span class="hljs-meta">@tool</span>(
+    id: <span class="hljs-string">&quot;studio.level-helper&quot;</span>,
+    name: <span class="hljs-string">&quot;Level Helper&quot;</span>,
+    version: <span class="hljs-string">&quot;1.0.0&quot;</span>,
+    api: <span class="hljs-number">1</span>,
+    platforms: [<span class="hljs-string">&quot;macos&quot;</span>],
+    permissions: [
+        <span class="hljs-string">&quot;editor.documents.read&quot;</span>,
+        <span class="hljs-string">&quot;editor.documents.write&quot;</span>
+    ]
+)
+<span class="hljs-keyword">class</span> LevelHelper {
+    <span class="hljs-meta">@export</span> <span class="hljs-keyword">var</span> count = <span class="hljs-number">3.0</span>;
+    <span class="hljs-meta">@export</span> <span class="hljs-keyword">var</span> status = <span class="hljs-string">&quot;Open a scene, then Generate.&quot;</span>;
+
+    <span class="hljs-keyword">func</span> activate(editor) {
+        editor<span class="hljs-property">.addPanel</span>(
+            id: <span class="hljs-string">&quot;level-helper&quot;</span>,
+            title: <span class="hljs-string">&quot;Level Helper&quot;</span>,
+            location: <span class="hljs-string">&quot;right&quot;</span>,
+            ui: <span class="hljs-string">&quot;LevelHelper.ui&quot;</span>
+        );
+    }
+
+    <span class="hljs-keyword">func</span> generate(editor) {
+        <span class="hljs-keyword">if</span> (editor<span class="hljs-property">.scenePath</span> == <span class="hljs-string">&quot;&quot;</span>) {
+            status = <span class="hljs-string">&quot;Open a scene first.&quot;</span>;
+            <span class="hljs-keyword">return</span>;
+        }
+
+        <span class="hljs-keyword">var</span> total = Math<span class="hljs-property">.clamp</span>(count, <span class="hljs-number">1.0</span>, <span class="hljs-number">32.0</span>);
+        <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">while</span> (i &lt; total) {
+            editor<span class="hljs-property">.createEntity</span>(
+                name: <span class="hljs-string">&quot;Generated &quot;</span> + (i + <span class="hljs-number">1</span>),
+                x: i * <span class="hljs-number">48.0</span>,
+                y: <span class="hljs-number">0.0</span>
+            );
+            i += <span class="hljs-number">1</span>;
+        }
+        status = <span class="hljs-string">&quot;Generated &quot;</span> + total + <span class="hljs-string">&quot; entities.&quot;</span>;
+    }
+}</code></pre>
+    </figure>
+  
+<p>The <code>LevelHelper.ui</code> path is resolved relative to the declaring <code>.ada</code> file and must remain inside the module. In Studio API 1, a tool can register up to eight right-sidebar panels with unique IDs. The host removes them when the tool is disabled or its project closes; the script can additionally implement <code>deactivate()</code> if needed.</p>
+<p>The interface uses the regular <code>.ui</code> format and can be edited in UI Designer. Our example needs a slider, a button, and a result label:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span>LevelHelper.ui</span>
+        <span>YAML</span>
+      </figcaption>
+      <pre><code class="language-yaml"><span class="hljs-attr">format:</span> <span class="hljs-string">ada.ui</span>
+<span class="hljs-attr">schemaVersion:</span> <span class="hljs-number">1</span>
+<span class="hljs-attr">inputs:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">count</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">number</span>
+    <span class="hljs-attr">defaultValue:</span> <span class="hljs-number">3</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">status</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">string</span>
+    <span class="hljs-attr">defaultValue:</span> <span class="hljs-string">Ready</span>
+<span class="hljs-attr">actions:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">generate</span>
+<span class="hljs-attr">root:</span>
+  <span class="hljs-attr">id:</span> <span class="hljs-string">level-helper</span>
+  <span class="hljs-attr">type:</span> <span class="hljs-string">VStack</span>
+  <span class="hljs-attr">arguments:</span>
+    <span class="hljs-attr">spacing:</span> {<span class="hljs-attr">value:</span> <span class="hljs-number">12</span>}
+  <span class="hljs-attr">children:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">count</span>
+      <span class="hljs-attr">type:</span> <span class="hljs-string">Slider</span>
+      <span class="hljs-attr">arguments:</span>
+        <span class="hljs-attr">value:</span> {<span class="hljs-attr">binding:</span> <span class="hljs-string">count</span>}
+        <span class="hljs-attr">min:</span> {<span class="hljs-attr">value:</span> <span class="hljs-number">1</span>}
+        <span class="hljs-attr">max:</span> {<span class="hljs-attr">value:</span> <span class="hljs-number">32</span>}
+        <span class="hljs-attr">step:</span> {<span class="hljs-attr">value:</span> <span class="hljs-number">1</span>}
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">generate</span>
+      <span class="hljs-attr">type:</span> <span class="hljs-string">Button</span>
+      <span class="hljs-attr">arguments:</span>
+        <span class="hljs-attr">title:</span> {<span class="hljs-attr">value:</span> <span class="hljs-string">Generate</span>}
+      <span class="hljs-attr">actions:</span>
+        <span class="hljs-attr">action:</span> <span class="hljs-string">generate</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">status</span>
+      <span class="hljs-attr">type:</span> <span class="hljs-string">Text</span>
+      <span class="hljs-attr">arguments:</span>
+        <span class="hljs-attr">text:</span> {<span class="hljs-attr">binding:</span> <span class="hljs-string">status</span>}</code></pre>
+    </figure>
+  
+<p>Each input binds to an <code>@export</code> field with the same name and a compatible type. Strings, booleans, integers, and floating-point numbers are supported. The panel starts with the script instance&#39;s values; <code>.ui</code> <code>defaultValue</code> fields are used for Designer previews. Before an action, control values are copied to the tool&#39;s fields, and after it finishes, values are copied back to the interface. The <code>generate</code> action calls <code>func generate(editor)</code>; tool callbacks are synchronous.</p>
+<p><strong>Scene changes are applied as one batch.</strong> <code>editor.createEntity(...)</code> stages entities, and Studio applies them only after the callback succeeds. In this example, one Generate creates the entire row, one Undo removes it, Redo restores it, and regular Save persists the scene. If the callback fails or the original scene has changed, the staged batch is not applied. <code>editor.scenePath</code>, <code>editor.sceneRevision</code>, and <code>editor.entityCount</code> are also available; an action can create up to 256 entities.</p>
+<p><strong>Studio manages enablement and access.</strong> Tools are disabled by default. The wrench button opens Studio Tools; before running code or displaying <code>.ui</code>, Studio asks you to review permissions and choose <strong>Allow and Enable</strong>. Versions, enablement, and access settings live in <strong>Settings → Project → Studio Tools</strong>. <strong>Revoke Access</strong> immediately removes panels and cancels pending actions. Consent is stored locally for each project; changes to the source location, API, platforms, or requested permissions require consent again.</p>
+<p>The current runtime implements <code>editor.documents.read</code> and <code>editor.documents.write</code>. The static schema can describe a wider permission set, but this host does not yet expose network, process, clipboard, or workspace file APIs.</p>
+<p><strong>Reload lets you refine a tool without closing the project.</strong> A valid <code>.ui</code> reload preserves entered values. A successful script reload replaces its instance and registrations; an invalid script or interface keeps the previous working version active and reports diagnostics. The runtime bounds callback execution time, loops, memory, and recursion.</p>
+<p>This layer is available <strong>on macOS</strong>. iPadOS support, command, menu, and formatter registration, async callbacks, and marketplace distribution remain future steps. Panels use <code>.ui</code>.</p>
+<p>The <a href="https://github.com/AdaEngine/Ada/blob/main/Editor/Documentation/StudioTools.md" target="_blank" rel="noreferrer">Studio Tools documentation</a> covers lifecycle, bindings, scene access, and reload. You can copy the <a href="https://github.com/AdaEngine/Ada/tree/main/Editor/Documentation/Examples/StudioTools/LevelHelper" target="_blank" rel="noreferrer">complete Level Helper example</a> into your project&#39;s <code>Tools/LevelHelper/</code> directory.</p>
+<h3 id="adascript-addons-reusable-libraries">AdaScript addons: reusable libraries</h3>
+<p>Game logic can be packaged as an <strong>AdaScript addon</strong>, a library of functions, ECS systems, and scriptable behavior. Shared damage logic, inventory systems, or a character controller can be reused across games.</p>
+<p>A library lives in a separate repository. Its root contains <code>ada-library.json</code>, which describes its identifier, version, source files, and dependencies:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span>CombatAddon/</span>
+        <span>Text</span>
+      </figcaption>
+      <pre><code class="language-text">CombatAddon/
+├── ada-library.json
+└── Sources/
+    └── Damage.ada</code></pre>
+    </figure>
+  
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span>ada-library.json</span>
+        <span>JSON</span>
+      </figcaption>
+      <pre><code class="language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;schemaVersion&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;example.combat&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1.0.0&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;api&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;sources&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;Sources/Damage.ada&quot;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;dependencies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span></code></pre>
+    </figure>
+  
+<p><code>sources</code> lists all library source files, including imported helper files. For example, <code>Damage.ada</code> might contain this function:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span>CombatAddon/Sources/Damage.ada</span>
+        <span>AdaScript</span>
+      </figcaption>
+      <pre><code class="language-adascript"><span class="hljs-keyword">func</span> applyDamage(current, damage) {
+    <span class="hljs-keyword">var</span> remaining = current - damage;
+    <span class="hljs-keyword">if</span> (remaining &lt; <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    }
+    <span class="hljs-keyword">return</span> remaining;
+}</code></pre>
+    </figure>
+  
+<p>In Studio, open <strong>Settings → Project → AdaScript Libraries</strong>, enter a public GitHub repository and a tag or commit, then select <strong>Install / Update</strong>. Rebuild the game or restart Play after installation. The current provider supports public GitHub repositories.</p>
+<p>A function from an installed addon can be imported by library ID, independently of where the game script is located:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span>Importing into a game</span>
+        <span>AdaScript</span>
+      </figcaption>
+      <pre><code class="language-adascript"><span class="hljs-keyword">import</span> { applyDamage }
+    <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@example.combat/Sources/Damage&quot;</span>;
+
+<span class="hljs-keyword">var</span> health = applyDamage(<span class="hljs-number">100.0</span>, <span class="hljs-number">25.0</span>); <span class="hljs-comment">// 75</span></code></pre>
+    </figure>
+  
+<p>Library <code>@system</code> and <code>@scriptable</code> declarations participate in normal game module registration. Required engine features are enabled through Runtime Settings. Libraries share the game&#39;s module, so their classes, functions, and annotation IDs must have unique names.</p>
+<p>Installation stores source files in <code>.ada/libraries/</code> and exact Git commits in <code>.ada/libraries.lock.json</code>. Libraries can have their own dependencies, also pinned to specific commits. <strong>Restore Locked Libraries</strong> restores the same set on another computer. Builds and execution use installed sources and do not download libraries automatically.</p>
+<p>For a fully offline project, keep both the lockfile and <code>.ada/libraries/</code>. In a SwiftPM game, <code>AdaScriptBuildPlugin</code> includes addon sources in the build alongside game scripts. Libraries make it easier to share reusable logic while keeping dependencies reproducible.</p>
+<h3 id="hot-reload">Hot reload</h3>
+<p>Studio can update supported AdaScript game logic during execution. If a new script version contains an error, the previous version continues running.</p>
+<p>This shortens the feedback loop for behavior changes. Data schema changes and other incompatible edits may require restarting the game.</p>
+<h3 id="the-new-aot-compiler">The new AOT compiler</h3>
+<p>The release includes an <strong>experimental AOT path</strong> for AdaScript.</p>
+<p>Supported code is compiled ahead of time into native code. The path covers ECS integration, scriptable object lifecycles, and asynchronous coroutine tasks.</p>
+<p>Studio uses it to export AdaScript projects to macOS, Web, and Android. AOT is currently limited to a supported subset of the language; unsupported constructs produce explicit errors.</p>
+<h2 id="native-android-support">Native Android support</h2>
+<p>AdaEngine now has a native Android host. Game code runs in Swift, and rendering uses WebGPU through Swan/Dawn over Vulkan.</p>
+<p>Standalone Studio on macOS can select Android as a run target, discover a device or emulator, build an APK, install it, and launch the game. Studio can also start a configured Android Virtual Device.</p>
+<p>Export supports AdaScript AOT and compatible Swift AdaEngine projects. The current workflow creates development-signed APKs; producing an AAB and publishing to Google Play require a separate process.</p>
+
+    <figure class="article-media article-media-image">
+      <img src="/showcases/adaengine-1-0-0/android-build-export.png" alt="Android Build &amp; Export" loading="lazy" role="button" tabindex="0" aria-label="Open image fullscreen" data-article-lightbox-image />
+      <figcaption>Configuring the Android SDK, NDK, and JDK in Studio before export and launch.</figcaption>
+    </figure>
+  
+<h2 id="networking-and-multiplayer">Networking and multiplayer</h2>
+<p>The new <strong>AdaMultiplayer</strong> module provides infrastructure for local and internet multiplayer.</p>
+<p>It includes a host-authoritative model, replication of registered ECS components, typed commands and RPCs, and interpolation of received state.</p>
+<p>Transport is separate from game logic. You can use a local connection, the Ada Cloud relay, or a custom transport implementation. AdaScript provides annotations for network data and commands.</p>
+<p>This keeps the game model in ECS while making the data shared between participants explicit.</p>
+<h3 id="a-replicated-component-player-state">A replicated component: player state</h3>
+<p>In AdaScript, a network component is declared with <code>@replicated_component</code>. It already acts as an ECS component, so an additional <code>@component</code> annotation is unnecessary. Here is a small example of movement along one axis:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>AdaScript</span>
+      </figcaption>
+      <pre><code class="language-adascript"><span class="hljs-meta">@replicated_component</span>(
+    id: <span class="hljs-string">&quot;game.network-player&quot;</span>,
+    version: <span class="hljs-number">1</span>,
+    authority: <span class="hljs-string">&quot;host&quot;</span>,
+    visibility: <span class="hljs-string">&quot;all_peers&quot;</span>
+)
+<span class="hljs-keyword">struct</span> NetworkPlayer {
+    <span class="hljs-meta">@network_field</span>(<span class="hljs-number">1</span>) <span class="hljs-keyword">var</span> peer = <span class="hljs-string">&quot;&quot;</span>;
+    <span class="hljs-meta">@network_field</span>(<span class="hljs-number">2</span>, interpolate: <span class="hljs-string">&quot;linear&quot;</span>) <span class="hljs-keyword">var</span> x = <span class="hljs-number">0.0</span>;
+    <span class="hljs-meta">@network_field</span>(<span class="hljs-number">3</span>) <span class="hljs-keyword">var</span> health = <span class="hljs-number">100</span>;
+    <span class="hljs-meta">@local</span> <span class="hljs-keyword">var</span> animationTime = <span class="hljs-number">0.0</span>;
+}</code></pre>
+    </figure>
+  
+<p>The host stores authoritative state and sends <code>peer</code>, <code>x</code>, and <code>health</code> to participants. Linear interpolation is enabled for the numeric <code>x</code> coordinate. <code>animationTime</code> stays local, so each client can use it for its own character animation.</p>
+<p><code>id</code> identifies the component&#39;s network schema. The numbers in <code>@network_field(1)</code>, <code>(2)</code>, and <code>(3)</code> identify fields within that schema. They are stable protocol tags, rather than array indices: preserve a field&#39;s tag when renaming it. Compatible builds must agree on <code>id</code>, <code>version</code>, field tags, and types.</p>
+<p>On the host, a component can be created with a regular ECS command inside a system callback, passing the ID of the participant who owns the player:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>AdaScript</span>
+      </figcaption>
+      <pre><code class="language-adascript">context<span class="hljs-property">.world</span><span class="hljs-property">.spawn</span>([
+    NetworkPlayer(peer: session<span class="hljs-property">.localPeerID</span>)
+]);</code></pre>
+    </figure>
+  
+<p>Here, <code>session</code> is the <code>AdaScriptMultiplayerState</code> resource. For a remote player, the host passes that participant&#39;s peer ID instead of <code>session.localPeerID</code>. The generated creation path for the replicated component adds a replication marker to the entity; no manually assembled snapshot is needed.</p>
+<h3 id="working-with-a-component-and-declaring-an-rpc">Working with a component and declaring an RPC</h3>
+<p>A peer sends movement intent, and the host calculates the new coordinate. The <code>receiveMove</code> method is declared as an RPC. Its body records input separately for each sender, which is then applied to the corresponding component through <code>@query</code>:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>AdaScript</span>
+      </figcaption>
+      <pre><code class="language-adascript"><span class="hljs-meta">@system</span>(scheduler: <span class="hljs-string">&quot;update&quot;</span>, id: <span class="hljs-string">&quot;game.network-movement&quot;</span>)
+<span class="hljs-keyword">class</span> NetworkMovementSystem {
+    <span class="hljs-meta">@res</span> <span class="hljs-keyword">var</span> input: Input;
+    <span class="hljs-meta">@res</span> <span class="hljs-keyword">var</span> multiplayer: Multiplayer;
+    <span class="hljs-meta">@res</span> <span class="hljs-keyword">var</span> session: AdaScriptMultiplayerState;
+    <span class="hljs-meta">@query</span>(NetworkPlayer) <span class="hljs-keyword">var</span> players;
+
+    <span class="hljs-keyword">var</span> movementByPeer = [:];
+
+    <span class="hljs-meta">@rpc</span>(
+        id: <span class="hljs-string">&quot;game.move-player&quot;</span>,
+        version: <span class="hljs-number">1</span>,
+        direction: <span class="hljs-string">&quot;peer_to_host&quot;</span>,
+        delivery: <span class="hljs-string">&quot;unreliable_sequenced&quot;</span>,
+        channel: <span class="hljs-string">&quot;input&quot;</span>
+    )
+    <span class="hljs-keyword">func</span> receiveMove(<span class="hljs-meta">@network_field</span>(<span class="hljs-number">1</span>) moveX = <span class="hljs-number">0.0</span>) {
+        <span class="hljs-comment">// The transport provides source; the sender cannot supply it.</span>
+        <span class="hljs-keyword">if</span> (moveX &lt; <span class="hljs-number">-1.0</span>) moveX = <span class="hljs-number">-1.0</span>;
+        <span class="hljs-keyword">if</span> (moveX &gt; <span class="hljs-number">1.0</span>) moveX = <span class="hljs-number">1.0</span>;
+        movementByPeer[source] = moveX;
+    }
+
+    <span class="hljs-keyword">func</span> update(context) {
+        <span class="hljs-keyword">var</span> moveX = input<span class="hljs-property">.getActionStrength</span>(<span class="hljs-string">&quot;MoveRight&quot;</span>)
+            - input<span class="hljs-property">.getActionStrength</span>(<span class="hljs-string">&quot;MoveLeft&quot;</span>);
+
+        <span class="hljs-keyword">if</span> (session<span class="hljs-property">.role</span> == <span class="hljs-string">&quot;peer&quot;</span>) {
+            multiplayer<span class="hljs-property">.send</span>(receiveMove(moveX));
+            <span class="hljs-keyword">return</span>;
+        }
+        <span class="hljs-keyword">if</span> (session<span class="hljs-property">.role</span> != <span class="hljs-string">&quot;host&quot;</span>) <span class="hljs-keyword">return</span>;
+
+        <span class="hljs-comment">// Apply the host player&#x27;s local input directly.</span>
+        movementByPeer[session<span class="hljs-property">.localPeerID</span>] = moveX;
+
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> row <span class="hljs-keyword">in</span> players) {
+            <span class="hljs-keyword">var</span> movement = movementByPeer[row<span class="hljs-property">.networkPlayer</span><span class="hljs-property">.peer</span>];
+            <span class="hljs-keyword">if</span> (movement == <span class="hljs-literal">null</span>) <span class="hljs-keyword">continue</span>;
+
+            <span class="hljs-comment">// A regular write to the ECS component on the host.</span>
+            row<span class="hljs-property">.networkPlayer</span><span class="hljs-property">.x</span> += movement * <span class="hljs-number">175.0</span> * context<span class="hljs-property">.deltaTime</span>;
+        }
+    }
+}</code></pre>
+    </figure>
+  
+<p>Calling <code>receiveMove(moveX)</code> constructs a typed command; <code>multiplayer.send(...)</code> queues it for transmission. The body of <code>receiveMove</code> executes <strong>on the receiver before <code>update</code></strong>, with <code>source</code> holding the sender ID supplied by the transport. The body is not automatically called on the sending client. The example therefore handles the host&#39;s own input directly.</p>
+<p>We match <code>source</code> to the <code>NetworkPlayer.peer</code> assigned by the host when creating the player. A client controls its own character without selecting someone else&#39;s entity through the payload. Input is clamped to −1 through 1; speed and the resulting coordinate are determined by the host. Once <code>row.networkPlayer.x</code> is updated, replication delivers the state to participants.</p>
+<p><code>peer_to_host</code> specifies the RPC direction. <code>unreliable_sequenced</code> suits continuously refreshed input: the next packet replaces a lost one, and stale packets are discarded. Commands that require guaranteed delivery and ordering use <code>reliable_ordered</code>. Like components, RPCs have stable <code>id</code>, <code>version</code>, and parameter tags.</p>
+<p>The example assumes the multiplayer runtime is enabled, <code>MoveRight</code> / <code>MoveLeft</code> actions are configured, and the host creates players as they join the session. It is a foundation for movement logic; a game also needs to clear input on disconnects or timeouts and remove players who leave.</p>
+<p>Read more in the documentation:</p>
+<ul>
+<li><a href="https://github.com/AdaEngine/Ada/blob/main/Sources/AdaScripting/AdaScripting.docc/AdaScriptLanguage.md#multiplayer-schemas" target="_blank" rel="noreferrer">AdaScript: multiplayer schemas and RPCs</a> — declarations, command transmission, and receiver-side method execution.</li>
+<li><a href="https://github.com/AdaEngine/Ada/blob/main/Sources/AdaMultiplayer/AdaMultiplayer.docc/AdaMultiplayer.md" target="_blank" rel="noreferrer">AdaMultiplayer: runtime setup and transports</a> — plugin configuration, entity replication, and network sessions in Swift.</li>
+</ul>
+
+    <figure class="article-media article-media-image">
+      <img src="/showcases/adaengine-1-0-0/medieval-arena.png" alt="Medieval Arena" loading="lazy" role="button" tabindex="0" aria-label="Open image fullscreen" data-article-lightbox-image />
+      <figcaption>Medieval Arena: a 2D AdaScript game with network gameplay logic.</figcaption>
+    </figure>
+  
+<h2 id="new-adaui-features">New AdaUI features</h2>
+<p>AdaUI has grown alongside Studio.</p>
+<p>The animation system now includes transactions, <code>withAnimation</code>, binding animation, and selected-value changes. Navigation, tabs, sheets, and full-screen presentations have built-in transitions.</p>
+<p>We also improved text handling, selection, writing directions, clipping, and interface updates.</p>
+<p>A major addition is the <strong>visual UI Designer</strong>. Interfaces can be built as <code>.ui</code> assets, with editable hierarchies, properties, and modifiers, plus inputs, actions, and bindings. UI elements can bind to exported fields of gameplay behavior.</p>
+<p>AdaUI is used in both games and Studio itself, continuously testing the framework against complex interfaces.</p>
+
+    <figure class="article-media article-media-video">
+      <video controls playsinline preload="metadata" poster="/showcases/adaengine-1-0-0/adaui-kanban.png" src="/showcases/adaengine-1-0-0/adaui-kanban.mp4">AdaUI Kanban</video>
+      <figcaption>AdaUI in practice: an interactive Kanban board. Recording from the engine&#39;s demo gallery.</figcaption>
+    </figure>
+  
+<h2 id="2d-improvements">2D improvements</h2>
+<p>Our 2D work focused on level creation and rendering correctness.</p>
+<p>Tilemaps now have a complete workflow in Studio: tilesets, palettes, layers, map editing, and geometry configuration for lighting and shadows.</p>
+<p>For sprites, we improved batching, size handling, and culling updates. Texture atlas tools are now part of the editor&#39;s asset workflow, making graphics easier to prepare and use.</p>
+
+    <figure class="article-media article-media-video">
+      <video controls playsinline preload="metadata" poster="/showcases/adaengine-1-0-0/sprite-rendering.png" src="/showcases/adaengine-1-0-0/sprite-rendering.mp4">Sprite rendering</video>
+      <figcaption>A 2D example from the engine&#39;s demo gallery, with many sprites in one game world.</figcaption>
+    </figure>
+  
+<h2 id="a-major-3d-update">A major 3D update</h2>
+<p>AdaEngine&#39;s 3D capabilities have expanded substantially.</p>
+
+    <figure class="article-media article-media-image">
+      <img src="/images/studio/skeletal-garden.png" alt="Skeletal Garden" loading="lazy" role="button" tabindex="0" aria-label="Open image fullscreen" data-article-lightbox-image />
+      <figcaption>Skeletal Garden: animated characters, materials, lighting, and a 3D game world.</figcaption>
+    </figure>
+  
+
+    <figure class="article-media article-media-image">
+      <img src="/showcases/adaengine-1-0-0/garden-overview.png" alt="Skeletal Garden overview" loading="lazy" role="button" tabindex="0" aria-label="Open image fullscreen" data-article-lightbox-image />
+      <figcaption>Skeletal Garden: terrain, vegetation, and the central character area.</figcaption>
+    </figure>
+  
+<h3 id="box3d-physics">Box3D physics</h3>
+<p>We added integration with <a href="https://github.com/erincatto/box3d" target="_blank" rel="noreferrer">Box3D</a>, a library for three-dimensional rigid-body physics.</p>
+<p>The engine now has 3D bodies, collision shapes, and a character controller. Skeletal Garden uses them for movement, collisions, jumping, and terrain traversal.</p>
+
+    <figure class="article-media article-media-video">
+      <video controls playsinline preload="metadata" poster="/showcases/adaengine-1-0-0/physics-3d.png" src="/showcases/adaengine-1-0-0/physics-3d.mp4">3D physics demonstration</video>
+      <figcaption>Interacting 3D objects: a recording from the engine&#39;s archived demo gallery.</figcaption>
+    </figure>
+  
+<h3 id="models-and-animation">Models and animation</h3>
+<p>GLB/glTF support covers model hierarchies, PBR materials, skeletons, and animation clips. GPU skinning and independent animation playback for model instances have been added.</p>
+<p>Animation graphs support clip blending, additive layers, bone masks, and animation events. They can be edited and previewed in Studio.</p>
+<h3 id="lighting-and-effects">Lighting and effects</h3>
+<p>PBR rendering, image-based lighting, local lights, and shadows continue to develop.</p>
+<p>We added cascaded directional shadows, <strong>SSAO</strong>, FXAA, and per-camera environment settings. SSAO adds depth where objects meet, while IBL uses the environment for lighting and reflections.</p>
+<p>Move the slider to compare actual frames of the same scene with SSAO disabled and enabled.</p>
+
+      <figure class="article-media article-comparison" data-article-comparison>
+        <div class="article-comparison-frame" style="--comparison-position:50%">
+          <img src="/showcases/adaengine-1-0-0/garden-ssao.png" alt="SSAO" loading="lazy" />
+          <img class="article-comparison-before" src="/showcases/adaengine-1-0-0/garden-no-ssao.png" alt="Without SSAO" loading="lazy" />
+          <span class="article-comparison-label article-comparison-label-before">Without SSAO</span>
+          <span class="article-comparison-label article-comparison-label-after">SSAO</span>
+        </div>
+        <input type="range" min="0" max="100" value="50" aria-label="SSAO: contact shadows in Skeletal Garden" aria-valuetext="50% Without SSAO" data-article-comparison-range data-before-label="Without SSAO" />
+        <figcaption>SSAO: contact shadows in Skeletal Garden</figcaption>
+      </figure>
+    
+<h3 id="metalfx">MetalFX</h3>
+<p>Supported Metal devices can use spatial upscaling and temporal reconstruction through <strong>MetalFX</strong>.</p>
+<p>The temporal path uses frame history and motion vectors from the camera, objects, and skeletal animation. UI is composited after image reconstruction and retains the output resolution.</p>
+
+      <figure class="article-media article-comparison" data-article-comparison>
+        <div class="article-comparison-frame" style="--comparison-position:50%">
+          <img src="/showcases/adaengine-1-0-0/garden-metalfx-temporal.png" alt="Temporal" loading="lazy" />
+          <img class="article-comparison-before" src="/showcases/adaengine-1-0-0/garden-metalfx-spatial.png" alt="Spatial" loading="lazy" />
+          <span class="article-comparison-label article-comparison-label-before">Spatial</span>
+          <span class="article-comparison-label article-comparison-label-after">Temporal</span>
+        </div>
+        <input type="range" min="0" max="100" value="50" aria-label="MetalFX: spatial and temporal reconstruction, macOS / Metal" aria-valuetext="50% Spatial" data-article-comparison-range data-before-label="Spatial" />
+        <figcaption>MetalFX: spatial and temporal reconstruction, macOS / Metal</figcaption>
+      </figure>
+    
+<p>These static frames are useful for inspecting detail. Temporal reconstruction quality in motion and rendering cost require separate measurements.</p>
+<h3 id="webgpu">WebGPU</h3>
+<p>WebGPU continues to develop as a portable graphics backend for AdaEngine. It is used for Web targets and by the native Android host over Vulkan.</p>
+<p>Effect availability depends on the platform and backend capabilities.</p>
+
+    <figure class="article-media article-media-image">
+      <img src="/showcases/adaengine-1-0-0/garden-webgpu.png" alt="Skeletal Garden on WebGPU" loading="lazy" role="button" tabindex="0" aria-label="Open image fullscreen" data-article-lightbox-image />
+      <figcaption>A Skeletal Garden frame from a native WebGPU run.</figcaption>
+    </figure>
+  
+<h2 id="performance">Performance</h2>
+<p>We reworked important ECS paths: entity creation, component composition changes, and query iteration. This included reducing unnecessary copies, ARC operations, and allocations, as well as correcting component lifetimes.</p>
+<p>A local Release benchmark operating on <strong>4,000 entities</strong> produced these median CPU times:</p>
+<ul>
+<li><strong>Entity creation:</strong> 179.18 ms → 4.43 ms.</li>
+<li><strong>Component insertion and removal:</strong> 592.45 ms → 20.23 ms.</li>
+<li><strong>InsertCoW workload:</strong> 299.37 ms → 10.13 ms.</li>
+</ul>
+<p>These are before-and-after measurements of a specific ECS storage optimization. They were taken on Apple arm64 with Swift 6.2.4 in Release, using three warmups and 30 measured samples. They describe those workloads, rather than an overall FPS improvement or a comparison of every feature across releases. <a href="https://github.com/AdaEngine/Ada/blob/main/Documentation/Performance/ECSStorageInPlace.md" target="_blank" rel="noreferrer">Methodology and full results</a>.</p>
+<p>Studio also gained a <strong>Performance panel and Timeline</strong>: CPU update time, entity count, process memory, ECS system durations, and an event history with Chrome Trace export. This helps locate causes of delays while developing a game.</p>
+
+    <figure class="article-media article-media-image">
+      <img src="/showcases/adaengine-1-0-0/performance-timeline.png" alt="Performance Timeline" loading="lazy" role="button" tabindex="0" aria-label="Open image fullscreen" data-article-lightbox-image />
+      <figcaption>A recorded CPU Timeline: world updates, ECS, and render graph nodes.</figcaption>
+    </figure>
+  
+<h2 id="ada-cloud-and-user-created-games">Ada Cloud and user-created games</h2>
+<p><strong>Ada Cloud</strong> expands the ways games can be distributed.</p>
+<p>UGC supports persistent versions, fixed files and metadata, moderation, and publication history. Each new version is reviewed separately, while the currently approved game remains available until its update is approved.</p>
+<p>Community in Studio lets you discover games, read descriptions, view screenshots, and run supported AdaScript publications in the embedded player. Compatible multiplayer games offer Solo, Host, and room-code joining.</p>
+<p><a href="https://store.adaengine.org/store" target="_blank" rel="noreferrer">Ada Store</a> is also growing as a catalog of assets, scripts, templates, and tools. It complements the game library with materials for building your own projects.</p>
+<h2 id="automation-through-the-cli">Automation through the CLI</h2>
+<p>Standalone Studio on macOS includes the <strong><code>adastudio</code> CLI</strong>.</p>
+<p>This is an important part of working with <strong>AI agents</strong>. An agent needs a way to check its changes: read project configuration, find script errors, and produce a build. The CLI provides that path through the terminal without opening a Studio window or connecting to its embedded chat. The same commands work for manual use and CI.</p>
+<p>The CLI uses Studio&#39;s own project validator, AdaScript builder, and exporter. An agent works with saved files and receives results in a format suited to automation:</p>
+<ul>
+<li><code>doctor</code> checks for the Build SDK and build tools.</li>
+<li><code>project inspect</code> reads project configuration and structure without rewriting metadata.</li>
+<li><code>validate</code> checks AdaScript, the entry scene, and runtime bindings.</li>
+<li><code>build</code> packages an AdaScript game as a macOS application.</li>
+<li><code>export</code> creates a supported build for macOS, Web, or Android.</li>
+</ul>
+<p>For example, an agent can check a project and build it after making corrections:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span>Validating and building an AdaScript project</span>
+        <span>Bash</span>
+      </figcaption>
+      <pre><code class="language-bash">STUDIO=<span class="hljs-string">&quot;/Applications/Ada Studio.app/Contents/MacOS/adastudio&quot;</span>
+
+<span class="hljs-string">&quot;<span class="hljs-variable">$STUDIO</span>&quot;</span> doctor --format json
+<span class="hljs-string">&quot;<span class="hljs-variable">$STUDIO</span>&quot;</span> project inspect --project ./MyGame --format json
+<span class="hljs-string">&quot;<span class="hljs-variable">$STUDIO</span>&quot;</span> validate --project ./MyGame --format json
+
+<span class="hljs-string">&quot;<span class="hljs-variable">$STUDIO</span>&quot;</span> build --project ./MyGame \
+  --target macos --configuration release \
+  --output ./Build/MyGame --format json</code></pre>
+    </figure>
+  
+<p>With <code>--format json</code>, stdout contains one report with <code>ok</code>, <code>exitCode</code>, <code>diagnostics</code>, and paths to <code>artifacts</code>. Tool logs go separately to stderr. Diagnostics include an error code, message, and, when the compiler supplies them, a file, line, and column. An agent can locate the problem, make a correction, and repeat the check. Exit codes distinguish an invalid project from a missing toolchain or a build failure.</p>
+<p>This creates a repeatable <strong>edit → validate → fix → build</strong> cycle. In CI, it helps check changes before human review and preserve artifacts for later execution. A successful <code>validate</code> checks code and configuration; gameplay, rendering, and controls are checked separately in simulation and visible Play. For SwiftPM projects, this command validates metadata and layout; the actual scope is reported in <code>details.validationScope</code>.</p>
+<h3 id="comparison-with-unity-cli">Comparison with Unity CLI</h3>
+<p>The approach will be familiar to Unity developers: the editor supports batch-mode automation, and the modern <strong>Unity CLI</strong> offers <code>unity build</code>, <code>unity test</code>, and <code>unity run</code>, along with JSON output. A macOS game build can be expressed like this:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span>Unity CLI example</span>
+        <span>Bash</span>
+      </figcaption>
+      <pre><code class="language-bash">unity build ./MyUnityGame --target StandaloneOSX \
+  --output-path ./Build/MyUnityGame.app --format json</code></pre>
+    </figure>
+  
+<p>Unity CLI launches the required editor in batch mode; builds can use the built-in path, a Build Profile, or a custom C# method. In Ada Studio, validation and export commands are bundled with the standalone app and use its project pipeline without starting the windowed runtime. In both cases, agents benefit from explicit commands, structured results, and repeatable operations. <a href="https://github.com/Unity-Technologies/skills/blob/main/skills/unity-cli/references/build-run-test.md" target="_blank" rel="noreferrer">Unity CLI documentation</a>, <a href="https://docs.unity.com/en-us/engine/6000.3/manual/building-and-publishing/build-command-line" target="_blank" rel="noreferrer">Unity batch mode</a>.</p>
+<p>Commands and current capabilities are described in the <a href="https://github.com/AdaEngine/Ada/blob/main/Editor/Documentation/CLI.md" target="_blank" rel="noreferrer">Ada Studio CLI documentation</a>. Builds require the relevant platform tools; Web export additionally uses a compatible Swift WebAssembly SDK.</p>
+<h2 id="let-s-make-games">Let&#39;s make games</h2>
+<p>AdaEngine remains an open-source Swift project under the MIT license.</p>
+<p>Version 1.0.0 brings together the engine, visual tools, scripting language, AI workflows, and distribution infrastructure. For us, it is a significant step toward an environment where it is easy to experiment, build games, and share them.</p>
+<p>Explore the <a href="/demos">examples</a>, try <a href="/studio">Studio</a>, and join <a href="https://github.com/AdaEngine/Ada" target="_blank" rel="noreferrer">AdaEngine on GitHub</a> through code, documentation, games, and feedback.</p>
+<p><strong>Let&#39;s make games with Swift and AdaScript.</strong></p></div></article></div></main></div>
+  </body>
+</html>
