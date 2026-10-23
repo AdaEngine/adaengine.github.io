@@ -1,0 +1,980 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introducing Ada 0.1.0 - Новости Ada</title>
+    <meta name="description" content="Ada 0.1.0 is the first public milestone for a Swift-first, data-driven game engine and app framework." />
+    <meta name="theme-color" content="#111111" />
+    <meta property="og:title" content="Introducing Ada 0.1.0 - Новости Ada" />
+    <meta property="og:description" content="Ada 0.1.0 is the first public milestone for a Swift-first, data-driven game engine and app framework." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://adaengine.org/ru/articles/introducing-adaengine-0-1-0" />
+    <meta property="og:image" content="https://adaengine.org/images/main/tilemap.png" />
+    <meta property="og:image:alt" content="Introducing Ada 0.1.0 - Новости Ada" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://adaengine.org/images/main/tilemap.png" />
+    <meta name="twitter:image:alt" content="Introducing Ada 0.1.0 - Новости Ada" />
+    <link rel="canonical" href="https://adaengine.org/ru/articles/introducing-adaengine-0-1-0" />
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="Ada News" href="https://adaengine.org/rss.xml" />
+    <script defer src="https://metrics.adaengine.org/script.js" data-website-id="560e03b9-085c-4df4-b9e8-2beb7e76b575"></script>
+    <script type="module" crossorigin src="/assets/index-DVVkA5Zs.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BVhjwL5v.css">
+      <link rel="alternate" hreflang="en" data-language-alternate href="https://adaengine.org/articles/introducing-adaengine-0-1-0" />
+    <link rel="alternate" hreflang="ru" data-language-alternate href="https://adaengine.org/ru/articles/introducing-adaengine-0-1-0" />
+    <link rel="alternate" hreflang="x-default" data-language-alternate href="https://adaengine.org/articles/introducing-adaengine-0-1-0" />
+    <meta property="og:locale" content="ru_RU" />
+  </head>
+  <body>
+    <div id="app"><main class="page-shell article-page-shell"><div class="container article-reading-layout"><article class="safe-area-insets article-page"><header class="article-hero"><a class="article-back-link" href="/ru/blog">К новостям</a><h1 lang="en">Introducing Ada 0.1.0</h1><div class="article_info">Автор: Vladislav Prusakov · <time datetime="2026-06-1 13:36">1 июн. 2026 г.</time> · 14 мин чтения</div><p class="article-item-description" lang="en">Ada 0.1.0 is the first public milestone for a Swift-first, data-driven game engine and app framework.</p></header><p class="article-language-note">Эта статья пока доступна на английском языке.</p><div class="article-content" lang="en"><h1>Introducing Ada 0.1.0</h1>
+
+    <figure class="article-media article-media-image">
+      <img src="/images/main/ada-editor.png" alt="Ada Editor workspace" loading="lazy" role="button" tabindex="0" aria-label="Open image fullscreen" data-article-lightbox-image />
+      <figcaption>Ada Editor workspace with Swift source, scene preview, SwiftPM commands, and the output console.</figcaption>
+    </figure>
+  
+<p>After a long road, I am excited to introduce <strong>Ada 0.1.0</strong>: a free and open source game engine and app framework written in Swift.</p>
+<p>Ada is built around a simple idea: Swift should be a great language for making games, interactive apps, tools, and creative software — not only apps for Apple platforms. Swift is expressive, safe, fast, and comfortable to write. Ada tries to bring those strengths into game development with a modular engine, a data-driven architecture, and APIs that feel natural to Swift developers.</p>
+<p>Ada is available on GitHub under the <a href="https://github.com/AdaEngine/AdaEngine" target="_blank" rel="noreferrer">MIT license</a>. This first release is still early, but it is already a real milestone: the engine can open windows, run an ECS-driven game loop, render sprites and UI, load assets and scenes, play audio, handle input, run physics, and build examples across the engine modules.</p>
+
+    <aside class="article-callout article-callout-warning">
+      <span class="article-callout-icon" aria-hidden="true">!</span>
+      <div>
+        <p class="article-callout-title">Early release</p>
+        <p>Ada 0.1.0 is an early release. APIs will change, some features are incomplete, documentation is still growing, and you should expect rough edges. I do not recommend using it for serious production projects yet unless you are comfortable with instability and want to help shape the engine.</p>
+      </div>
+    </aside>
+  
+<p>If that sounds exciting, you can jump straight into the <a href="https://docs.adaengine.org/tutorials/adaengine/" target="_blank" rel="noreferrer">tutorials</a> or explore the <a href="https://github.com/AdaEngine/AdaEngine" target="_blank" rel="noreferrer">GitHub repository</a>.</p>
+
+    <aside class="article-callout article-callout-info">
+      <span class="article-callout-icon" aria-hidden="true">!</span>
+      <div>
+        <p class="article-callout-title">Info</p>
+        <p>This article includes links to Ada documentation and source code where possible. The docs are generated from the codebase, so they will continue improving together with the engine.</p>
+      </div>
+    </aside>
+  
+<h2 id="what-is-ada">What is Ada?</h2>
+<p>Ada is a data-driven game engine and app framework for Swift. Its core design goals are:</p>
+<ul>
+<li><strong>Simple</strong>: easy to learn for newcomers, but still flexible enough for experienced users.</li>
+<li><strong>Modular</strong>: most engine features are delivered as plugins, so you can choose what your app needs.</li>
+<li><strong>Data-driven</strong>: the heart of Ada is an Entity Component System.</li>
+<li><strong>Fast iteration</strong>: the engine is designed for quick builds and quick feedback.</li>
+<li><strong>Capable</strong>: the first focus is a complete 2D workflow, with 3D support already present and planned to grow.</li>
+<li><strong>Cross-platform by design</strong>: Ada currently targets Apple platforms and is actively moving toward broader support including Windows, Linux, Android, and WebAssembly/WebGPU.</li>
+</ul>
+<p>The current feature set includes:</p>
+<ul>
+<li><strong>Sprites</strong>: render many textures with batching; use individual textures, sprite sheets, and animated textures.</li>
+<li><strong>Scenes</strong>: save and load ECS worlds from human-readable scene files.</li>
+<li><strong>Tilemaps</strong>: build levels with <a href="https://ldtk.io" target="_blank" rel="noreferrer">LDtk</a> or integrate another editor with the provided APIs.</li>
+<li><strong>2D physics</strong>: built-in support powered by <a href="https://box2d.io" target="_blank" rel="noreferrer">Box2D v3</a>.</li>
+<li><strong>Assets</strong>: load and save game assets, with async loading and asset handles.</li>
+<li><strong>Hot asset reloading</strong>: reload changed assets at runtime and stay in the flow.</li>
+<li><strong>Audio</strong>: load and play sound resources, including spatial playback attached to entities.</li>
+<li><strong>Plugins</strong>: rendering, audio, input, UI, events, physics, scenes, sprites, and other systems are composed through plugins.</li>
+<li><strong>Events and observation</strong>: communicate across your game with global events or ECS-style frame events.</li>
+<li><strong>Parent/child relationships</strong>: build entity hierarchies and propagate transforms through them.</li>
+<li><strong>Multiple render backends</strong>: Metal on Apple platforms and WebGPU/Dawn where enabled.</li>
+<li><strong>Render graphs</strong>: control how rendering work is scheduled and composed.</li>
+<li><strong>AdaUI</strong>: build game and app UI with a SwiftUI-inspired API.</li>
+<li><strong>Gamepads</strong>: access connected gamepads on supported platforms.</li>
+<li><strong>Examples</strong>: a growing set of demos for sprites, UI, input, events, scenes, tilemaps, and 3D.</li>
+</ul>
+<h2 id="a-swift-native-app-entry-point">A Swift-native app entry point</h2>
+<p>Ada apps start with an API that should feel familiar if you have used SwiftUI:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-keyword">import</span> AdaEngine
+
+<span class="hljs-keyword">@main</span>
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">AdaApp</span>: <span class="hljs-title class_ inherited__">App</span> {
+    <span class="hljs-keyword">var</span> body: <span class="hljs-keyword">some</span> <span class="hljs-type">AppScene</span> {
+        <span class="hljs-type">DefaultAppWindow</span>()
+            <span class="hljs-property">.windowMode</span>(.windowed)
+            <span class="hljs-property">.windowTitle</span>(<span class="hljs-string">&quot;Ada App&quot;</span>)
+    }
+}</code></pre>
+    </figure>
+  
+<p>That is enough to create a window and install the default engine plugins.</p>
+<p>The core philosophy is customization through plugins. Rendering, audio, input, events, UI, physics, scenes, sprites, and other features are added to an application through plugin composition. You can start with sensible defaults or build a smaller runtime by selecting only the parts you need.</p>
+<p>For more control, use <a href="https://docs.adaengine.org/documentation/adaapp/emptywindow" target="_blank" rel="noreferrer"><code>EmptyWindow</code></a> and add plugins manually:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-keyword">import</span> AdaEngine
+
+<span class="hljs-keyword">@main</span>
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">AdaApp</span>: <span class="hljs-title class_ inherited__">App</span> {
+    <span class="hljs-keyword">var</span> body: <span class="hljs-keyword">some</span> <span class="hljs-type">AppScene</span> {
+        <span class="hljs-type">EmptyWindow</span>()
+            <span class="hljs-property">.addPlugins</span>(<span class="hljs-type">DefaultPlugins</span>())
+            <span class="hljs-property">.windowMode</span>(.windowed)
+            <span class="hljs-property">.windowTitle</span>(<span class="hljs-string">&quot;Ada App&quot;</span>)
+    }
+}</code></pre>
+    </figure>
+  
+<p><a href="https://docs.adaengine.org/documentation/adaengine/defaultplugins/" target="_blank" rel="noreferrer"><code>DefaultPlugins</code></a> is the bundle most users should start with. When you need a lighter runtime, you can disable parts of the bundle with <a href="https://docs.adaengine.org/documentation/adaengine/defaultplugins/disable(_:)" target="_blank" rel="noreferrer"><code>disable(_:)</code></a>.</p>
+<h2 id="entity-component-system">Entity Component System</h2>
+<p>Ada&#39;s heart is its ECS framework. It is inspired by engines and frameworks such as Bevy and RealityKit, but it is designed to feel natural in Swift.</p>
+<p>In an Entity Component System:</p>
+<ul>
+<li><strong>Entities</strong> are unique identifiers.</li>
+<li><strong>Components</strong> are pieces of data attached to entities.</li>
+<li><strong>Systems</strong> are logic that reads and writes components.</li>
+<li><strong>Resources</strong> are unique world-level values.</li>
+</ul>
+<p>This approach keeps game data separate from game logic. It also makes it easier to scale a game from a few objects to many systems and many entities.</p>
+<p>AdaECS uses normal Swift types and adds macros to reduce boilerplate:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-keyword">import</span> AdaEngine
+
+<span class="hljs-meta">@Component</span>
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">Position</span> {
+    <span class="hljs-keyword">var</span> value: <span class="hljs-type">Float</span>
+}
+
+<span class="hljs-meta">@Component</span>
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">Velocity</span> {
+    <span class="hljs-keyword">var</span> value: <span class="hljs-type">Float</span>
+}
+
+<span class="hljs-meta">@System</span>
+<span class="hljs-keyword">func</span> <span class="hljs-title function_">Movement</span>(
+    <span class="hljs-keyword">_</span> <span class="hljs-params">query</span>: <span class="hljs-type">Query</span>&lt;
+        <span class="hljs-type">Ref</span>&lt;<span class="hljs-type">Position</span>&gt;, <span class="hljs-comment">// read-write access</span>
+        <span class="hljs-type">Velocity</span>       <span class="hljs-comment">// read-only access</span>
+    &gt;
+) {
+    query<span class="hljs-property">.forEach</span> { position, velocity <span class="hljs-keyword">in</span>
+        position<span class="hljs-property">.value</span> <span class="hljs-operator">+=</span> velocity<span class="hljs-property">.value</span>
+    }
+}
+
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">ExamplePlugin</span>: <span class="hljs-title class_ inherited__">Plugin</span> {
+    <span class="hljs-keyword">func</span> <span class="hljs-title function_">setup</span>(<span class="hljs-params">in</span> <span class="hljs-params">app</span>: <span class="hljs-type">AppWorlds</span>) {
+        app<span class="hljs-property">.spawn</span> {
+            <span class="hljs-type">Position</span>(value: <span class="hljs-number">0</span>)
+            <span class="hljs-type">Velocity</span>(value: <span class="hljs-number">1</span>)
+        }
+
+        app<span class="hljs-property">.spawn</span> {
+            <span class="hljs-type">Position</span>(value: <span class="hljs-number">1</span>)
+            <span class="hljs-type">Velocity</span>(value: <span class="hljs-number">2</span>)
+        }
+
+        app<span class="hljs-property">.addSystem</span>(<span class="hljs-type">MovementSystem</span>.<span class="hljs-keyword">self</span>, on: .update)
+    }
+}
+
+<span class="hljs-keyword">@main</span>
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">AdaApp</span>: <span class="hljs-title class_ inherited__">App</span> {
+    <span class="hljs-keyword">var</span> body: <span class="hljs-keyword">some</span> <span class="hljs-type">AppScene</span> {
+        <span class="hljs-type">DefaultAppWindow</span>()
+            <span class="hljs-property">.addPlugins</span>(<span class="hljs-type">ExamplePlugin</span>())
+    }
+}</code></pre>
+    </figure>
+  
+<p>The <code>@System</code> macro generates the concrete system type for you. You write the logic as a Swift function; Ada turns it into a registered ECS system.</p>
+<h3 id="queries">Queries</h3>
+<p>Queries fetch components from the world:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-meta">@System</span>
+<span class="hljs-keyword">func</span> <span class="hljs-title function_">Movement</span>(<span class="hljs-keyword">_</span> <span class="hljs-params">query</span>: <span class="hljs-type">Query</span>&lt;<span class="hljs-type">Entity</span>, <span class="hljs-type">Transform</span>&gt;) {
+    query<span class="hljs-property">.forEach</span> { entity, transform <span class="hljs-keyword">in</span>
+        <span class="hljs-comment">// Iterate over every entity with a Transform.</span>
+    }
+}</code></pre>
+    </figure>
+  
+<h3 id="filter-queries">Filter queries</h3>
+<p>Filters restrict the set of matching entities:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-meta">@System</span>
+<span class="hljs-keyword">func</span> <span class="hljs-title function_">PlayerMovement</span>(
+    <span class="hljs-keyword">_</span> <span class="hljs-params">query</span>: <span class="hljs-type">FilterQuery</span>&lt;<span class="hljs-type">Entity</span>, <span class="hljs-type">Transform</span>, <span class="hljs-type">With</span>&lt;<span class="hljs-type">Player</span>&gt;&gt;
+) {
+    query<span class="hljs-property">.forEach</span> { entity, transform <span class="hljs-keyword">in</span>
+        <span class="hljs-comment">// Iterate only over entities that also have Player.</span>
+    }
+}</code></pre>
+    </figure>
+  
+<h3 id="change-detection">Change detection</h3>
+<p>Change detection lets a system react only when relevant data changes:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-meta">@System</span>
+<span class="hljs-keyword">func</span> <span class="hljs-title function_">EnemyHealthBar</span>(
+    <span class="hljs-keyword">_</span> <span class="hljs-params">query</span>: <span class="hljs-type">FilterQuery</span>&lt;<span class="hljs-type">Enemy</span>, <span class="hljs-type">Changed</span>&lt;<span class="hljs-type">Health</span>&gt;&gt;
+) {
+    query<span class="hljs-property">.forEach</span> { enemy <span class="hljs-keyword">in</span>
+        <span class="hljs-comment">// Run when Health has been added or changed.</span>
+    }
+}</code></pre>
+    </figure>
+  
+<h3 id="resources">Resources</h3>
+<p>Resources store unique world-level data:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">GameScore</span>: <span class="hljs-title class_ inherited__">Resource</span> {
+    <span class="hljs-keyword">var</span> score: <span class="hljs-type">Int</span>
+    <span class="hljs-keyword">var</span> bulletFireCount: <span class="hljs-type">Int</span>
+}
+
+world<span class="hljs-property">.insertResource</span>(<span class="hljs-type">GameScore</span>(score: <span class="hljs-number">0</span>, bulletFireCount: <span class="hljs-number">0</span>))
+
+<span class="hljs-meta">@System</span>
+<span class="hljs-keyword">func</span> <span class="hljs-title function_">UpdateScore</span>(<span class="hljs-params">score</span>: <span class="hljs-type">ResMut</span>&lt;<span class="hljs-type">GameScore</span>&gt;) {
+    score<span class="hljs-property">.score</span> <span class="hljs-operator">+=</span> <span class="hljs-number">1</span>
+}</code></pre>
+    </figure>
+  
+<p>Delta time is also exposed as a resource:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-meta">@System</span>
+<span class="hljs-keyword">func</span> <span class="hljs-title function_">Movement</span>(
+    <span class="hljs-params">time</span>: <span class="hljs-type">Res</span>&lt;<span class="hljs-type">DeltaTime</span>&gt;,
+    <span class="hljs-params">query</span>: <span class="hljs-type">Query</span>&lt;<span class="hljs-type">Ref</span>&lt;<span class="hljs-type">Position</span>&gt;&gt;
+) {
+    query<span class="hljs-property">.forEach</span> {
+        <span class="hljs-variable">$0</span><span class="hljs-property">.value</span> <span class="hljs-operator">+=</span> <span class="hljs-number">20</span> <span class="hljs-operator">*</span> time<span class="hljs-property">.deltaTime</span>
+    }
+}</code></pre>
+    </figure>
+  
+<h3 id="commands">Commands</h3>
+<p>When a system needs to spawn or delete entities, or insert components, it can use <a href="https://docs.adaengine.org/documentation/adaecs/commands" target="_blank" rel="noreferrer"><code>Commands</code></a>. Commands are collected and then applied after the system finishes, which keeps system execution safe.</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-meta">@System</span>
+<span class="hljs-keyword">func</span> <span class="hljs-title function_">GameStartup</span>(<span class="hljs-keyword">_</span> <span class="hljs-params">commands</span>: <span class="hljs-type">Commands</span>) {
+    commands<span class="hljs-property">.spawn</span>(<span class="hljs-string">&quot;Player&quot;</span>) {
+        <span class="hljs-type">Player</span>()
+        <span class="hljs-type">Transform</span>()
+    }
+}</code></pre>
+    </figure>
+  
+<h3 id="local-values">Local values</h3>
+<p>Systems can keep local state with <a href="https://docs.adaengine.org/documentation/adaecs/local" target="_blank" rel="noreferrer"><code>Local</code></a>:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-meta">@System</span>
+<span class="hljs-keyword">func</span> <span class="hljs-title function_">UpdateData</span>(<span class="hljs-params">isUpdated</span>: <span class="hljs-type">Local</span>&lt;<span class="hljs-type">Bool</span>&gt; <span class="hljs-operator">=</span> <span class="hljs-literal">false</span>) {
+    <span class="hljs-keyword">if</span> <span class="hljs-operator">!</span>isUpdated<span class="hljs-property">.wrappedValue</span> {
+        <span class="hljs-comment">// Perform one-time work.</span>
+        isUpdated<span class="hljs-property">.wrappedValue</span> <span class="hljs-operator">=</span> <span class="hljs-literal">true</span>
+    }
+}</code></pre>
+    </figure>
+  
+<h3 id="struct-systems">Struct systems</h3>
+<p>For more control, AdaECS also supports struct-based systems with <a href="https://docs.adaengine.org/documentation/adaecs/plainsystem(dependencies:)" target="_blank" rel="noreferrer"><code>@PlainSystem</code></a>:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-meta">@PlainSystem</span>(dependencies: [
+    .after(<span class="hljs-type">EnemyMovement</span>.<span class="hljs-keyword">self</span>),
+    .before(<span class="hljs-type">PhysicsSystem</span>.<span class="hljs-keyword">self</span>)
+])
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">MovementSystem</span> {
+    <span class="hljs-meta">@Query</span><span class="hljs-operator">&lt;</span><span class="hljs-type">Player</span>, <span class="hljs-type">Transform</span><span class="hljs-operator">&gt;</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">var</span> playerQuery
+
+    <span class="hljs-keyword">init</span>(<span class="hljs-params">world</span>: <span class="hljs-type">World</span>) {}
+
+    <span class="hljs-keyword">func</span> <span class="hljs-title function_">update</span>(<span class="hljs-params">context</span>: <span class="hljs-type">UpdateContext</span>) {
+        playerQuery<span class="hljs-property">.forEach</span> {
+            <span class="hljs-comment">// Update player movement here.</span>
+        }
+    }
+}</code></pre>
+    </figure>
+  
+<h3 id="schedulers">Schedulers</h3>
+<p>Systems run in schedulers. Ada includes common stages such as startup, pre-update, update, fixed update, and others:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift">world
+    <span class="hljs-property">.addSystem</span>(<span class="hljs-type">StartupSystem</span>.<span class="hljs-keyword">self</span>, on: .startup)
+    <span class="hljs-property">.addSystem</span>(<span class="hljs-type">MovementSystem</span>.<span class="hljs-keyword">self</span>, on: .fixedUpdate)
+    <span class="hljs-property">.addSystem</span>(<span class="hljs-type">UpdateEnemySystem</span>.<span class="hljs-keyword">self</span>, on: .preUpdate)
+    <span class="hljs-property">.addSystem</span>(<span class="hljs-type">UpdateScoreSystem</span>.<span class="hljs-keyword">self</span>, on: .update)</code></pre>
+    </figure>
+  
+<p><code>.startup</code> runs once when the app launches. You can also build custom schedulers when your game needs its own execution model.</p>
+
+    <aside class="article-callout article-callout-warning">
+      <span class="article-callout-icon" aria-hidden="true">!</span>
+      <div>
+        <p class="article-callout-title">Early release</p>
+        <p>Be careful with system dependencies. If a system depends on another system that is not registered in the same scheduler, the app can fail at runtime.</p>
+      </div>
+    </aside>
+  
+<h3 id="bundles">Bundles</h3>
+<p>Bundles combine several components into one reusable unit. The <code>@Bundle</code> macro generates the code needed to unpack the bundle into components:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-meta">@Bundle</span>
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">EnemyBundle</span> {
+    <span class="hljs-keyword">let</span> enemy <span class="hljs-operator">=</span> <span class="hljs-type">Enemy</span>()
+    <span class="hljs-keyword">let</span> transform: <span class="hljs-type">Transform</span>
+    <span class="hljs-keyword">let</span> health: <span class="hljs-type">Health</span>
+}
+
+world<span class="hljs-property">.spawn</span>(
+    <span class="hljs-string">&quot;Enemy&quot;</span>,
+    bundle: <span class="hljs-type">EnemyBundle</span>(
+        transform: <span class="hljs-type">Transform</span>(),
+        health: <span class="hljs-type">Health</span>(<span class="hljs-number">30</span>)
+    )
+)</code></pre>
+    </figure>
+  
+<h3 id="scriptable-objects">Scriptable objects</h3>
+<p>If you prefer a Unity-like workflow for some gameplay code, Ada provides <a href="https://docs.adaengine.org/documentation/adascene/scriptableobject" target="_blank" rel="noreferrer"><code>ScriptableObject</code></a> and <a href="https://docs.adaengine.org/documentation/adascene/scriptablecomponents" target="_blank" rel="noreferrer"><code>ScriptableComponents</code></a>:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-keyword">final</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Player</span>: <span class="hljs-title class_ inherited__">ScriptableObject</span> {
+    <span class="hljs-keyword">func</span> <span class="hljs-title function_">update</span>(<span class="hljs-keyword">_</span> <span class="hljs-params">deltaTime</span>: <span class="hljs-type">TimeInterval</span>) {
+        <span class="hljs-keyword">if</span> input<span class="hljs-property">.isKeyPressed</span>(.w) {
+            <span class="hljs-comment">// Move player.</span>
+        }
+    }
+}
+
+world<span class="hljs-property">.spawn</span>(<span class="hljs-string">&quot;Player&quot;</span>) {
+    <span class="hljs-type">ScriptableComponents</span>(
+        components: [
+            <span class="hljs-type">Player</span>()
+        ]
+    )
+}</code></pre>
+    </figure>
+  
+<p>This gives you a familiar object-style escape hatch while the engine remains ECS-first.</p>
+<h2 id="adaui">AdaUI</h2>
+<p>Ada includes a UI framework called AdaUI. It is inspired by SwiftUI and is designed for both games and editor-like tools.</p>
+<p>SwiftUI proved how productive declarative UI can be. AdaUI brings a similar style into the engine, so UI code can be written directly in Swift and rendered inside an Ada scene.</p>
+
+    <figure class="article-media article-media-image">
+      <img src="/images/main/adaui_example_1.jpg" alt="AdaUI and SwiftUI layout diff for a media card stack" loading="lazy" role="button" tabindex="0" aria-label="Open image fullscreen" data-article-lightbox-image />
+      <figcaption>AdaUI and SwiftUI layout comparison for a media review card stack.</figcaption>
+    </figure>
+  
+
+    <figure class="article-media article-media-image">
+      <img src="/images/main/adaui_example_2.jpg" alt="AdaUI and SwiftUI layout diff for a chat composer shell" loading="lazy" role="button" tabindex="0" aria-label="Open image fullscreen" data-article-lightbox-image />
+      <figcaption>AdaUI and SwiftUI layout comparison for a chat composer shell.</figcaption>
+    </figure>
+  
+<h3 id="views">Views</h3>
+<p>A view implements the <a href="https://docs.adaengine.org/documentation/adaui/view" target="_blank" rel="noreferrer"><code>View</code></a> protocol:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">GameOverView</span>: <span class="hljs-title class_ inherited__">View</span> {
+    <span class="hljs-keyword">var</span> body: <span class="hljs-keyword">some</span> <span class="hljs-type">View</span> {
+        <span class="hljs-type">Text</span>(<span class="hljs-string">&quot;Game Over&quot;</span>)
+    }
+}</code></pre>
+    </figure>
+  
+<h3 id="layout">Layout</h3>
+<p>AdaUI includes familiar stack layout primitives:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">GameOverView</span>: <span class="hljs-title class_ inherited__">View</span> {
+    <span class="hljs-keyword">var</span> body: <span class="hljs-keyword">some</span> <span class="hljs-type">View</span> {
+        <span class="hljs-type">VStack</span>(spacing: <span class="hljs-number">20</span>) {
+            <span class="hljs-type">Text</span>(<span class="hljs-string">&quot;Game Over&quot;</span>)
+            <span class="hljs-type">Text</span>(<span class="hljs-string">&quot;Try again&quot;</span>)
+        }
+    }
+}</code></pre>
+    </figure>
+  
+<h3 id="interactive-elements">Interactive elements</h3>
+<p>Buttons and other interactive controls can be composed in the same style:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">MenuView</span>: <span class="hljs-title class_ inherited__">View</span> {
+    <span class="hljs-keyword">var</span> body: <span class="hljs-keyword">some</span> <span class="hljs-type">View</span> {
+        <span class="hljs-type">Button</span>(<span class="hljs-string">&quot;Start Game&quot;</span>) {
+            <span class="hljs-comment">// Start game.</span>
+        }
+
+        <span class="hljs-type">Button</span>(action: {
+            <span class="hljs-comment">// Open settings.</span>
+        }, label: {
+            <span class="hljs-type">Text</span>(<span class="hljs-string">&quot;Settings&quot;</span>)
+                .foregroundColor(.red)
+        })
+    }
+}</code></pre>
+    </figure>
+  
+<h3 id="modifiers">Modifiers</h3>
+<p>Modifiers apply style and behavior:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">GameOverView</span>: <span class="hljs-title class_ inherited__">View</span> {
+    <span class="hljs-keyword">var</span> body: <span class="hljs-keyword">some</span> <span class="hljs-type">View</span> {
+        <span class="hljs-type">VStack</span>(spacing: <span class="hljs-number">20</span>) {
+            <span class="hljs-type">Text</span>(<span class="hljs-string">&quot;Game Over&quot;</span>)
+                <span class="hljs-property">.font</span>(.system(size: <span class="hljs-number">50</span>))
+                <span class="hljs-property">.foregroundColor</span>(.red)
+        }
+    }
+}</code></pre>
+    </figure>
+  
+<h3 id="state-and-bindings">State and bindings</h3>
+<p>Views can store state and update when that state changes:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">GameOverView</span>: <span class="hljs-title class_ inherited__">View</span> {
+    <span class="hljs-meta">@State</span> <span class="hljs-keyword">private</span> <span class="hljs-keyword">var</span> isDead <span class="hljs-operator">=</span> <span class="hljs-literal">false</span>
+
+    <span class="hljs-keyword">var</span> body: <span class="hljs-keyword">some</span> <span class="hljs-type">View</span> {
+        <span class="hljs-type">VStack</span>(spacing: <span class="hljs-number">20</span>) {
+            <span class="hljs-keyword">if</span> isDead {
+                <span class="hljs-type">Text</span>(<span class="hljs-string">&quot;Game Over&quot;</span>)
+                    <span class="hljs-property">.font</span>(.system(size: <span class="hljs-number">50</span>))
+                    <span class="hljs-property">.foregroundColor</span>(.red)
+            }
+        }
+        <span class="hljs-property">.onEvent</span>(<span class="hljs-type">YourGameEvent</span>.<span class="hljs-type">UserDied</span>) {
+            <span class="hljs-keyword">self</span><span class="hljs-property">.isDead</span> <span class="hljs-operator">=</span> <span class="hljs-literal">true</span>
+        }
+    }
+}</code></pre>
+    </figure>
+  
+<p>Bindings pass state between views:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">ParentView</span>: <span class="hljs-title class_ inherited__">View</span> {
+    <span class="hljs-meta">@State</span> <span class="hljs-keyword">private</span> <span class="hljs-keyword">var</span> isDead <span class="hljs-operator">=</span> <span class="hljs-literal">false</span>
+
+    <span class="hljs-keyword">var</span> body: <span class="hljs-keyword">some</span> <span class="hljs-type">View</span> {
+        <span class="hljs-type">SubView</span>(isDead: <span class="hljs-variable">$isDead</span>)
+    }
+}
+
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">SubView</span>: <span class="hljs-title class_ inherited__">View</span> {
+    <span class="hljs-meta">@Binding</span> <span class="hljs-keyword">var</span> isDead: <span class="hljs-type">Bool</span>
+
+    <span class="hljs-keyword">var</span> body: <span class="hljs-keyword">some</span> <span class="hljs-type">View</span> {
+        <span class="hljs-keyword">if</span> isDead {
+            <span class="hljs-type">Text</span>(<span class="hljs-string">&quot;Game Over&quot;</span>)
+        }
+    }
+}</code></pre>
+    </figure>
+  
+<h3 id="attaching-ui-to-an-entity">Attaching UI to an entity</h3>
+<p>To show a view in the world, attach it with <a href="https://docs.adaengine.org/documentation/adaui/uicomponent" target="_blank" rel="noreferrer"><code>UIComponent</code></a>:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-keyword">let</span> gameOverView <span class="hljs-operator">=</span> <span class="hljs-type">GameOverView</span>()
+
+world<span class="hljs-property">.spawn</span>(<span class="hljs-string">&quot;GameOverView&quot;</span>) {
+    <span class="hljs-type">UIComponent</span>(view: gameOverView)
+}</code></pre>
+    </figure>
+  
+<h3 id="environment-access">Environment access</h3>
+<p>AdaUI views can read values from the environment. For example, a view attached to an entity can access the ECS world:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">DebugView</span>: <span class="hljs-title class_ inherited__">View</span> {
+    <span class="hljs-meta">@Environment</span>(\.world)
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">var</span> world
+
+    <span class="hljs-keyword">var</span> body: <span class="hljs-keyword">some</span> <span class="hljs-type">View</span> {
+        <span class="hljs-type">Button</span>(<span class="hljs-string">&quot;Spawn Enemy&quot;</span>) {
+            world<span class="hljs-property">.spawn</span>(<span class="hljs-string">&quot;Enemy&quot;</span>, bundle: <span class="hljs-type">EnemyBundle</span>())
+        }
+    }
+}</code></pre>
+    </figure>
+  
+<h3 id="images">Images</h3>
+<p>Images can be used directly in UI:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">UserAvatarView</span>: <span class="hljs-title class_ inherited__">View</span> {
+    <span class="hljs-keyword">var</span> body: <span class="hljs-keyword">some</span> <span class="hljs-type">View</span> {
+        <span class="hljs-type">Image</span>(<span class="hljs-string">&quot;@res://avatar.png&quot;</span>)
+    }
+}</code></pre>
+    </figure>
+  
+<p>AdaUI is especially important for the future of Ada because the editor is planned to be built on top of the same UI system that games can use.</p>
+
+    <figure class="article-media article-media-image">
+      <img src="/images/main/ada-editor.png" alt="Ada Editor UI" loading="lazy" role="button" tabindex="0" aria-label="Open image fullscreen" data-article-lightbox-image />
+      <figcaption>The editor is planned around the same AdaUI foundations available to games and tools.</figcaption>
+    </figure>
+  
+<h2 id="2d-features">2D features</h2>
+<p>Ada 0.1.0 is focused on building a strong 2D foundation.</p>
+<h3 id="sprites">Sprites</h3>
+<p>Sprites are a core building block for many 2D games. Ada can render sprites from <a href="https://docs.adaengine.org/documentation/adarender/texture2d" target="_blank" rel="noreferrer"><code>Texture2D</code></a> and other texture resources:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-keyword">let</span> texture <span class="hljs-operator">=</span> <span class="hljs-keyword">try</span> <span class="hljs-keyword">await</span> <span class="hljs-type">AssetsManager</span><span class="hljs-property">.load</span>(<span class="hljs-type">Texture2D</span>.<span class="hljs-keyword">self</span>, at: <span class="hljs-string">&quot;@res://sprite.png&quot;</span>)
+
+world<span class="hljs-property">.spawn</span> {
+    <span class="hljs-type">Sprite</span>(texture: texture)
+    <span class="hljs-type">Transform</span>()
+}</code></pre>
+    </figure>
+  
+<h3 id="texture-atlases-and-sprite-sheets">Texture atlases and sprite sheets</h3>
+<p>Texture atlases can be used for animation, tile sets, and optimized rendering:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-keyword">let</span> image <span class="hljs-operator">=</span> <span class="hljs-keyword">try</span> <span class="hljs-keyword">await</span> <span class="hljs-type">AssetsManager</span><span class="hljs-property">.load</span>(<span class="hljs-type">Image</span>.<span class="hljs-keyword">self</span>, at: <span class="hljs-string">&quot;@res://characters.png&quot;</span>)
+<span class="hljs-keyword">let</span> textureAtlas <span class="hljs-operator">=</span> <span class="hljs-type">TextureAtlas</span>(from: image, size: <span class="hljs-type">Vector2</span>(<span class="hljs-number">16</span>, <span class="hljs-number">16</span>))
+
+world<span class="hljs-property">.spawn</span> {
+    <span class="hljs-type">Sprite</span>(
+        texture: textureAtlas[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>],
+        size: <span class="hljs-type">Size</span>(width: <span class="hljs-number">16</span>, height: <span class="hljs-number">16</span>)
+    )
+    <span class="hljs-type">Transform</span>()
+}</code></pre>
+    </figure>
+  
+<p>If sprite size is not specified, Ada can infer it from the texture.</p>
+<h3 id="tilemaps">Tilemaps</h3>
+<p>Ada includes a dedicated <code>AdaTilemap</code> module. The built-in demos include both custom tilemap examples and LDtk-based tilemap loading. This makes it possible to build levels visually and then load them into an ECS world.</p>
+<p>The goal is to support practical 2D workflows: draw levels in an editor, load them as data, attach physics, and iterate quickly.</p>
+
+    <figure class="article-media article-media-image">
+      <img src="/images/main/tilemap.png" alt="Tilemap demo" loading="lazy" role="button" tabindex="0" aria-label="Open image fullscreen" data-article-lightbox-image />
+      <figcaption>A tilemap scene rendered by Ada.</figcaption>
+    </figure>
+  
+<h3 id="2d-physics">2D physics</h3>
+<p>Ada includes <code>AdaPhysics</code>, backed by Box2D. You can attach collision components to entities and receive collision events through the event system.</p>
+<p>Physics is integrated into the ECS world, so gameplay code can combine transforms, sprites, collision components, and systems in the same data-driven model.</p>
+<h2 id="scenes">Scenes</h2>
+<p>A scene is a collection of entities, components, and resources that can be saved, loaded, and spawned into a world.</p>
+<p>You can think about a scene as a prefab or level file: it describes a piece of your game that can be loaded when needed.</p>
+<h3 id="scene-files">Scene files</h3>
+<p>Scenes are saved as human-readable YAML. A scene file can include entities, component data, transforms, sprites, physics components, and resources:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>YAML</span>
+      </figcaption>
+      <pre><code class="language-yaml"><span class="hljs-attr">version:</span> <span class="hljs-number">1.0</span><span class="hljs-number">.0</span>
+<span class="hljs-attr">scene:</span> <span class="hljs-string">Scene</span>
+<span class="hljs-attr">world:</span>
+  <span class="hljs-attr">entities:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Ground</span>
+    <span class="hljs-attr">id:</span> <span class="hljs-number">122210699653662020</span>
+    <span class="hljs-attr">components:</span>
+      <span class="hljs-attr">AdaSprite.Sprite:</span>
+        <span class="hljs-attr">tintColor:</span>
+          <span class="hljs-attr">red:</span> <span class="hljs-number">1.0</span>
+          <span class="hljs-attr">green:</span> <span class="hljs-number">1.0</span>
+          <span class="hljs-attr">blue:</span> <span class="hljs-number">1.0</span>
+          <span class="hljs-attr">alpha:</span> <span class="hljs-number">1.0</span>
+        <span class="hljs-attr">flipX:</span> <span class="hljs-literal">false</span>
+        <span class="hljs-attr">flipY:</span> <span class="hljs-literal">false</span>
+      <span class="hljs-attr">AdaTransform.Transform:</span>
+        <span class="hljs-attr">rotation:</span>
+          <span class="hljs-attr">x:</span> <span class="hljs-number">0.0</span>
+          <span class="hljs-attr">y:</span> <span class="hljs-number">0.0</span>
+          <span class="hljs-attr">z:</span> <span class="hljs-number">0.0</span>
+          <span class="hljs-attr">w:</span> <span class="hljs-number">1.0</span>
+        <span class="hljs-attr">scale:</span>
+          <span class="hljs-attr">x:</span> <span class="hljs-number">3.0</span>
+          <span class="hljs-attr">y:</span> <span class="hljs-number">0.19</span>
+          <span class="hljs-attr">z:</span> <span class="hljs-number">0.19</span>
+        <span class="hljs-attr">position:</span>
+          <span class="hljs-attr">x:</span> <span class="hljs-number">0.0</span>
+          <span class="hljs-attr">y:</span> <span class="hljs-number">-1.0</span>
+          <span class="hljs-attr">z:</span> <span class="hljs-number">0.0</span>
+      <span class="hljs-attr">AdaPhysics.Collision2DComponent:</span>
+        <span class="hljs-attr">shapes:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">fixture:</span>
+            <span class="hljs-attr">box:</span>
+              <span class="hljs-attr">_0:</span>
+                <span class="hljs-attr">halfWidth:</span> <span class="hljs-number">0.5</span>
+                <span class="hljs-attr">halfHeight:</span> <span class="hljs-number">0.5</span>
+                <span class="hljs-attr">offset:</span>
+                  <span class="hljs-attr">x:</span> <span class="hljs-number">0.0</span>
+                  <span class="hljs-attr">y:</span> <span class="hljs-number">0.0</span>
+        <span class="hljs-attr">mode:</span>
+          <span class="hljs-attr">default:</span> {}
+  <span class="hljs-attr">resources:</span> {}</code></pre>
+    </figure>
+  
+<h3 id="loading-scenes">Loading scenes</h3>
+<p>Scenes are assets, so they can be loaded through the asset system:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-keyword">let</span> scene <span class="hljs-operator">=</span> <span class="hljs-keyword">try</span> <span class="hljs-keyword">await</span> <span class="hljs-type">AssetsManager</span><span class="hljs-property">.load</span>(<span class="hljs-type">Scene</span>.<span class="hljs-keyword">self</span>, at: <span class="hljs-string">&quot;@res://game_scene.ascn&quot;</span>)
+
+world<span class="hljs-property">.spawn</span>(<span class="hljs-string">&quot;Spawned scene&quot;</span>) {
+    <span class="hljs-type">DynamicScene</span>(scene: scene)
+}</code></pre>
+    </figure>
+  
+<p>The spawned scene can attach its entities and resources under a parent entity.</p>
+<h3 id="hot-reloading-scenes">Hot reloading scenes</h3>
+<p>Scene hot reloading is one of the most important iteration features. When a scene file changes, Ada can apply those changes to a running scene without requiring a restart or a full rebuild. This makes level editing and gameplay tuning much faster.</p>
+
+    <aside class="article-callout article-callout-info">
+      <span class="article-callout-icon" aria-hidden="true">!</span>
+      <div>
+        <p class="article-callout-title">Info</p>
+        <p>Hot reload is an early feature, but the direction is clear: edit data, see the result immediately, and stay focused on the game instead of the build loop.</p>
+      </div>
+    </aside>
+  
+<h2 id="events">Events</h2>
+<p>Games and apps need to communicate constantly: collisions begin, buttons are pressed, UI opens, enemies spawn, players connect, and systems need to react.</p>
+<p>Ada supports both global event-style messaging and ECS frame events.</p>
+<h3 id="eventmanager">EventManager</h3>
+<p>You can subscribe to an event and store the cancellable token:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-keyword">let</span> cancellable <span class="hljs-operator">=</span> world<span class="hljs-property">.subscribe</span>(
+    on: <span class="hljs-type">CollisionEvents</span>.<span class="hljs-type">Began</span>.<span class="hljs-keyword">self</span>
+) { payload <span class="hljs-keyword">in</span>
+    <span class="hljs-comment">// Handle collision.</span>
+}
+
+world<span class="hljs-property">.eventManager</span><span class="hljs-property">.sendEvent</span>(<span class="hljs-type">SomeEvent</span>())
+
+<span class="hljs-comment">// Or send globally:</span>
+<span class="hljs-type">EventManager</span><span class="hljs-property">.default</span><span class="hljs-property">.sendEvent</span>(<span class="hljs-type">SomeEvent</span>())</code></pre>
+    </figure>
+  
+<h3 id="ecs-events">ECS events</h3>
+<p>For ECS-native workflows, Ada provides <code>Events</code> and <code>EventSender</code>:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-meta">@System</span>
+<span class="hljs-keyword">func</span> <span class="hljs-title function_">HostConnection</span>(<span class="hljs-keyword">_</span> <span class="hljs-params">events</span>: <span class="hljs-type">Events</span>&lt;<span class="hljs-type">OnConnect</span>&gt;) {
+    <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> events {
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;User connected&quot;</span>, event.userId)
+    }
+}
+
+<span class="hljs-meta">@System</span>
+<span class="hljs-keyword">func</span> <span class="hljs-title function_">ConnectionUpdate</span>(<span class="hljs-keyword">_</span> <span class="hljs-params">sender</span>: <span class="hljs-type">EventSender</span>&lt;<span class="hljs-type">OnConnect</span>&gt;) {
+    sender(<span class="hljs-type">OnConnect</span>(userId: <span class="hljs-string">&quot;player#123&quot;</span>))
+}</code></pre>
+    </figure>
+  
+
+    <aside class="article-callout article-callout-note">
+      <span class="article-callout-icon" aria-hidden="true">!</span>
+      <div>
+        <p class="article-callout-title">Note</p>
+        <p>ECS events are frame events: they are stored only for the current frame.</p>
+      </div>
+    </aside>
+  
+<h2 id="assets">Assets</h2>
+<p>The asset system lets you load and save game data. Assets are referenced through handles, which makes hot reloading possible.</p>
+<p>For example, loading a texture looks like this:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-keyword">let</span> texture: <span class="hljs-type">AssetHandle</span>&lt;<span class="hljs-type">Texture2D</span>&gt; <span class="hljs-operator">=</span> <span class="hljs-keyword">try</span> <span class="hljs-keyword">await</span> <span class="hljs-type">AssetsManager</span><span class="hljs-property">.load</span>(
+    <span class="hljs-type">Texture2D</span>.<span class="hljs-keyword">self</span>,
+    at: <span class="hljs-string">&quot;@res://my_texture.png&quot;</span>
+)</code></pre>
+    </figure>
+  
+<p>The <code>@res://</code> prefix points to your app resource directory. By default, Ada looks for an <code>Assets</code> or <code>Resources</code> folder in your target. You can also set the resource directory manually.</p>
+<p>To load from a specific bundle:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-keyword">let</span> texture: <span class="hljs-type">AssetHandle</span>&lt;<span class="hljs-type">Texture2D</span>&gt; <span class="hljs-operator">=</span> <span class="hljs-keyword">try</span> <span class="hljs-keyword">await</span> <span class="hljs-type">AssetsManager</span><span class="hljs-property">.load</span>(
+    <span class="hljs-type">Texture2D</span>.<span class="hljs-keyword">self</span>,
+    at: <span class="hljs-string">&quot;my_texture.png&quot;</span>,
+    from: <span class="hljs-type">Foundation</span>.<span class="hljs-type">Bundle</span>(path: <span class="hljs-string">&quot;&quot;</span>)
+)</code></pre>
+    </figure>
+  
+<p>To enable hot reloading for an asset, pass <code>handleChanges: true</code>:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-keyword">let</span> texture: <span class="hljs-type">AssetHandle</span>&lt;<span class="hljs-type">Texture2D</span>&gt; <span class="hljs-operator">=</span> <span class="hljs-keyword">try</span> <span class="hljs-keyword">await</span> <span class="hljs-type">AssetsManager</span><span class="hljs-property">.load</span>(
+    <span class="hljs-type">Texture2D</span>.<span class="hljs-keyword">self</span>,
+    at: <span class="hljs-string">&quot;@res://my_texture.png&quot;</span>,
+    handleChanges: <span class="hljs-literal">true</span>
+)</code></pre>
+    </figure>
+  
+<h3 id="adding-a-new-asset-type">Adding a new asset type</h3>
+<p>You can add support for custom assets by implementing the <a href="https://docs.adaengine.org/documentation/adaassets/asset" target="_blank" rel="noreferrer"><code>Asset</code></a> protocol:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">MyAsset</span>: <span class="hljs-title class_ inherited__">Asset</span> {
+    <span class="hljs-keyword">init</span>(<span class="hljs-params">asset</span> <span class="hljs-params">decoder</span>: <span class="hljs-type">AssetDecoder</span>) <span class="hljs-keyword">async</span> <span class="hljs-keyword">throws</span> {
+        <span class="hljs-comment">// Decode asset contents.</span>
+    }
+
+    <span class="hljs-keyword">func</span> <span class="hljs-title function_">encodeContents</span>(<span class="hljs-params">with</span> <span class="hljs-params">encoder</span>: <span class="hljs-type">AssetEncoder</span>) <span class="hljs-keyword">async</span> <span class="hljs-keyword">throws</span> {
+        <span class="hljs-comment">// Encode asset contents.</span>
+    }
+
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">func</span> <span class="hljs-title function_">extensions</span>() -&gt; [<span class="hljs-type">String</span>] {
+        [<span class="hljs-string">&quot;txt&quot;</span>]
+    }
+}</code></pre>
+    </figure>
+  
+<p>This makes the asset available to the same loading pipeline as built-in textures, sounds, scenes, and other resources.</p>
+<h2 id="audio">Audio</h2>
+<p>Ada includes an <code>AdaAudio</code> module backed by miniaudio. You can load an audio resource and play it from an entity:</p>
+
+    <figure class="article-code-block">
+      <figcaption>
+        <span></span>
+        <span>Swift</span>
+      </figcaption>
+      <pre><code class="language-swift"><span class="hljs-keyword">let</span> backgroundSound <span class="hljs-operator">=</span> <span class="hljs-keyword">try</span> <span class="hljs-keyword">await</span> <span class="hljs-type">AssetsManager</span><span class="hljs-property">.load</span>(
+    <span class="hljs-type">AudioResource</span>.<span class="hljs-keyword">self</span>,
+    at: <span class="hljs-string">&quot;@res://background.wav&quot;</span>
+)
+
+<span class="hljs-keyword">let</span> player <span class="hljs-operator">=</span> world<span class="hljs-property">.spawn</span> {
+    <span class="hljs-type">Player</span>()
+}
+
+player<span class="hljs-property">.prepareAudio</span>(backgroundSound)
+    <span class="hljs-property">.setLoop</span>(<span class="hljs-literal">true</span>)
+    <span class="hljs-property">.play</span>()</code></pre>
+    </figure>
+  
+<p>Audio can be attached to entities, which opens the door for spatial sound and gameplay-driven playback.</p>
+<h2 id="rendering">Rendering</h2>
+<p>Rendering in Ada is split into modules and plugins. The current codebase includes:</p>
+<ul>
+<li><code>AdaRender</code> for render abstractions, cameras, materials, meshes, textures, render pipelines, and render graphs.</li>
+<li><code>AdaSprite</code> for 2D sprite rendering.</li>
+<li><code>AdaCorePipelines</code> for built-in rendering pipelines and shaders.</li>
+<li>Metal support on Apple platforms.</li>
+<li>WebGPU support through Dawn/Swan where enabled.</li>
+<li>Shader compilation and transpilation infrastructure built around SPIR-V tooling.</li>
+</ul>
+<p>This release already includes the foundation for both 2D and 3D rendering. The 2D path is the most mature today. 3D exists — including meshes, cameras, materials, and a cube demo — but it needs more work before it feels complete.</p>
+<p>Render graphs are an important part of the future direction. They make rendering work explicit and composable, which should help the engine grow from simple sprite scenes to more advanced pipelines.</p>
+<h2 id="platforms-and-tooling">Platforms and tooling</h2>
+<p>Ada is a Swift Package using Swift 6.2. The package currently declares Apple platform targets such as macOS 15, iOS 18, tvOS 18, and visionOS 2. It also contains conditional compilation and platform backends for Linux, Windows, Android, WASI/WebAssembly, Metal, WebGPU, X11, and browser runtimes.</p>
+<p>Not every platform is equally mature yet. Apple platforms are the most ready today, while Windows, Linux, Android, and Web are part of the active cross-platform direction.</p>
+<p>The repository also includes SwiftPM plugins and tools, including:</p>
+<ul>
+<li>an Ada web export plugin,</li>
+<li>WebGPU/Tint related build tooling,</li>
+<li>a texture atlas builder tool and plugins,</li>
+<li>shader transpilation tooling,</li>
+<li>generated documentation support through DocC.</li>
+</ul>
+<h2 id="examples">Examples</h2>
+<p>The repository includes examples under <a href="https://github.com/AdaEngine/AdaEngine/tree/main/Demos" target="_blank" rel="noreferrer"><code>Demos</code></a>, including:</p>
+<ul>
+<li>sprite rendering,</li>
+<li>many sprites / stress examples,</li>
+<li>custom materials,</li>
+<li>2D lighting,</li>
+<li>transparency,</li>
+<li>text rendering,</li>
+<li>gamepad input,</li>
+<li>scene loading,</li>
+<li>LDtk tilemaps,</li>
+<li>scriptable components,</li>
+<li>collision events,</li>
+<li>UI examples such as buttons, text fields, scene views, animated text, and a Kanban board,</li>
+<li>a simple 3D cube example,</li>
+<li>small game demos such as Snowman Attacks.</li>
+</ul>
+<p>Examples are important because they show what the engine can already do and also act as practical tests for engine workflows.</p>
+
+    <figure class="article-media article-media-image">
+      <img src="/images/main/duck_hunt.png" alt="Duck Hunt demo" loading="lazy" role="button" tabindex="0" aria-label="Open image fullscreen" data-article-lightbox-image />
+      <figcaption>A small Duck Hunt style demo running with Ada.</figcaption>
+    </figure>
+  
+
+    <figure class="article-media article-media-image">
+      <img src="/images/main/space_invaders.jpeg" alt="Space Invaders demo" loading="lazy" role="button" tabindex="0" aria-label="Open image fullscreen" data-article-lightbox-image />
+      <figcaption>A Space Invaders style demo from the Ada examples.</figcaption>
+    </figure>
+  
+<h2 id="why-i-built-ada">Why I built Ada</h2>
+<p>Making games was my childhood dream. I started learning Java because I wanted to make Minecraft mods. Later I became an iOS engineer, but the dream of building games never disappeared.</p>
+<p>I spent a lot of free time learning Godot, exploring the game development community, and trying to understand how engines work internally. I started with a small Metal project, kept experimenting, and after years of work reached this milestone: the first Ada release.</p>
+<p>I love open source. I love Swift. I have built many open source Swift projects, and I wanted to see what would happen if Swift was used not only for apps, but also for a full game engine.</p>
+<p>Swift has a lot to offer: value types, protocol-oriented design, macros, structured concurrency, memory safety, strong tooling, and a syntax that is pleasant to write. The biggest problem is not the language — it is the idea that Swift belongs only to macOS and iOS development.</p>
+<p>I do not believe that is true. Swift can be more than that. Ada is my attempt to help prove it.</p>
+<h2 id="what-s-next">What&#39;s next?</h2>
+<p>Ada 0.1.0 is a beginning, not a finish line. The next phase is about expanding the engine, polishing the experience, and growing the community.</p>
+<h3 id="more-platforms">More platforms</h3>
+<p>The long-term goal is to support as many platforms as possible. Swift is a safe and powerful language, and I believe it can be a great fit for cross-platform game development.</p>
+<p>The next important platform work includes WebAssembly/WebGPU, Linux, Android, and continued Windows support.</p>
+<h3 id="the-editor">The editor</h3>
+<p>Game developers want to prototype faster and write less boilerplate. AdaUI gives us the foundation to build an editor with the same UI framework that games can use.</p>
+<p>Building the Ada Editor in AdaUI is an important goal: it will improve the UI framework, validate the engine tooling, and make Ada more approachable for users who prefer visual workflows.</p>
+<h3 id="3d-rendering-and-polish">3D rendering and polish</h3>
+<p>The 2D feature set is the main focus of this release, but 3D support is already present and will continue improving. There is a lot of work to do: better materials, more complete rendering features, MSAA, richer scene tooling, model workflows, and more.</p>
+<p>The engine also needs polish across many systems: asset workflows, hot reloading, editor integration, diagnostics, examples, and API design.</p>
+<h3 id="documentation-and-tutorials">Documentation and tutorials</h3>
+<p>The API is still unstable and documentation is sparse in places. In the near future, Ada needs more tutorials, better guides, and more examples that show complete workflows from project setup to finished game mechanics.</p>
+<p>Good documentation is not optional. It is part of the engine.</p>
+<h2 id="join-ada">Join Ada</h2>
+<p>If any of this sounds interesting, please check out <a href="https://github.com/AdaEngine/AdaEngine" target="_blank" rel="noreferrer">Ada on GitHub</a>, read the <a href="https://docs.adaengine.org/tutorials/adaengine/" target="_blank" rel="noreferrer">tutorial series</a>, explore the examples, and join the discussion.</p>
+<p>Ada is currently built by volunteers. If you want to help build a Swift game engine — with code, documentation, examples, testing, design feedback, or ideas — you are very welcome.</p>
+<p>This is only version 0.1.0, but it is the start of something I have wanted to build for a long time.</p>
+<p>Let&#39;s make games with Swift.</p></div></article></div></main></div>
+  </body>
+</html>
